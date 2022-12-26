@@ -1,0 +1,570 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.1'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     20927,        456]*)
+(*NotebookOutlinePosition[     21886,        485]*)
+(*  CellTagsIndexPosition[     21842,        481]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Linear Regression", "Title"],
+
+Cell["\<\
+Michael Goerz
+13.09.2005\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Preamble", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Options", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(SetDirectory["\</home/goerz/\>"];\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(Off[General::"\<spell1\>"];\)\)], "Input"],
+
+Cell[BoxData[
+    \(<< \ Statistics`DataManipulation`\)], "Input"],
+
+Cell[BoxData[
+    \(<< \ Graphics`Graphics`\)], "Input"],
+
+Cell[BoxData[
+    \(<< Statistics`LinearRegression`\)], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Some Regular Expressions (As Reference)", "Subsubsection"],
+
+Cell[TextData[{
+  "The following shell commands can be useful for filtering datafiles:\n\n",
+  StyleBox["grep '[.0-9]\\|^#\\|^[[:space:]]$' data.csv", "Program"],
+  "\nThis leaves any lines with data, gnuplot comment lines, and blank lines\n\
+\n",
+  StyleBox["grep '[.0-9]\\|^[[:space:]]$' data.csv", "Program"],
+  "\nThis leaves any lines with data, and blank lines\n\n",
+  StyleBox["grep '[.0-9]' data.csv", "Program"],
+  "\nThis leaves only lines with data"
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Initialization", "Subsubsection"],
+
+Cell["\<\
+Data is loaded from the file 'data.csv'. The file ist assumed to \
+contain three collumns, the x-value, the y-value, and the y-error\
+\>", "Text"],
+
+Cell[BoxData[
+    \(dataset = ReadList["\<data.csv\>", {Real, Real, \ Real}]\)], "Input"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Functions", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Standard Functions for Linear Regression", "Subsubsection"],
+
+Cell[BoxData[
+    RowBox[{\(LinReg[daten_]\), ":=", " ", "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", 
+        RowBox[{\({x, y, \[CapitalDelta]y, \ 
+            S\ , \[CapitalDelta]a0, \[CapitalDelta]b0, \ a0, \ b0, n, 
+            Rsqared0, \[Chi]Squared0}\), ",", "\[IndentingNewLine]", 
+          
+          RowBox[{\(n = Length[daten]\), ";", 
+            "\[IndentingNewLine]", \(x = Column[daten, 1]\), ";", 
+            "\[IndentingNewLine]", \(y = Column[daten, \ 2]\), ";", 
+            "\[IndentingNewLine]", \(\[CapitalDelta]y = Column[daten, 3]\), 
+            ";", "\[IndentingNewLine]", \(S = \[Sum]\+\(i = 1\)\%n\( 
+                        1\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\((x\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\) - \((\[Sum]\+\(i = 1\)\%n \
+x\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)\^2\), ";", 
+            "\[IndentingNewLine]", \(a0 = \(1\/S\) \((\[Sum]\+\(i = \
+1\)\%n\(\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\
+\(i = 1\)\%n y\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) - \[Sum]\+\(i = 1\)\%n\( 
+                              x\[LeftDoubleBracket]
+                              i\[RightDoubleBracket]\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\( x\
+\[LeftDoubleBracket]i\[RightDoubleBracket]\ y\[LeftDoubleBracket]i\
+\[RightDoubleBracket]\)\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\))\)\), ";", 
+            RowBox[{
+              RowBox[{Cell[""], "b0"}], 
+              "=", \(\(1\/S\) \((\[Sum]\+\(i = 1\)\%n\( 
+                            1\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\( x\[LeftDoubleBracket]i\
+\[RightDoubleBracket]\ y\[LeftDoubleBracket]i\[RightDoubleBracket]\)\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) - \[Sum]\+\
+\(i = 1\)\%n\( 
+                              x\[LeftDoubleBracket]
+                              i\[RightDoubleBracket]\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\(\(\
+\ \)\(y\[LeftDoubleBracket]i\[RightDoubleBracket]\)\)\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\))\)\)}], ";", 
+            "\[IndentingNewLine]", \(\[CapitalDelta]a0 = \@\(\(1\/S\) \
+\(\[Sum]\+\(i = \
+1\)\%n\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]\
+y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)\)\), ";", 
+            "\[IndentingNewLine]", \(\[CapitalDelta]b0 = \@\(\(1\/S\) \
+\(\[Sum]\+\(i = 1\)\%n 1\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\)\)\), ";", 
+            "\[IndentingNewLine]", \(Rsqared0 = 
+              1 - \((\[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\
+\[RightDoubleBracket] - a0 - b0\ x\[LeftDoubleBracket]i\[RightDoubleBracket])\
+\)\^2\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)/\
+\((\[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\[RightDoubleBracket] - \((\
+\[Sum]\+\(i = 1\)\%n\( y\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)/\(\[Sum]\+\
+\(i = 1\)\%n \
+1\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\))\))\)\
+\^2\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)\),
+             ";", "\[IndentingNewLine]", \(\[Chi]Sqared0 = \[Sum]\+\(i = \
+1\)\%n\((\(1\/\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket]\) \
+\((y\[LeftDoubleBracket]i\[RightDoubleBracket] - a0 - b0\ x\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\))\)\^2\), ";", 
+            "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", \(Print["\<Errors from dataset\>"]\), ";", 
+            "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", \(Print["\<Number of data points: \>", 
+              n]\), ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", \(Print[
+              
+              TableForm[{{"\<\>", "\<Value\>", \ "\<Error\>"}, {"\<Slope \
+b\>", \ b0, \ \[CapitalDelta]b0}, {"\<y-Intercept a\>", \ 
+                    a0, \ \[CapitalDelta]a0}}]]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<\>"]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<Equation of best fit: y = \>", \
+\ b0, \ "\< * x + \>", \ a0]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<Equation of top worst fit: y = \
+\>", \ b0 + \[CapitalDelta]b0, \ "\< * x + \>", \ a0 + \[CapitalDelta]a0]\), 
+            ";", "\[IndentingNewLine]", \(Print["\<Equation of bottom worst \
+fit: y = \>", \ b0 - \[CapitalDelta]b0, \ "\< * x + \>", \ 
+              a0 - \[CapitalDelta]a0]\), ";", "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", \(Print["\<\n\>", \*"\"\<Certainty Measure \
+\!\(R\^2\): \>\"", \ Rsqared0]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<\n\>", \*"\"\<Quality of the \
+Errors \!\(s\^2\)=\!\(\[Chi]\^2\/\(n - 2\)\): \>\"", \[Chi]Sqared0\/\(n - \
+2\)]\), ";", 
+            "\[IndentingNewLine]", \( (*Error\ too\ small\ if\ s\^2\  > \ 
+                0, \ Error\ too\ large\ if\ s\^2\  < \ 0*) \), 
+            "\[IndentingNewLine]", 
+            "\[IndentingNewLine]", \({b \[Rule] \ 
+                b0, \ \[CapitalDelta]b\  \[Rule] \ \[CapitalDelta]b0, \ 
+              a \[Rule] \ 
+                a0, \ \[CapitalDelta]a \[Rule] \ \[CapitalDelta]a0, \ 
+              Rsqared \[Rule] \ 
+                Rsqared0, \ \[Chi]Sqared\  \[Rule] \ \[Chi]Sqared0, \ 
+              sSquared\  \[Rule] \[Chi]Sqared0\/\(n - 2\)\ }\)}]}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}]], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Linear Regression with Error Taken from Weighted Variance", \
+"Subsubsection"],
+
+Cell[BoxData[
+    RowBox[{\(LinRegWeightedVariance[daten_]\), ":=", " ", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Module", "[", 
+        RowBox[{\({x, y, f, \ S\ , \[CapitalDelta]a0, \[CapitalDelta]b0, \ 
+            a0, \ b0, n, Rsqared0, \ \[Chi]Sqared0}\), ",", 
+          "\[IndentingNewLine]", 
+          
+          RowBox[{\(n = Length[daten]\), ";", 
+            "\[IndentingNewLine]", \(x = Column[daten, 1]\), ";", 
+            "\[IndentingNewLine]", \(y = Column[daten, \ 2]\), ";", 
+            "\[IndentingNewLine]", \( (*Fuer\ die\ f\_i\ muessen\ die\ \
+\[CapitalDelta]y\_i\ verwendet\ werden*) \), 
+            "\[IndentingNewLine]", \(f = Column[daten, 3]\), ";", 
+            "\[IndentingNewLine]", \(S = \[Sum]\+\(i = 1\)\%n\( 
+                        1\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^\
+2\) \(\[Sum]\+\(i = \
+1\)\%n\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) - \((\[Sum]\+\(i = 1\)\%n \
+x\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((f\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2)\)\^2\), ";", 
+            "\[IndentingNewLine]", \(a0 = \(1\/S\) \((\[Sum]\+\(i = \
+1\)\%n\(\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n y\
+\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((f\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\) - \[Sum]\+\(i = 1\)\%n\( x\[LeftDoubleBracket]
+                              i\[RightDoubleBracket]\/\((f\[LeftDoubleBracket]\
+i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\( \
+x\[LeftDoubleBracket]i\[RightDoubleBracket]\ y\[LeftDoubleBracket]i\
+\[RightDoubleBracket]\)\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\
+\))\)\), ";", 
+            RowBox[{
+              RowBox[{Cell[""], "b0"}], 
+              "=", \(\(1\/S\) \((\[Sum]\+\(i = 1\)\%n\( 
+                            1\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\
+\)\^2\) \(\[Sum]\+\(i = 1\)\%n\( x\[LeftDoubleBracket]i\[RightDoubleBracket]\ \
+y\[LeftDoubleBracket]i\[RightDoubleBracket]\)\/\((f\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\) - \[Sum]\+\(i = 1\)\%n\( x\[LeftDoubleBracket]
+                              i\[RightDoubleBracket]\/\((f\[LeftDoubleBracket]\
+i\[RightDoubleBracket])\)\^2\) \(\[Sum]\+\(i = 1\)\%n\(\(\ \)\(y\
+\[LeftDoubleBracket]i\[RightDoubleBracket]\)\)\/\((f\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\))\)\)}], ";", 
+            "\[IndentingNewLine]", \(\[CapitalDelta]a0 = \@\(\(1\/S\) \
+\(\[Sum]\+\(i = \
+1\)\%n\((\(\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) \(1\/\(n - 2\)\) \
+\(\[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\[RightDoubleBracket] - a0 - \
+b0\ x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\))\)\)\)\), ";", 
+            "\[IndentingNewLine]", \(\[CapitalDelta]b0 = \@\(\(1\/S\) \
+\(\[Sum]\+\(i = 1\)\%n\((\(1\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\
+\)\^2\) \(1\/\(n - 2\)\) \(\[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\
+\[RightDoubleBracket] - a0 - b0\ x\[LeftDoubleBracket]i\[RightDoubleBracket])\
+\)\^2\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\))\)\)\)\), ";", 
+            "\[IndentingNewLine]", \(Rsqared0 = 
+              1 - \((\[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\
+\[RightDoubleBracket] - a0 - b0\ x\[LeftDoubleBracket]i\[RightDoubleBracket])\
+\)\^2\/\((f\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)/\((\[Sum]\+\(i \
+= 1\)\%n\((y\[LeftDoubleBracket]i\[RightDoubleBracket] - \((\[Sum]\+\(i = 1\)\
+\%n\( y\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((f\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\)/\(\[Sum]\+\(i = 1\)\%n 1\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\))\))\)\^2\/\((f\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)\), ";", 
+            "\[IndentingNewLine]", \(\[Chi]Sqared0 = \[Sum]\+\(i = \
+1\)\%n\((\(1\/f\[LeftDoubleBracket]i\[RightDoubleBracket]\) \((y\
+\[LeftDoubleBracket]i\[RightDoubleBracket] - a0 - b0\ x\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\))\)\^2\), ";", 
+            "\[IndentingNewLine]", \(Print["\<Errors from variance\>"]\), ";",
+             "\n", "\[IndentingNewLine]", \(Print["\<Number of data points: \
+\>", n]\), ";", "\n", 
+            "\[IndentingNewLine]", \(Print[
+              TableForm[{{"\<\>", "\<Value\>", \ "\<Error\>"}, {"\<Slope \
+b\>", \ b0, \ \[CapitalDelta]b0}, {"\<y-Intercept a\>", \ 
+                    a0, \ \[CapitalDelta]a0}}]]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<\>"]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<Equation of best fit: y = \>", \
+\ b0, \ "\< * x + \>", \ a0]\), 
+            ";", \(Print["\<Equation of top worst fit: y = \>", \ 
+              b0 + \[CapitalDelta]b0, \ "\< * x + \>", \ 
+              a0 + \[CapitalDelta]a0]\), ";", 
+            "\[IndentingNewLine]", \(Print["\<Equation of bottom worst fit: y \
+= \>", \ b0 - \[CapitalDelta]b0, \ "\< * x + \>", \ a0 - \[CapitalDelta]a0]\),
+             ";", "\[IndentingNewLine]", \(Print["\<\n\>", \*"\"\<Quality of \
+the Errors \!\(s\^2\)=\!\(\[Chi]\^2\/\(n - 2\)\): \>\"", \[Chi]Sqared0\/\(n - \
+2\)]\), ";", \(Print["\<\n\>", \*"\"\<Certainty Measure \!\(R\^2\): \>\"", \ 
+              Rsqared0]\), ";", 
+            "\n", \( (*Error\ too\ small\ if\ s\^2\  > \ 0, \ 
+              Error\ too\ large\ if\ s\^2\  < \ 0*) \), "\[IndentingNewLine]",
+             "\[IndentingNewLine]", \({b \[Rule] \ 
+                b0, \ \[CapitalDelta]b\  \[Rule] \ \[CapitalDelta]b0, \ 
+              a \[Rule] \ 
+                a0, \ \[CapitalDelta]a \[Rule] \ \[CapitalDelta]a0, \ 
+              Rsqared \[Rule] \ 
+                Rsqared0, \ \[Chi]Sqared\  \[Rule] \ \[Chi]Sqared0, 
+              sSquared\  \[Rule] \[Chi]Sqared0\/\(n - 2\)}\)}]}], 
+        "\[IndentingNewLine]", "\[IndentingNewLine]", "]"}]}]], "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Linear Regression for a Straight Line from the Origin", "Subsubsection"],
+
+Cell[BoxData[
+    \(LinRegOrigin[
+        daten_] := \[IndentingNewLine]Module[{x, y, \[CapitalDelta]y, 
+          S, \[CapitalDelta]b0, b0, n, ybar0, 
+          Rsq0, \[Chi]sq0}, \[IndentingNewLine]n = 
+          Length[daten]; \[IndentingNewLine]x = 
+          Column[daten, 1]; \[IndentingNewLine]y = 
+          Column[daten, 2]; \[IndentingNewLine]\[CapitalDelta]y = 
+          Column[daten, 
+            3]; \[IndentingNewLine]S = \[Sum]\+\(i = 1\)\%n 1\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2*\(\[Sum]\+\(\
+i = 1\)\%n\((x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\) - \
+\((\[Sum]\+\(i = 1\)\%n x\[LeftDoubleBracket]i\[RightDoubleBracket]\/\((\
+\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2)\)\^2; \
+\[IndentingNewLine]b0 = \[Sum]\+\(i = 1\)\%n\(\( x\[LeftDoubleBracket]
+                      i\[RightDoubleBracket]*
+                    y\[LeftDoubleBracket]
+                      i\[RightDoubleBracket]\)\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)/\(\[Sum]\+\(i = 1\)\%n\((x\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)\ ; \[IndentingNewLine]\
+\[CapitalDelta]b0 = 
+          Sqrt[1/\(\[Sum]\+\(i = 1\)\%n\((x\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]y\[LeftDoubleBracket]i\
+\[RightDoubleBracket])\)\^2\)]; \[IndentingNewLine]ybar0 = \[Sum]\+\(i = \
+1\)\%n\( y\[LeftDoubleBracket]
+                    i\[RightDoubleBracket]\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)/\(\[Sum]\+\(i = 1\)\%n 1\/\
+\((\[CapitalDelta]y\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\); \
+\[IndentingNewLine]Rsq0 = 
+          1 - \[Sum]\+\(i = 1\)\%n\(\((y\[LeftDoubleBracket]i\
+\[RightDoubleBracket] - \
+b0*x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\)/\(\[Sum]\+\(i = 1\)\%n\((y\
+\[LeftDoubleBracket]i\[RightDoubleBracket] - ybar0)\)\^2\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\); \
+\[IndentingNewLine]\[Chi]sq0 = \[Sum]\+\(i = 1\)\%n\((y\[LeftDoubleBracket]i\
+\[RightDoubleBracket] - \
+b0*x\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2\/\((\[CapitalDelta]y\
+\[LeftDoubleBracket]i\[RightDoubleBracket])\)\^2; \
+\[IndentingNewLine]Print["\<Errors from dataset\>"]; \
+\[IndentingNewLine]Print["\<Number of data points: \>", 
+          n]; \[IndentingNewLine]Print[
+          TableForm[{{"\<\>", "\<Value\>", "\<Error\>"}, {"\<Slope b\>", 
+                b0, \[CapitalDelta]b0}}]]; \[IndentingNewLine]Print["\<\>"]; \
+\[IndentingNewLine]Print["\<Equation of best fit: y = \>", \ 
+          b0, \ "\< * x\>"]; \[IndentingNewLine]Print["\<Equation of top \
+worst fit: y = \>", \ 
+          b0 + \[CapitalDelta]b0, \ "\< * x\>"]; \
+\[IndentingNewLine]Print["\<Equation of bottom worst fit: y = \>", \ 
+          b0 - \[CapitalDelta]b0, \ "\< * x\>"]; \[IndentingNewLine]Print["\<\
+\>"]; \[IndentingNewLine]Print[\*"\"\<Certainty Measure \!\(R\^2\): \>\"", 
+          Rsq0]; \[IndentingNewLine]Print[\*"\"\<Quality of Errors \
+\!\(s\^2\)=\!\(\[Chi]\^2\/\(n - 1\)\): \>\"", \[Chi]sq0\/\(n - 1\)]; \ \
+\[IndentingNewLine]{a \[Rule] 0, \[CapitalDelta]a \[Rule] \ 0, 
+          b -> \ b0, \ \[CapitalDelta]b -> \[CapitalDelta]b0, 
+          Rsqared -> Rsq0, \ \[Chi]Sqared\  \[Rule] \ \[Chi]sq0, 
+          sSquared\  \[Rule] \[Chi]sq0\/\(n - 2\)}\[IndentingNewLine]]\)], \
+"Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Instructions for Exponential Data", "Subsubsection"],
+
+Cell["\<\
+It is best to linearize exponential data first with the following \
+command:\
+\>", "Text"],
+
+Cell[BoxData[
+    \(\(linearize[expdata_] := 
+        Replace[expdata, {xi_, yi_, \[CapitalDelta]yi_} \[Rule] \ {xi, 
+              Log[yi], \((1/yi)\)*\[CapitalDelta]yi}, 2];\)\)], "Input"],
+
+Cell["\<\
+Then, you can apply the functions for linear data. If you want to \
+plot the data as exponential functions later, simply raise the full right \
+hand side of the fit equation into the exponent.\
+\>", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Exporting Data", "Subsubsection"],
+
+Cell[TextData[{
+  "To export data to a file, use\n",
+  Cell[BoxData[
+      \(Export["\<data.csv\>", dataset, \ "\<Table\>"]\)], "Input"]
+}], "Text"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Application", "Section"],
+
+Cell[CellGroupData[{
+
+Cell["Calculation", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(parameter = LinReg[dataset];\)\)], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Plot", "Subsubsection"],
+
+Cell[BoxData[
+    \(\(DisplayTogether[\[IndentingNewLine]ErrorListPlot[
+          dataset], \[IndentingNewLine]Plot[{b\ x + a} /. parameter // 
+            Evaluate, {x, 0, Max[Column[dataset, 1]]}, 
+          PlotStyle \[Rule] {Dashing[{0}]}], 
+        Plot[{\((b + \[CapitalDelta]b)\) 
+                    x + \((a + \[CapitalDelta]a)\), \((b - \
+\[CapitalDelta]b)\) x + \((a - \[CapitalDelta]a)\)} /. parameter // 
+            Evaluate, {x, 0, 
+            Max[Column[dataset, 
+                1]]}, \[IndentingNewLine]PlotStyle \[Rule] \
+{Dashing[{0.01}]}], ImageSize \[Rule] 700, PlotLabel \[Rule] "\<dataset\>", 
+        AxesLabel \[Rule] {"\<x\>", "\<y\>"}];\)\)], "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"5.1 for X",
+ScreenRectangle->{{0, 1400}, {0, 1050}},
+ScreenStyleEnvironment->"Working",
+WindowSize->{840, 935},
+WindowMargins->{{0, Automatic}, {Automatic, 17}},
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"PaperSize"->{597.562, 842.375},
+"PaperOrientation"->"Portrait",
+"PostScriptOutputFile":>FrontEnd`FileName[{$RootDirectory, "home", "goerz", \
+"cpprakt"}, "cpgoerz_mi_01.nb.ps", CharacterEncoding -> "iso8859-1"],
+"Magnification"->1}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1776, 53, 34, 0, 98, "Title"],
+Cell[1813, 55, 48, 3, 50, "Text"],
+
+Cell[CellGroupData[{
+Cell[1886, 62, 27, 0, 74, "Section"],
+
+Cell[CellGroupData[{
+Cell[1938, 66, 32, 0, 28, "Subsubsection"],
+Cell[1973, 68, 70, 1, 27, "Input"],
+Cell[2046, 71, 64, 1, 27, "Input"],
+Cell[2113, 74, 66, 1, 27, "Input"],
+Cell[2182, 77, 56, 1, 27, "Input"],
+Cell[2241, 80, 64, 1, 27, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2342, 86, 64, 0, 22, "Subsubsection"],
+Cell[2409, 88, 472, 9, 191, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[2918, 102, 39, 0, 22, "Subsubsection"],
+Cell[2960, 104, 156, 3, 32, "Text"],
+Cell[3119, 109, 89, 1, 27, "Input"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3257, 116, 28, 0, 74, "Section"],
+
+Cell[CellGroupData[{
+Cell[3310, 120, 65, 0, 28, "Subsubsection"],
+Cell[3378, 122, 5952, 96, 880, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[9367, 223, 84, 1, 22, "Subsubsection"],
+Cell[9454, 226, 5960, 95, 866, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[15451, 326, 78, 0, 22, "Subsubsection"],
+Cell[15532, 328, 3561, 59, 695, "Input"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19130, 392, 58, 0, 22, "Subsubsection"],
+Cell[19191, 394, 100, 3, 32, "Text"],
+Cell[19294, 399, 190, 3, 27, "Input"],
+Cell[19487, 404, 216, 4, 50, "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+Cell[19740, 413, 39, 0, 22, "Subsubsection"],
+Cell[19782, 415, 148, 4, 45, "Text"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[19979, 425, 30, 0, 74, "Section"],
+
+Cell[CellGroupData[{
+Cell[20034, 429, 36, 0, 28, "Subsubsection"],
+Cell[20073, 431, 65, 1, 27, "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[20175, 437, 29, 0, 28, "Subsubsection"],
+Cell[20207, 439, 680, 12, 107, "Input"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

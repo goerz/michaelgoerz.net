@@ -1,0 +1,14 @@
+AuthUserFile /www/mgoerz/.htpasswd
+AuthType Basic
+AuthName "Seminarteilnehmer Transzendentale Physikbegruendung"
+require user goerz Philosoph
+AddDescription "Rekonstruktion fuer den 8.1.2008" Referat_Einheit der Physik.doc
+AddDescription "Rekonstruktion fuer den 8.1.2008" Referat_Einheit der Physik.odt
+AddDescription "Rekonstruktion fuer den 8.1.2008" Referat_Einheit der Physik.pdf
+AddDescription "Rekonstruktion fuer den 15.1.2008" RekonstruktionCFvW02.doc
+AddDescription "Rekonstruktion fuer den 15.1.2008" RekonstruktionCFvW02.odt
+AddDescription "Rekonstruktion fuer den 15.1.2008" RekonstruktionCFvW02.pdf
+AddDescription "Rekonstruktion fuer den 22.1.2008" Rekonstruktion_CFvW_II.5.1-3_v2.doc
+AddDescription "Rekonstruktion fuer den 22.1.2008" Rekonstruktion_CFvW_II.5.1-3_v2.odt
+AddDescription "Rekonstruktion fuer den 22.1.2008" Rekonstruktion_CFvW_II.5.1-3_v2.pdf
+AddDescription "Rekonstruktion fuer den 29.1.2008" Rekonstruktion_CFvW_II.5.4-5.pdf

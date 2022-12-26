@@ -1,0 +1,182 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - BEU}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Lab Report on Diffraction and Interference}
+\author{Michael Goerz, Anton Haase}
+\date{30. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: M. Fushitani
+
+\section{Introduction}
+We will do the experiment using the He-Ne-laser instead of the Na-lamp.
+\subsubsection*{He-Ne-Laser}
+The laser that we will use is a 4-level-laser. The basic concept is that atoms are excited to a higher energy level, and then are stimulated to relax back to their original state, sending out light. The stimulation happens with photons, and the light that is sent out by the atom will have the same physical properties as that photon. Because of mirrors on both sides of the laser, it acts as a resonator, repeating the process of stimulated emission over and over again, creating a very strong laser beam, part of which can escape on one side. The resulting beam is very directed and coherent.
+
+In the case of the He-Ne-laser, there are four relevant energy levels. The atoms are first pumped to a broad band of high levels, from which they relax to stable, but high level. From this level, they are stimulated to fall to an unstable low level, emitting the laser light, and lastly go back to their ground state. The pumping in this sort of laser is very easy, because the top level is a rather unspecified broad band.
+
+\subsubsection*{Diffraction and Interference}
+The basis for explaining diffraction and interference is Huygen's Principle. It states that any point that is reached by a wave becomes an oscillator itself and emits a spherical wave with the same phase and amplitude. All these elementary waves are superimposed. This explains the phenomena that can be observed with single or multiple slits. For example, in a grating each slit is seen as emitting one spherical wave that interferes with the waves coming from the other slits and creates the interference pattern that we observe.
+
+To simplify the the calculation of interference effects with slits, usually Fraunhofer diffraction is used, which means that the wave entering through the slits should be planar, and that the screen where the interference pattern is observed is infinitely far away. In practice, this situation can be accomplished with two lenses, as shown in Fig.~\ref{fraunhofer}. If a laser is used, however, one can leave out the lenses, as the laser is highly directed, and bright enough so that the screen can be placed at a distance far enough to be considered "infinity" in relation to the scale of the setup.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7 \textwidth,angle=0]{fraunhofer.eps}
+    \caption{The Fraunhofer Setup}
+    \label{fraunhofer}
+\end{figure}
+
+\subsubsection*{Diffraction at a Single Slit and a Double Slit}
+In general, the Fraunhofer condition mathematically leads to the result that the intensity of the interference pattern is proportional to the Fourier transform of the intensity at the slit (which is usually defined to be 1 at the slit, and 0 everywhere else). In case of a single slit, this leads to a sine-squared-dependancy. Specifically, for a slit of the width $b$, the intensity is
+\begin{equation}
+I_s(\sin \alpha) \approx b^2 \; \frac{\sin^2\left( \frac{\pi b}{\lambda} \sin \alpha \right)}{\left( \frac{\pi b}{\lambda} \sin \alpha \right)^2}
+\end{equation}
+The condition for the interference minima can be deduced from this formula to be
+\begin{equation}
+\sin \alpha = n \frac{\lambda}{b}, \qquad n \in \sets{Z}
+\end{equation}
+Alternatively, one can find the minima and maxima geometrically as shown in Fig. \ref{slits}. The single slit is divided into a varying number of points, each sending out a wave. If there is a maximum, the waves from the the top and the bottom point need to have a phase difference of $\frac{2n+1}{2}\phi$. For a minimum, the phase difference has to be $n\phi$. The number of points is determined by the fact that the path difference from two neighboring points has to be exactly $\lambda/2$. Thus, a positive number of slits means a minimum (two neighboring points cancel each other out, leaving nothing), an odd number means a maximum (on point is left). In Fig. \ref{slits}, if the total path difference $\Delta s$ was $\lambda$, the sketch would show the 2nd order minimum.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7 \textwidth,angle=0]{slits.eps}
+    \caption{Single Slit and Double Slit}
+    \label{slits}
+\end{figure}
+
+For a double slit, the situation is more complicated mathematically, but easier for geometric analysis. Each slit sends out one Huygens elementary wave; if they arrive with a path difference of $\lambda$, they interfere constructively for a maximum, if they arrive with a path difference of $\lambda/2$, we have destructive interference. Thus, the condition for the maxima in this case is the same as the one for the single slit's minima:
+\begin{equation}
+\sin \alpha = n \frac{\lambda}{b}, \qquad n \in \sets{Z}
+\end{equation}
+This formula however explains the primary maxima only, the mathematical analysis with the Fourier transform shows that there are also secondary extrema. The image that we see is that of a single slit, superimposed with another oscillating $\cos^2$-term that depends on the distance $d$ between the two slits.
+\begin{eqnarray}
+I_ds(\sin \alpha) &=& I_s(\sin \alpha) \cdot \cos^2 \left( \frac{\pi d}{\lambda} \sin\alpha \right) \nonumber\\
+&\approx& b^2 \; \frac{\sin^2\left( \frac{\pi b}{\lambda} \sin \alpha \right)}{\left( \frac{\pi b}{\lambda} \sin \alpha \right)^2} \cdot \cos^2 \left( \frac{\pi d}{\lambda} \sin\alpha \right)
+\end{eqnarray}
+
+If a grating is used, the situation is not very different from the double slit (which is just a special case of grating). The main difference is that the maxima appear much sharper. The width of a maximum is generally in the order of $1/N$, $N$ being the number of slits.
+
+\subsubsection*{Reflection}
+In principle, it makes no difference whether light passes through the grating, or is reflected by it. In both cases, an interference pattern can be observed. However, the formulas presented above, for the standard case of light passing through, assume that the light enters perpendicular to the grating. This is not generally the case in grating reflection (like in this experiment). The angle $\epsilon$, under which the light enters, has to be included in the formula for the maxima. A geometric analysis yields the condition
+\begin{equation}
+d\left[ \cos \epsilon - cos(\epsilon + \alpha) \right] = n \lambda
+\end{equation}
+
+\clearpage
+
+\section{Assignments for the He-Ne-Laser}
+\begin{enumerate}
+\item Measure the Fraunhofer diffraction for three single slits of different size. Compare and discuss the results.
+\item Measure the diffraction of a double slit and determine the slit size and the slit distance.
+\item Determine the grating constant of a metal reflection grating by observing the diffraction of light scraping it.
+\end{enumerate}
+
+
+
+
+\section{Analysis}
+
+\subsection{Interference Pattern of Three Single Slits}
+The measurement on the three slits showed that, the smaller the slit, the greater the width of the interference pattern (i.e. the smaller the number of visible maxima in a given area), the greater the width of the maxima themself, and, the smaller the amplitude. The latter could only be observed very quantitatively, because the measurement device recorded the amplitudes of the low order maxima very inaccurately. The position of the minima, however, was very accurate and was very consistent between different measurements. From their position, the size of the slit could be calculated, as shown in Table \ref{table1}.
+\begin{table}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth,angle=0]{table1.ps}
+\caption{Calculation of the slit sizes (Assignment 1)}
+\label{table1}
+\end{table}
+The numbers (error of the average values $<$ 5\%) verify the labels ``small'' for the \unit{0.1}{\milli\meter} slit (Fig. E1), ``medium'' for the \unit{0.2}{\milli\meter} slit (Fig. E2, 3), and ``large'' for the \unit{0.4}{\milli\meter} slit (Fig. E4).
+
+\subsection{Interference Pattern of a Double Slit}
+Because we had some difficulty getting results that show the fringe pattern clearly enough, we repeated the measurement with several double slits (Fig. E5-7)  until the results seemed satisfying to us (Fig. E8, 9). Only for the last double slit, we will calculate the slit size and the slit distance. Because the double slit was not labeld, we measured both these quantities with a microscope for comparison.
+
+First, the microscope's calibration yielded that one small unit in the ocular corresponded to \unit{0.507}{\milli\meter}. With this information, the slit size and slit distance could be measured as
+\begin{eqnarray*}
+g &=& \eunit{0.254}{0.016}{\milli\meter}\\
+b &=& \eunit{0.0761}{0.0135}{\milli\meter}
+\end{eqnarray*}
+
+From the two available measurements of the interference pattern, the same information could be calculated, as shown in Table \ref{table2}.
+\begin{table}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth,angle=0]{table2.ps}
+\caption{Slit Size $b$ and Slit Distance $g$ Calculated from the Primary and Secondary Minima (Assignment 2)}
+\label{table2}
+\end{table}
+
+The calculation was only done with the minima, not the maxima, because, as already mentioned, the measurement device seemed to record the minima more accurately. The formula used, then, was
+\begin{equation}
+g = \frac{(n+1/2) \cdot \lambda \cdot d}{x}
+\end{equation}
+with $x$ being the position on the screen, $\lambda = \eunit{632.8}{0.1}{\nano\meter}$ being the laser's wavelength, and $d = \eunit{432.4}{1.0}{\centi\meter}$, as in all measurements.
+
+The values
+\begin{eqnarray*}
+g &=& \eunit{0.248}{0.004}{\milli\meter}\\
+b &=& \eunit{0.0726}{0.0004}{\milli\meter}
+\end{eqnarray*}
+are then within error identical to the directly measured ones. The values calculated from the interference pattern are much more accurate, however.
+
+We can also make a comparison with the other two double slits that were measured. Because the slit distance was the same in all three cases, there was no difference in the position of the secondary minima. However, the primary minima behaved according to the exact same rules as the minima for a single slit. The smaller $b$, the wider the interference pattern, the wider the individual maxima, and the smaller the amplitude.
+
+\subsection{Interference Pattern of a Reflection Grating}
+For the measurement, we chose to reflect the laser beam off a standard meter scale, with a \unit{0.5}{\milli\meter} grating.
+The analysis of the data could be done graphically, based on the data presented in Table \ref{table3}.
+\begin{table}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth,angle=0]{table3.ps}
+\caption{Data from the Diffraction from a Reflection Grid (Assignment 3)}
+\label{table3}
+\end{table}
+
+The angle between the laser beam and the scale was $\epsilon = (1.35 \pm 0.02)\degree$, as can be calculated from the 0th order, with
+\begin{equation}
+\sin(2\epsilon) = \frac{x_0}{d}
+\end{equation}.
+The formula on which the graphical analysis is based, is
+\begin{equation}
+\cos(\epsilon + \alpha) = -\frac{\lambda}{d} \cdot n + \cos{\epsilon}
+\end{equation}
+The plot is shown in Fig. \ref{assg3}.
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=-90]{assg3.ps}
+    \caption{Measurement of the Grating Constant (Assignment 3)}
+    \label{assg3}
+\end{figure}
+As we can find with linear regression, the slope of the line is $(-1.329 \pm 0.08) \cdot 10^{-3}$, which leads to the result
+\begin{equation*}
+d = \eunit{0.476}{0.003}{\milli\meter}
+\end{equation*}
+
+
+
+\section{Conclusion}
+Measuring the slit thickness, slit distance, or grating constant of some setup by observing the resulting interference pattern was demonstrated to be very accurate and feasible. The qualitative observations in Assignment 1 followed the theoretical predictions perfectly. In addition, the unknown slit size could be measured accurately to a very realistic value.
+
+In Assignment 2, the measured values were within error identical with the ones obtained from direct measurement with a microscope. It is noteworthy that the results from the interference pattern were much more accurate! So, this method can be said to be generally superior to the direct approach. A much better microscope would have to be used for similar precision. Also, the qualitative comparison between the different measurements showed that the results were again totally consistent with the theoretical prediction.
+
+The measurement device did not show the amplitude of the low order maxima very accurately. Especially the pattern was not symmetrical on both sides of the zero axis. A possible reason for this was the slight tilting of the pattern, which could not be ruled out even after very careful calibration.
+
+The measurement of the grating constant from relection off the meter scale was slightly more error-prone. Because the error from the analysis of the interference pattern was extremely small (perhaps too small), it is a little hard to make an exact comparison with the expected value. The only information available was that the scale should be \unit{0.5}{\milli\meter}, with unknown accuracy. In any case, the measured value of $d = \eunit{0.476}{0.003}{\milli\meter}$ can be considered as close to the expected value. Factors that might account for the error are irregularities in the grating, mistakes in the calibration, or similar systematic flaws.
+
+
+
+\end{document}

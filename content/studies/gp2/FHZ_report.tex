@@ -1,0 +1,170 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{german}
+\usepackage[german]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - FHZ}
+\chead{}
+\rhead{Haase, Goerz}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Bericht zum Franck--Hertz--Versuch}
+\author{Anton Haase, Michael Goerz}
+\date{10. Oktober 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: K.~Lenz
+
+\section{Einf"uhrung}
+Anfang des 20.~Jahrhunderts f"uhrten die beiden deutschen Physiker James Franck und Gustav Hertz einen Versuch zur Wechselwirkung zwischen bewegten Elektronen und Gasmolek"ulen durch. Das im folgenden beschriebene Experiment bildet dabei im Prinzip die Umkehrung des bereits behandelten Photoeffekts, der einige Jahre zuvor Hinweise auf eine gequantelte Natur lieferte. Der Aufbau ist auch in diesem Fall sehr simpel. Das Herzst"uck des Versuchs ist eine mit Quecksilberdampf gef"ullte Elektronenr"ohre, in der sich sowohl eine Kathode zur Emission von freien Elektronen und eine Anode zur Beschleunigung der selbigen befindet. Die Anode wird dabei durch ein Gitter realisiert, so dass die beschleunigten Elektronen durch diese Anordnung hindurchfliegen k"onnen. Hinter diesem Beschleunigungsapparat befindet sich schlie"slich noch eine Auff"angerelektrode, welche ein geringes Bremspotential relativ zu dem Gitter besitzt, so dass sehr langsame Elektronen keine M"oglichkeit haben den Auff"anger zu erreichen. Zu dem Gesamtaufbau des Experimentes geh"oren schlie"slich noch Messger"ate zur Erfassung der Beschleunigungsspannung und dem Auff"angerstrom. In Abb.~\ref{roehre} ist ein Schalbild des Versuchsaufbaus gezeigt (die Heizspannung zur Emission der Elektronen an der Kathode wurde hier der "Ubersichtlichkeit halber weggelassen).
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{fhz.EPS}
+	\caption{Experimenteller Aufbau}
+	\label{roehre}
+\end{figure}
+
+Franck und Hertz stellten zur Untersuchung einer Wechselwirkung unterschiedliche Beschleunigungsspannungen~$U$ ein und ma"sen den Auff"angerstrom~$I$. Ohne Gasf"ullung w"are zun"achst ein ansteigender Strom zu erwarten, da es immer mehr Elektronen gelingt den Auff"anger zu erreichen. F"uhrt man den Versuch mit einer Quecksilberdampff"ullung durch so ist dies auch zun"achst der Fall. Ab einer bestimmten Beschleunigungsspannung bricht der Strom jedoch schlagartig ein und beginnt dann mit weiter erh"ohter Spannung zu steigen. Es zeigte sich, dass dieser Einbruch in regelm"a"sigen Abst"anden (auf der Spannungsachse) wiederkehrte (qualitativer Verlauf siehe Abb.~\ref{qual}).
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{graph.eps}
+	\caption{Qualitativer Strom--Spannungsverlauf (idealisiert)}
+	\label{qual}
+\end{figure}
+
+Der Grund f"ur dieses Ph"anomen liegt in den diskreten Energieniveaus (Anregungszust"ande) der Quecksilberelektronen, wie es das Bohr--Sommerfeld--Atommodell vorsieht. Die Erh"ohung der Beschleunigungsspannung kommt einer Erh"ohung der kinetischen Energie der bewegten Elektronen gleich. Es kommt zu elastischen St"o"sen mit den Qecksilbermolek"ulen. Ist jedoch ein bestimmter Grenzwert erreicht, so gibt das Elektron in einem unelastischen Sto"s seine Energie an das Quecksilbermolek"ul ab und regt dieses an. Bei dem "Ubergang zur"uck in den Grundzustand wird dann ein Photon einer durch den Atomaufbau festgelegten Wellenl"ange emittiert. Der Schwellwert f"ur die kinetische Energie des Elektrons liegt also bei der Energie, welches das emittierte Photon sp"ater besitzt.
+\begin{equation}
+E_\text{kin} = h \cdot \nu_\text{Photon} \label{energie}
+\end{equation}
+Da ein Photon einer Wellenl"ange nur eine feste Energie besitzt und er atomare Aufbau von Quecksilber keine anderen Anregungszust"ande erm"oglicht, tritt der Effekt nur ein, wenn das sto"sende Elektron mindestens die Energie $E_\text{Photon}$. Hat das Elektron eine gr"o"sere Energie, so wird lediglich der Teil, der der Photonenenergie entspricht "ubertragen. Die erwartete Energiedifferenz zwischen zwei Minima betr"agt bei Quecksilber \unit{4.89}{\electronvolt}. Bei anderen Gasen ist sie entsprechend anders, je nach "`H"ohe"' des Anregungszustandes.
+
+Die Temperatur des Gases sollte selbst lediglich einen Einfluss auf den Strom haben, nicht jedoch auf die Position der Minima. Die h"ohere Bewegung der Molek"uhle bei einer Erw"armung erh"oht die Sto"swahrscheinlichkeit und damit den Widerstand der R"ohre. Einen Einfluss auf den Anregungszustand des Quecksilbers gibt es jedoch nicht.
+
+\section{Aufgaben}
+\begin{enumerate}
+\item Beobachtung der Elektronensto"s--Anregungskurve (Franck--Hertz--Kurve) von Quecksilber bei einer Ofentemperatur von etwa \unit{190}{\celsius} mit dem Oszilloskop. Optimierung der Kurve durch geeignete Einstellung der experimentellen Parameter (Ofenheizung, Kathodenheizung, Beschleunigungsspannung).
+\item Quantitative Aufnahme der Kurve mit einem X--Y--Schreiber. Bestimmung der zugeh"origen "Ubergangsenergie in Quecksilber. Berechnung der Wellenl"ange und Frequenz des "Uberganges.
+\item Beobachtung und Registrierung weiterer Anregungskurven f"ur Temperaturen von 150 und \unit{210}{\celsius}. Qualitative Diskussion der Ergebnisse.
+\item Aufnahme und Auswertung einer Franck--Hertz--Kurve f"ur Neon bei Zimmertemperatur.
+\end{enumerate}
+
+
+
+\clearpage
+
+
+\section{Auswertung}
+
+\subsection{Optimierung der Apparatur}
+Nach dem Anschluss der Ger"ate und Einstellung aller relevanten Spannungen f"ur die Quecksilberr"ohre, gelang es uns auf dem Oszilloskop eine vollst"andig der Erwartung entsprechende Franck-Hertz-Kurve zu beobachten. Sie entsprach qualitativ der in der Einf"uhrung gezeigten, allerdings in deutlich weicherer Form. Bedauerlicherweise konnten wir das gute Ergebnis auf dem Bildschirm nicht mittels des Schreibers auf Papier "ubertragen, da die Verst"arkung des Betriebsger"ates defekt war und die Empfindlichkeit des Schreibers nicht ausreichte. Es gelang uns dennoch einige "`Wellenbewegungen"' aufzuzeichnen, die f"ur eine quantitative Auswertung ausreichend sind.
+\subsection{Quantitative Auswertung}
+Aus den gewonnenen Messkurven wurde von uns die jeweilige Kalibrierung f"ur die Kurven erstellt. Einem Zentimeter auf dem Papier wurde dabei ein entsprechende Spannung zugeordnet. Die Ergebnisse dieser Zwischenrechnung sind auf dem jeweiligen Messergebnis vermerkt. Der Fehler ergab sich aus dem Messfehler des Multimeters. Zur Auswertung der jeweiligen Grenzspannungen haben wir die Maxima der Kurven herangezogen, wobei auf dem Messergebnis der Ablesefehler eingezeichnet wurde. Die resultierenden Spannungen haben wir "uber die Ordnung der Maxima aufgetragen. Aus den Steigungen konnten wir schlie"slich die Spannung und damit "Ubergangsenergie ablesen. Die Ergebnisse sind im folgenden nacheinander aufgef"uhrt.
+\begin{table}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{table1.epsi}
+	\caption{Tabellarische Ergebnisse der Quecksilberr"ohre}
+	\label{table1}
+\end{table}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{mess1.ps}
+	\caption{ Messung 1, Temperatur \unit{170}{\celsius}, Steigung: ($4.9 \pm 0.3$) V}
+	\label{mess1}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{mess2.ps}
+	\caption{ Messung 2, Temperatur \unit{168}{\celsius}, Steigung: ($4.7 \pm 0.4$) V}
+	\label{mess2}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{mess1.ps}
+	\caption{ Messung 3, Temperatur \unit{140}{\celsius}, Steigung: ($5.0 \pm 0.3$) V}
+	\label{mess3}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{mess1.ps}
+	\caption{ Messung 4, Temperatur \unit{170}{\celsius}, Steigung: ($4.6 \pm 0.2$) V}
+	\label{mess4}
+\end{figure}
+\clearpage
+Aus dem Mittelwert dieser vier Messungen ergibt sich eine "Ubergangsenergie von 
+$$
+\text{E}=\unit{($4.8 \pm 0.2$)}{\electronvolt}
+$$
+Dieser Wert ist innerhalb des Fehlerintervalls identisch mit dem in der Einleitung genannten Literaturwert von $\text{E}=\unit{4.89}{\electronvolt}$.
+
+Die Frequenz und Wellenl"ange des emittierten Lichts ergeben sich dabei aus der Beziehung (\ref{energie}). Das Resultat dieser Berechnung ist f"ur den vorliegenden Fall
+$$
+\nu = (1.2 \pm 0.1) \cdot 10^{15} \text{ Hz}.
+$$
+Die zugeh"orige Wellenl"ange ist damit
+$$
+\lambda = (250 \pm 10) \cdot 10^{-9} \text{ nm}.
+$$
+Das abgestrahlte Licht liegt also im UV-Bereich.
+
+\subsection{Temperaturabh"angigkeit}
+In einem weiteren Experiment wurde nun die Temperatur der Quecksilberr"ohre ver"andert. Dies hat einen Einfluss auf die Anzahl der dampff"ormigen Molek"uhle und damit auf dem Dampfdruck des Quecksilbers. Wir haben die Franck-Hertz-Kurve f"ur zwei verschiedene Temperaturen aufgezeichnet, wobei alle anderen Parameter nicht ver"andert wurden. Das Ergebnis best"atigt deutlich die in der Einf"uhrung ge"au"serte Erwartung. Der hohe Dampfdruck und die erh"ohte Molekularbewegung f"uhrt zu einer Erh"ohung der Sto"swahrscheinlichkeit. Der Widerstand der Apparatur steigt also mit steigender Temperatur. Folglich kommt es zu einer Abschw"achung des gemessen Stroms. Auf die Abst"ande zwischen den Anregungen hat die Temperatur jedoch keinen Einfluss. Die Messergebnisse liegen dem Messprotokoll bei.
+
+\subsection{Franck-Hertz-Versuch mit Neon}
+Im Anschluss an die durchgef"uhrten Untersuchungen an der Quecksilberr"ohre wurde diese durch eine Neonr"ohre ersetzt, um dort analoge Untersuchungen bei Zimmertemperatur vorzunehmen. Wir haben hier ebenfalls vier Messungen durchgef"uhrt. Die Ergebnisse der quantitativen Auswertung sind im folgenden aufgef"uhrt.
+\begin{table}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{table2.epsi}
+	\caption{Tabellarische Ergebnisse der Neonr"ohre}
+	\label{table2}
+\end{table}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{neo1.ps}
+	\caption{Neon-Messung 1, Steigung: ($19.3 \pm 0.7$ V)}
+	\label{neo1}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{neo2.ps}
+	\caption{Neon-Messung 2, Steigung: ($19.2 \pm 0.7$ V)}
+	\label{neo2}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{neo3.ps}
+	\caption{Neon-Messung 3, Steigung: ($18.9 \pm 0.6$ V)}
+	\label{neo3}
+\end{figure}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth,angle=-90]{neo4.ps}
+	\caption{Neon-Messung 4, Steigung: ($19.0 \pm 0.6$ V)}
+	\label{neo4}
+\end{figure}
+\clearpage
+Wieder ergibt sich aus dem Mittelwert der Steigungen die Anregungsenergie von
+$$
+\text{E}=\unit{($19.1 \pm 0.4$)}{\electronvolt}.
+$$
+Diese gro"se Energiedifferenz w"urde zun"achst eine Lichtemission sehr kurzer Wellenl"ange vermuten. Tats"achlich ist die Lichtemission jedoch im sichtbaren Bereich des Spektrums. Dies erkl"art sich durch mehrere Anregungslevel, die zwischen der gemessenen Anregungsenergie liegen. Der sichtbare Effekt l"asst sogar lokalisierte Leuchtkissen zwischen Kathode und Anode erkennen, welche die Bereiche der Anregung (also der ausreichenden kinetischen Energie der Elektronen) sichtbar machen.
+
+\section{Zusammenfassung und Diskussion}
+Insgesamt ist der durchgef"uhrte Versuch als Erfolg zu bezeichnen. Es ist uns gelungen die quantisierte Natur der Atome und Molek"uhle zu veranschaulichen und nachzuweisen. Die Verst"arkung der Apparatur war bedauerlicherweise defekt, so dass der Nachweis nur in sehr gering ausgepr"agten Maxima zu beobachten ist. Dennoch entspricht insbesondere die Kurve der Quecksilbermessung 2 unserer theoretischen Erwartung. Die gro"se breite der Maxima f"uhrte bei der Auswertung zu einem erh"ohten Fehler, da die Lokalisierung der tats"achlichen Extrempunkte nur mit einer gewissen Toleranz vorgenommen werden konnte. Desweiteren stellte es sich als schwierig heraus, die auf den Messergebnissen notierte Temperatur w"ahrend der Aufzeichnung konstant zu halten. Geringf"ugige Verzerrungen der relativen Gr"o"senunterschiede zwischen den Stufen einer Kurve sind somit nicht auszuschlie"sen.
+
+Trotz der beschriebenen Probleme ist der Unterschied bei der temperaturabh"angigen Messung deutlich erkennbar. Die Kurve bei \unit{200}{\celsius} ist deutlich schw"acher als die Vergleichsmessung bei \unit{150}{\celsius}. Die Erkl"arung f"ur dieses Ph"anomen wurde bereits in der Auswertung vorgenommen. 
+
+Die Messung an der Neonr"ohre verlief weitestgehend problemlos und erlaubte eine gute quantitative Auswertung. Zu bem"angeln ist einzig, dass die defekte Verst"arkung dazu f"uhrte, dass die Kurve zwischen den Maxima stets unter den Empfindlichkeitsbereich des Schreibes rutschte, so dass "`platte"' Minima entstanden sind. Dies ist jedoch nicht weiter von Bedeutung, da auch hier die Maxima zur Auswertung herangezogen wurden. Ein zus"atzlicher Vorteil der Neonapparatur liegt in der Sichtbarkeit des emittierten Lichtes, so dass die diskreten Anregungszonen sehr sch"on zwischen Kathode und Anode zu beobachten waren. Die Anzahl der Kissen best"atigte auch die Ergebnisse in der Messkurve.
+
+\end{document}

@@ -1,0 +1,285 @@
+% VIM Personal Keymappings
+% Copyright (c) 2010 Michael Goerz.
+% TeX Format
+
+% compile as 'pdftex vimqrc.tex'
+
+% \pdfoutput=1
+\pdfpageheight=21cm
+\pdfpagewidth=29.7cm
+
+% Font definitions
+\font\bigbf=cmbx12
+\font\smallrm=cmr8
+\font\smalltt=cmtt8
+\font\tinyit=cmmi5
+
+\def\title#1{\hfil{\bf #1}\hfil\par\vskip 2pt\hrule}
+\def\cm#1#2#3{{\it#1} {\tt#2 }\dotfill#3\par}
+\def\dcm#1#2#3#4#5{{\it#1} {\tt#2 } {\it#3} {\tt#4 }\dotfill#5\par}
+\def\cn#1{\hfill$\lfloor$ #1\par}
+\def\section#1{\vskip 0.7cm {\it#1\/}\par}
+
+% Characters definitions
+\def\\{\hfil\break}
+\def\backspace{$\leftarrow$}
+\def\ctrl{{\rm\char94}\kern-1pt}
+\def\enter{$\hookleftarrow$}
+\def\or{\thinspace{\tinyit{or}}\thinspace}
+\def\key#1{$\langle${\rm{\it#1\/}}$\rangle$}
+\def\rapos{\char125}
+\def\lapos{\char123}
+\def\bs{\char92}
+%\def\leader{\char92}
+\def\leader{<Leader>}
+\def\locleader{<LocalLeader>}
+\def\ileader{\ctrl L}
+\def\tilde{\char126}
+\def\lbracket{[}
+\def\rbracket{]}
+
+% Three columns definitions
+\parindent 0pt
+\nopagenumbers
+\hoffset=-1.56cm
+\voffset=-1.54cm
+\newdimen\fullhsize
+\fullhsize=27.9cm
+\hsize=8.5cm
+\vsize=19cm
+\def\fullline{\hbox to\fullhsize}
+\let\lr=L
+\newbox\leftcolumn
+\newbox\midcolumn
+\output={
+  \if L\lr
+    \global\setbox\leftcolumn=\columnbox
+    \global\let\lr=M
+  \else\if M\lr
+    \global\setbox\midcolumn=\columnbox
+    \global\let\lr=R
+  \else
+    \tripleformat
+    \global\let\lr=L
+  \fi\fi
+  \ifnum\outputpenalty>-20000
+  \else
+    \dosupereject
+  \fi}
+\def\tripleformat{
+  \shipout\vbox{\fullline{\box\leftcolumn\hfil\box\midcolumn\hfil\columnbox}}
+  \advancepageno}
+\def\columnbox{\leftline{\pagebody}}
+
+% Card content
+% Header
+%\hrule\vskip 3pt
+\title{VIM PERSONAL MAPPINGS}
+
+\vskip 0.4cm
+(CC) 2012 Michael Goerz ({\tt www.michaelgoerz.net})
+\vskip 0.4cm
+
+{\tt \leader}: {\tt ,} \hskip1cm {\tt \locleader}: {\tt \bs{}}
+
+\vskip -0.3cm
+
+\section{Misc}
+\cm{n:}{\leader{}t}{Show or hide Taglist}
+\dcm{n:}{\leader d}{i:}{\ileader d}{Insert date stamp}
+\dcm{n,v:}{\leader p}{i:}{\ileader p}{toggle paste}
+\cm{n,v:}{\leader{}s}{Send to b:sendToProgramName}
+\cm{i:}{\ctrl J}{Jump to next placeholder}
+\cm{n:}{\leader{}w}{Write current file}
+\cm{}{:SuperTabHelp}{Set behavior of Tab key}
+\cm{}{:Bclose}{Delete current buffer w/o closing window}
+\cm{}{:German}{activate spell checking in German}
+\cm{}{:English}{activate spell checking in English}
+\cm{}{:ManualFolding}{Activate folding, {\tt fdm=manual}}
+\cm{}{:Errors}{Open syntastic list of errors}
+\cm{}{:SyntasticCheck}{Manually cause syntastic check}
+\cm{n:}{\leader{}u}{Toggle Gundo window}
+\cm{}{:GundoToggle}{Toggle Gundo window}
+
+
+\section{Sudo}
+\cm{}{:e sudo:/etc/passwd}{Edit file with sudo perms}
+\cm{}{:w sudo:/etc/passwd}{Write file with sudo perms}
+\cm{}{:w sudo:\%}{Write current file with sudo permissions}
+
+
+\vskip -0.1cm
+\section{Filters}
+\cm{}{:ListFilters}{List filters for filetype}
+\cm{}{:'a,'b Filter}{Filter range}
+\cm{}{:Filter}{Filter entire file}
+\dcm{n:}{\leader{}f}{v:}{\ileader f}{{Filter entire file/selection}}
+
+
+\section{NerdCommenter}
+\cm{n:}{\leader{}cc}{comment line or selection}
+\cm{n:}{\leader{}cn}{comment line or selection (nested)}
+\cm{n:}{\leader{}c\$}{comment to end of line}
+\cm{n,v:}{\leader{}c<space>}{toggle line or selection}
+\cm{n,v:}{\leader{}ci}{toggle individual lines} 
+\cm{n,v:}{\leader{}cs}{``sexy'' commenting}
+\cm{n,v:}{\leader{}cu}{uncomment line or selection}
+\cm{i:}{\ctrl{}c}{Insert comment}
+
+
+\vskip -0.1cm
+\section{Surround}
+\cm{n:}{ys\it{m}\it{r}}{Wrap movement {\it m} in {\it r}}
+\cm{n:}{ysiw"}{Wrap current word in quotes}
+\cm{n:}{ys{\it m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{ys{\it m}t}{Wrap {\it m} in html tag}
+\cm{n:}{ys{\it m}f}{Wrap {\it m} in function}
+\cm{n:}{ys\it{m}l}{Wrap {\it m} in latex environment}
+\cm{n:}{yS\it{m}\it{r}}{Wrap movement {\it m} in {\it r}, new lines, indent}
+\cm{n:}{yss\it{r}}{Wrap current line in {\it r}}
+\cm{n:}{ySS\it{r}}{Wrap current line in {\it r}, new lines, indent}
+\cm{n:}{cs\it{t}\it{r}}{Replace target surrounding {\it t} with{\it r}}
+\cm{n:}{cs"'}{Replace double quotes with single quotes}
+\cm{n:}{ds\it{t}}{Delete target surrounding}
+\cm{v:}{s\it{r}}{Wrap selection in {\it r}}
+\cm{v:}{s"}{Wrap selection in quotes}
+\cm{v:}{S"}{Wrap selection in quotes, new lines, indent }
+
+
+\section{Git}
+\cm{}{:Git [args]}{Run git}
+\cm{}{:GitAdd [afile]}{Stage changes}
+\cm{}{:GitBlame}{Show blame}
+\cm{}{:GitCheckout [args]}{Checkout branch}
+\cm{}{:GitCommit [args]}{Commit}
+\cm{}{:GitDiff [args]}{Show diff}
+\cm{}{:GitLog [args]}{Show commit logs}
+\cm{}{:GitPull [args]}{Fetch and merge}
+\cm{}{:GitPullRebase [args]}{GitPull --rebase}
+\cm{}{:GitPush [args]}{Push to remote}
+\cm{}{:GitStatus}{Working tree status}
+\cm{}{:GitGrep [args]}{Perform git grep}
+\cm{}{:GitVimDiffMerge [args]}{vimdiff for merge}
+\cm{}{:GitVimDiffMergeDone}{Mark conflicts resolved}
+\cm{n:}{\leader gd}{GitDiff}
+\cm{n:}{\leader gD}{GitDiff --cached}
+\cm{n:}{\leader gs}{GitStatus}
+\cm{n:}{\leader gl}{GitLog}
+\cm{n:}{\leader gL}{Git log --all --graph --decorate}
+\cm{n:}{\leader ga}{GitAdd}
+\cm{n:}{\leader gc}{GitCommit}
+\cm{n:}{\leader gC}{GitCommit -a}
+\cm{n:}{\leader gp}{GitPull}
+\cm{n:}{\leader gb}{GitBlame}
+\cm{n:}{\leader gA}{GitCommit --amend}
+
+
+\section{Snippets}
+\cm{}{:ListSnippets}{List snippets for filetype}
+\cm{}{:ApppendSnippets}{Append snippet after cursor}
+\cm{}{:InsertSnippets}{Insert snippet before cursor}
+\dcm{n:}{\leader{}ni}{v:}{\ileader ni}{{\tt :InsertSnippet}}
+\dcm{n:}{\leader{}na}{v:}{\ileader na}{{\tt :AppendSnippet}}
+
+
+\section{\TeX}
+\cm{}{:LatexFold}{Fold up LaTeX (fdm=manual)}
+\dcm{n,v:}{\locleader e}{i:}{\ileader e}{insert or wrap in {\tt \bs{}emph}}
+\dcm{n,v:}{\locleader o}{i:}{\ileader o}{insert or wrap in {\tt \bs{}Op}}
+\cm{i:}{\ileader k}{insert {\tt \bs{}Ket}}
+\cm{i:}{\ileader 2}{insert {\tt \bs{}sqrt}}
+\cm{i:}{\ileader v}{insert {\tt \bs{}vec}}
+\cm{i:}{\ileader h}{insert {\tt \bs{}hat}}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{insert env/math function}
+\cm{i:}{\ileader t}{{\tt \bs{}text}}
+\cm{}{:let b:leftquote = '"`'}{German left quotes}
+\cm{}{:let b:rightquote="\bs{}"'"}{German right quotes}
+\cm{}{:setlocal makeprg=\dots}{change compiler}
+\cm{i:}{`a \dots`o}{$\alpha \dots \omega$}
+\cm{i:}{`c}{$\chi$}
+\cm{i:}{`f}{$\phi$}
+\cm{i:}{`q}{$\theta$}
+\cm{i:}{`w}{$\omega$}
+\cm{i:}{`v}{$\vee$}
+\cm{i:}{'\&}{$\wedge$}
+\cm{i:}{`D`F`G`L`O`P`Q`U`X`Y`P`S}{$\Delta \Phi \Gamma \Lambda \Omega \Pi \Theta \Upsilon \Xi \Psi \Sigma$}
+\cm{i:}{`I}{$\int_{a}^{b}$}
+\cm{i:}{`N}{$\nabla$}
+\cm{i:}{`E}{$\varepsilon$ (var-$\epsilon$)}
+\cm{i:}{`H}{$\varphi$ (var-$\phi$)}
+\cm{i:}{`R}{$\varrho$ (var-$\rho$)}
+\cm{i:}{`T}{$\vartheta$ (var-$\theta$)}
+\cm{i:}{`Z}{$\sum_{a}^{b}$}
+\cm{i:}{`1}{{\tt \bs unity}}
+\cm{i:}{`6}{{\tt \bs difquo}}
+\cm{i:}{`8}{$\infty$}
+\cm{i:}{`/\or `\%}{{\tt $\backslash$frac\lapos\rapos\lapos\rapos}}
+\cm{i:}{`@}{$\circ$}
+\cm{i:}{`$|$}{\bs$|$}
+\cm{i:}{`$|$}{{\tt \bs Big\bs $|$}}
+\cm{i:}{`=}{$\equiv$}
+\cm{i:}{`\bs}{$\setminus$}
+\cm{i:}{`.}{{\tt \bs cdot}}
+\cm{i:}{`*}{$\times$}
+\cm{i:}{`-}{$\bigcap$}
+\cm{i:}{`+}{$\bigcup$}
+\cm{i:}{`(}{{\tt \bs left( \bs right)}}
+\cm{i:}{`$[$}{{\tt \bs left$[$ \bs right$]$}}
+\cm{i:}{`<}{$\leq$}
+\cm{i:}{`>}{$\geq$}
+\cm{i:}{`,}{{\tt \bs nonumber}}
+\cm{i:}{`:}{{\tt \bs cdots}}
+\cm{i:}{`\tilde}{{\tt \bs tilde\lapos\rapos}}
+\cm{i:}{`;}{{\tt \bs dot\lapos\rapos}}
+\cm{i:}{`\_}{{\tt \bs bar\lapos\rapos}}
+\cm{i:}{`\ctrl E}{{\tt \bs exp()}}
+\cm{i:}{`\ctrl L}{{\tt \bs lim\_\lapos\rapos}}
+\cm{i:}{<Up>}{$\uparrow$}
+\cm{i:}{<Down>}{$\downarrow$}
+\cm{i:}{<Left>}{$\leftarrow$}
+\cm{i:}{<Right>}{$\longrightarrow$}
+\cm{i:}{\ctrl F}{$\to$}
+
+\vskip0.2cm
+\section{C}
+\cm{n,v:}{\locleader{}cc}{Open reference TOC}
+\cm{n,v:}{\locleader{}cr}{View reference for keyword}
+\cm{n,v:}{\locleader{}cw}{View reference (ask keyword)}
+
+
+\vskip0.1cm
+\section{Perl}
+\cm{n:}{K}{Look up 'perldoc -f' for word}
+\cm{}{:make}{Check for syntax errors}
+
+
+\vskip0.2cm
+\section{Python}
+\cm{n:}{\locleader{}pw}{View reference for keyword}
+\cm{n,v:}{K}{Look up documentation for word}
+\cm{}{:Pydoc {\it name}}{Look up name in documentation}
+\cm{}{:make}{Run through pylint}
+
+
+\section{Fortran}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{Complete construct}
+\cm{}{:FortranFold}{Fold up Fortran code (fdm=manual)}
+
+\section{XML/HTML}
+\dcm{n:}{\locleader i}{i:}{\ileader i}{Insert/convert to tag}
+
+% Footer
+\vfill \hrule\smallskip
+{\smallrm This work is licensed under the Creative Commons
+  Attribution-Noncommercial-Share Alike 3.0 License.
+  To view a copy of this license, visit
+  http://creativecommons.org/licenses/by-nc-sa/ \\---
+  (CC) {\oldstyle 2012} by Michael Goerz.
+% Ending
+\supereject
+\if L\lr \else\null\vfill\eject\fi
+\if L\lr \else\null\vfill\eject\fi
+\bye
+
+
+% EOF

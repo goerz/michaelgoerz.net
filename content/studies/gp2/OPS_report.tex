@@ -1,0 +1,131 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - OPS}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Lab Report on Optical Spectroscopy}
+\author{Anton Haase, Michael Goerz}
+\date{16. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: M. Fushitani
+
+\section{Introduction}
+Optical spectroscopy is a common method to analyze the composition of light from unknown sources. The theoretical knowledge about the spectra of light emitted by some gas then gives us a possibility to identify the specific light source. The analysis is based on the different diffraction of light on a grid or the refraction on a prism.
+
+\subsubsection*{Prisms}
+If light is transmitted through a prism or any other transparent material, refraction can be observed. The amount of redirection is described by the index of refraction (IOR) $n$ of the material, which depends on the wavelength of the incoming light. This means that white light is split up into its components. Thereby the angle of refraction depends on the angle of the incoming rays relative to the prism. The minimum value can be reached if the light is transmitted parallel to the basis of the prism. The following equations give the relationship between the different angles (where $\epsilon$ describes the angle of the prism and $\gamma$ describes the total refraction angle) to calculate the Index of Refraction from the measurement of refraction with the Law of Snellius (Eq.~(\ref{snellius})).
+\begin{eqnarray}
+\alpha &=& \frac{\gamma + \epsilon}{2} \\
+\beta &=& \frac{\epsilon}{2}
+\end{eqnarray}
+Snellius Law, where $n_0$ is the IOR of the surrounding air:
+\begin{equation}
+n_\text{prism} = \frac{n_0 \sin(\alpha)}{\sin(\beta)} \label{snellius}
+\end{equation}
+
+Additionally the dispersion (difference between the refraction of various wavelengths) for glass is independent of its Index of Refraction, which makes it possible to create prisms that either only redirect or only split light (nearly).
+
+The resolution of prisms according to optical spectroscopy is defined trough the Rayleigh or Sparrow criteria, where the first one gives a more accurate definition. Following Rayleigh, two spectral lines can be considered separate if the primary maximum of one line is at least on the primary minimum of the second line. The analysis of the shortest and longest optical path trough the prism leads to a formula for the resolution.
+\begin{equation}
+\left(n + \frac{\dd n}{\dd \lambda} \Delta\lambda \right) t - n t = \lambda
+\end{equation}
+
+\subsubsection*{Grids}
+The principle used for grids is very similar to the one used for prisms. The diffraction of light at a grid leads to one primary maximum (0th order) and various higher order maxima. This observation can be explained by Heugens principle and the constructive and destructive interference of light. The 0th maximum is not useful for optical spectroscopy, because there is no dispersion. Therefore the first order maximum is analyzed. The wavelength-dependend refraction is proportional to the sine of the angle and follows a simple law:
+\begin{equation}
+d \sin(\alpha) = z \lambda \label{grid}
+\end{equation}
+The quantity $d$ is the grid constant and $z$ is the diffraction order observed. This law makes the spectral analysis very simple, because measured angles can directly be converted into the related wavelength.
+
+Again, an expression for the resolution of grids is necessary. According to Rayleigh's law, the first primary minimum is required. The laws of grid diffraction lead to the following formula:
+\begin{equation}
+d \sin(\alpha_\text{min}) = \left(z + \frac{1}{N} \right) \lambda
+\end{equation}
+where N is the number of slits. From this we get the desired expression for the resolution:
+\begin{equation}
+\Delta \lambda = \frac{\lambda}{z N} \label{res}
+\end{equation}
+\section{Assignments on Grid Spectroscopy}
+\begin{enumerate}
+\item Construct and adjust the experimental setup.
+\item Measure the spectrum of a mercury lamp in first and second order. Calculate the grid constant.
+\item Analyze the spectrum of an unknown lamp and identify its filling.
+\item Measure the resolution of the grid in first and second order of diffraction and compare it to the theoretical expectance.
+\item Observe and discuss the dispersion spectrum of a prism qualitatively.
+\end{enumerate}
+
+\newpage
+
+
+
+\section{Analysis}
+
+\subsection{Calculation of the Grid Constant}
+In our first experiment we used a mercury lamp as light source to measure the position of the spectral lines and to compare our data to the theoretical prediction. This gave us a relationship between the angle of our device and the wavelength corresponding to the line observed. Now we were able to calculate the grid constant according to Eq.~(\ref{grid}) for each spectral line as shown in the following table. The center position, used to determine the diffraction angle, was measured to be $(181,85 \pm 0,02) \degree$.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth,angle=270]{table1.epsi}
+\caption{Table of Calculated Grid Constants}
+\label{fig:1}
+\end{figure}
+
+The average value for the grid constant then was $d = (1,68 \pm 0,02) \times 10^{-6} \text{ m}$.
+
+\subsection{Spectroscopy of an Unknown Lamp}
+In the second experiment we examined the spectral lines of an unknown light source. The first qualitative observation of the line distribution led us to the conjecture that the light-emitting gas might be helium. The measured values confirmed this hypothesis, as the following table demonstrates.
+\begin{center}
+% use packages: array
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+%
+\begin{tabular}{cccc}
+Angle (Degrees) & Intensity & Wavelength (nm) &  \\ 
+15,03 & low & $443 \pm 17$ & × \\ 
+15,37 & high & $445 \pm 17$ & × \\ 
+16,27 & medium & $471 \pm 17$ & × \\ 
+17,02 & medium & $492 \pm 17$ & × \\ 
+17,33 & high & $500 \pm 18$ & × \\ 
+20,42 & high & $586 \pm 18$ & × \\ 
+22,90 & low & $654 \pm 18$ & × \\ 
+23,38 & high & $667 \pm 18$ & × \\ 
+24,78 & low & $704 \pm 18$ & ×
+\end{tabular}
+\end{center}
+The presence of lines which are not in the theoretical prediction will be discussed below.
+
+\subsection{Resolution of the Grid}
+The resolution of the grid can be calculated using Eq.~(\ref{res}) in different form.
+\begin{equation}
+\frac{\lambda}{\Delta\lambda} = z N
+\end{equation}
+We performed our measurement of the slit opening in the first order only, because the selected pair of lines could not be found in higher orders. The value we read from the slit following Rayleigh's Criterion was $D=(0,50 \pm 0,02)\text{ mm}$. The number of involved slits in the grid then comes from the distance divided by the grid constant. This yields $N = (298 \pm 15)$ and finally a resolution of $\frac{\lambda}{\Delta\lambda} = (298 \pm 15)$.
+
+\subsection{Spectroscopy with a Prism}
+In the last experiment we changed our dispersion device to analyze the differences between the two methods. The spectra we observed were reversed in the order of colors and the line pattern. Additionally, the lines seemed to be sharper and closer together. As expected from the type of dispersion, only one order could be observed. The reason for this lies in the difference between grid diffraction and prism refraction, of course. In a qualitative measurement we tried to match the lines to their wavelength. The smaller spread of the spectrum resulted to a lower accuracy of the matching, while grid spectroscopy led to better results.
+
+\section{Conclusion}
+Optical spectroscopy using grids turned out to be a very accurate method to analyze the composition of unknown light or to determine grid constants. Our measurements resulted into values with low relative error, which can be explained by the accurate readings of angles from the measurement device. However a precise determination of the center position is necessary, because otherwise the calculation of the grid constant leads to unreasonable results. This part is also much easier to do with grid spectroscopy by simply comparing the angles in first left and first right order at one or more selected lines.
+
+The analysis of the unknown lamp led to a very clear result. However some lines could not be matched to a certain gas. These might come from a unknown contamination of the lamp.
+
+The determination of the resolution of the grid was only possible in the first order of diffraction, because higher level orders were obstructed by the grids' frame. Although the relative error of our value is very small, systematical errors from the position of the slit, for example, should be taken into account. The distance between grid and slit was about a few centimeters and the light might not gone through straight enough to determine the number of involved slits exactly.
+
+Last, the comparison to prism spectroscopy led to grid spectroscopy as the method that is more accurate and easier to handle. However, the light intensity of each spectral line is higher with the second method, so that dark lines may be discovered more easily.
+
+\end{document}

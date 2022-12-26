@@ -1,0 +1,121 @@
+\clearpage
+\section{Overview of the Monochromator Control Electronics}
+\label{Overview of the Monochromator Control Electronics}
+
+This appendix briefly describes the general layout of the electronic control of
+the monochromator's servo motors, which set the reflection grating and allow to
+tune the monochromator to the desired wavelength. The details of all the
+electronics are described in the accompanying manual, however there are some
+minor differences between the manual and the actual implementation.
+
+The purpose of the entire system is to allow control of the servo motors
+from a computer, and to manage the power supply.
+Fig.~\ref{image:Schaltplan_Leistungselektronik} is a schematic of the entire
+circuit layout in all its major parts. The two central components are the TSNM
+boards, one for each motor, which contain the actual control electronics. Each
+of them receives input from the computer on the pins labeled 10, 24, and 23, and
+returns signals via pin 12 and 10 to the controlling speedometers (T1, T2),
+which control the speed of the motors (M1, M2). Also, from the connectors A1 and
+A2, the TSNM gives power to the motors through limiter coils L1/L2, which
+prevent power surges. Missing from the schematic is the PSNM board, which
+regulates the power for both the TSNM's. There is a separate system, the
+\emph{Heidenhain} system, also not indicated, that monitors the servo motors and
+provides feedback to the electronics.
+
+Figs.~\ref{image:connection_panel} -- \ref{image:Schaltplan_Leistungselektronik}
+contain photographs of the system's components in their physical implementation.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{images/connection_panel.eps}
+    \caption{Connection Panel}
+  \label{image:connection_panel}
+\end{figure}
+
+Fig.~\ref{image:connection_panel} shows the front panel of the entire system.
+From the user's perspective, this panel combines input and output. The
+computer (which is running an appropriate software) is plugged in at the
+\emph{Bus System} circuit board. The bus has to be connected to the lower panel,
+along the bright green lines. The \emph{Main Power Supply} is where the entire
+system receives power. The \emph{Servo Power Supply} and \emph{Servo Control
+Connectors} constitute the system's output. The power supply has to be connected
+directly to the motors, in Fig.~\ref{image:Schaltplan_Leistungselektronik} this
+missing connection would be the lines between the limiter coils L1/L2 and the
+motors M1/M2. The \emph{Servo Control Connectors} have to be connected to the
+controlling speedometers T1/T2, which are physically attached to the motors.
+This missing connection is the one labeled \emph{Control Circuit} in
+Fig.~\ref{image:Schaltplan_Leistungselektronik}. The Heidenhain control
+system is also plugged into this panel.
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=\textwidth]{images/tsnm_psnm_back.eps}
+    \caption{PSNM/TSNM Board}
+  \label{image:tsnm_psnm_back}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.9\textwidth]{images/tsnm_psnm_front.eps}
+    \caption{Frontside of PSNM/TSNM Board}
+  \label{image:tsnm_psnm_front}
+\end{figure}
+
+Fig.~\ref{image:tsnm_psnm_back} shows the system's central component, the
+PSNM/TSNM board. The PSNM receives power from the three blue cables, which
+originate from the \emph{Main Power Supply}
+(Fig.~\ref{image:transformator_throttle}). It relays power to the two TSNM's and
+indirectly to the servo motors (the connection to the servo motors is the gray
+cables from the A1/A2 connectors of the TSNM's). The power connection between
+PSNM and TSNM is visible as the two dark green bars on the board. The \emph{TSNM
+Control Circuit and Control Unit Connector} are in the lower
+half of the board. The ribbon cable connects to the \emph{Connection Panel}
+(Fig.~\ref{image:connection_panel}). In
+Fig.~\ref{image:Schaltplan_Leistungselektronik}, the ribbon cable would connect
+between the pins 10-24 of both TSNM's and the T1/T2 speedometers (\emph{Control
+Circuit}) and the computer (\emph{Control Unit}), respectively. On the side of
+the \emph{Connection Panel}, the ribbon cable splits up and connects to the four
+outlets of the \emph{Control Unit} and \emph{Servo Control Connectors}
+(Fig.~\ref{image:connection_panel}). The brown cables belong to the Heidenhain
+system.
+
+Fig.~\ref{image:tsnm_psnm_front} shows the front side of the PSNM/TSNM board.
+The PSNM and the two TSNM's are plug-in cards.
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=\textwidth]{images/transformator_throttle.eps}
+    \caption{Power Transformer and Limiter Coils}
+  \label{image:transformator_throttle}
+\end{figure}
+
+Fig.~\ref{image:transformator_throttle} shows the intermediate parts between
+the \emph{Connection Panel} (Fig.~\ref{image:connection_panel}) and the
+\emph{PSNM/TSNM Board} (Fig.~\ref{image:tsnm_psnm_back}). First, this is the
+\emph{Main Power Supply} that distributes the power to all components. It draws
+power from the \emph{Main Power Supply} plug on the \emph{Connection Panel}
+(Fig.~\ref{image:connection_panel}) via the black cable at the top. The three
+bundled blue cables go from the \emph{Main Power Supply} to the PSNM
+(Fig.~\ref{image:tsnm_psnm_back}). Additionally, there is power going to the
+Heidenhain system, through the device labled as \emph{MET-O-PHM}.
+
+Second, there are the four \emph{Limiter Coils}, which in
+Fig.~\ref{image:Schaltplan_Leistungselektronik} are labeled L1/L2. The have the
+bundled gray cables as input, which originate from the A1/A2 connectors on the
+TSNM's (Fig.~\ref{image:tsnm_psnm_back}), and continue with two gray and two
+blue cables which go the \emph{Servo Power Supply} on the \emph{Connection
+Panel} (Fig.~\ref{image:connection_panel}). The purpose of the coils is simply
+to limit power surges that would occur when the motors switch on or off.
+
+Fig.~\ref{image:transformator_throttle} also shows the backside of the
+\emph{Connection Panel} (Fig.~\ref{image:connection_panel}) on the very left.
+The splitting-up of the ribbon cable into the \emph{Control Unit} and the
+\emph{Servo Control Connectors} is visible.
+
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=\textwidth]{images/Schaltplan_Leistungselektronik.eps}
+    \caption{Circuit Layout of Monochromator Control Electronics}
+  \label{image:Schaltplan_Leistungselektronik}
+\end{figure}
+

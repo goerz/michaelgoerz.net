@@ -1,0 +1,245 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{german}
+\usepackage[german]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - TRA}
+\chead{}
+\rhead{Haase, Goerz}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Bericht zum Versuch Transistor}
+\author{Anton Haase, Michael Goerz}
+\date{22. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: K.~Lenz
+
+\section{Einf"uhrung}
+\subsubsection*{Funktionsweise des Transistors}
+Ein Transistor ist ein elektronisches Bauelement, welches auf der Verwendung unterschiedlich dotierter Halbleiter basiert.
+
+Die Beschreibung eines Halbleiters erfolgt im B"andermodell eines Festk"orpers. Dabei bilden die diskreten Energieniveaus der Elektronen in den Schalen der Atome durch die "Uberlappung der Elektronenwolken verschieden gro"se n"aherungsweise kontinuierliche Energieb"ander, in denen sich Elektronen aufhalten und bewegen k"onnen. Bei Festk"orpern unterscheidet man im Allgemeinen zwischen einem voll besetzen Valenzband, das alle Elektronen der "au"sersten Atomschale enth"alt und einem leeren Leitungsband, in dem sich die Elektronen potentiell frei durch den Festk"orper bewegen k"onnen (siehe Abb.~\ref{fig:0}). Bei Metallen und anderen Leitern ist der Abstand zwischen Valenz- und Leitungsband gleich Null oder es gibt sogar eine "Uberlagerung der beiden B"ander. Diese Stoffe k"onnen den elektrischen Strom bei fast jeder Temperatur leiten, da stehts Valenzelektronen als freie Ladungtr"ager zur Verf"ugung stehen. Anders ist dies bei Halbleitern. Dort besteht ein geringer, aber merklicher Energieabstand zwischen Valenz- und Leitungsband, so dass die Elektronen erst durch thermische oder elektrische Anregung in das Leitungsband angehoben werden m"ussen bevor eine elektrische Leitung stattfinden kann. Bei dieser Anhebung hinterlassen sie sog. Elektronenfehlstellen (L"ocher) im Valenzband.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{baender.eps}
+	\caption{B"andermodell}
+	\label{fig:0}
+\end{figure}
+
+
+Bei dotierten Halbleitern, wie sie zum Bau eines Transistors ben"otigt werden, sind Fremdelemente in die Gitterstruktur des Grundelements (z.B. Silizium) eingebracht, so dass entweder ein zus"atzliches Valenzelektron zur Verf"ugung steht (n-dotiert) oder eines fehlt (p-dotiert). Die Art der Dotierung entscheidet auch "uber das Vorzeichen der Ladungstr"ager, die f"ur den Strom verantwortlich sind. In einem n-Halbleiter sind es die Elektronen, in einem p-Halbleiter hingegen die Elektronenfehlstellen (L"ocher).
+
+Die Kombination beider Typen, wie in Abb.~\ref{fig:1} dargestellt, ist bereits eine einfache Richtungsdiode. An der Grenzschicht zwischen den beiden Halbleitern kommt es zu einem Ausgleich der Ladungstr"ager. Da die Ladungstr"ager nicht beliebig weit in das jeweilig andere Material eindringen k"onnen (zu hoher Widerstand), entsteht eine Potentialdifferenz in einem ladungsarmen Raum nahe der Grenzschicht (siehe Abbildung), sodass der Ausgleichsvorgang nicht weiter stattfinden kann. Es stellt sich also ein Gleichgewicht ein.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.4\textwidth]{grenzschicht.EPS}
+	\caption{n--p--Grenzschicht}
+	\label{fig:1}
+\end{figure}
+
+Legt man nun eine Spannung an, sodass das n-dotierte Material am negativen Pol und das p-dotierte Material am positiven Pol liegt, so werden die jeweiligen Materialien wieder mit positiven (p-Seite) bzw. negativen Ladungen (n-Seite) "uberflutet. Das zuvor eingestellte Gleichgewicht besteht nicht mehr, so dass wieder ein Ladungsausgleich beginnt. Es flie"st also ein Strom. Dreht man die Polung um, so werden jeweils noch freie Ladungen abgezogen und die Potentialdifferenz an der Grenzschicht vergr"o"sert. Damit kann kein Ladungsausgleich stattfinden und auch kein Strom flie"sen.
+
+Ein Transistor erh"alt man, wenn man die Anordnung aus Abb.~\ref{fig:1} noch um eine weitere n-Schicht erg"anzt, wie in Abb.~\ref{fig:2} dargestellt. In diesem Fall handelt es sich um einen npn-Transistor. Der ebenfalls m"ogliche pnp-Transistor wird hier nicht weiter behandelt. Schlie"st man hier wieder eine Spannung an, sodass der negative Pol am Emitter und der positive Pol am Kollektor liegt, flie"st auf Grund der Sperrschicht am Kollektor zun"achst kein Strom. Wird jedoch noch eine positive Spannung an der Basis angelegt, so erfolgt eine "`Freischaltung"' der Emitter--Kollektor--Strecke und es flie"st ein Strom. Ein geringer Teil des Stroms flie"st jedoch auch "uber die Emitter--Basis--Strecke ab. Dieser kann jedoch durch geeignete Bauweise auf $1 \%$ des Emitter--Kollektor--Stroms reduziert werden.
+
+\begin{figure}[hbt]
+	\centering
+	\includegraphics[width=0.7\textwidth]{transistor.EPS}
+	\caption{Transistor}
+	\label{fig:2}
+\end{figure}
+
+Ein Transistor kann somit als Verst"arker oder elektronischer Schalter genutzt werden.
+
+\subsubsection*{Kennlinienfeld eines Transistors}
+Ein angeschlossener Transistor wird durch sechs Gr"o"sen vollst"andig beschrieben. Gem"a"s der Kirchhoffschen Knotenregel muss die Summe aller drei m"oglichen Str"ome gleich Null sein. An jedem Anschluss kann ein Strom flie"sen, es gibt somit den Kollektorstrom $I_C$, den Emitterstrom $I_E$ und den Basisstrom $I_B$, wobei gilt
+\begin{equation}
+I_B + I_C + I_E = 0.
+\end{equation}
+Analog gilt f"ur die drei m"oglichen Spannungen Basis--Emitter-Spannung $U_\text{EB}$, Emitter--Kollektor--Spannung $U_\text{EC}$ und Basis--Kollektor--Spannung $U_\text{BC}$,
+\begin{equation}
+U_\text{EC} = U_\text{BC} + U_\text{EB}.
+\end{equation}
+Aus diesen Gr"o"sen setzt sich das statische Kennlinienfeld eines Transistors, wie in Abb.~\ref{kenn} dargestellt, zusammen. Die zugeh"orige Schaltung entspricht der in Abb.~\ref{schalt1} dargestellten, allerdings ohne den Arbeitswiderstand $R_A$ (statischer Fall)
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Kennlinien.eps}
+	\caption{Kennlinienfeld eines Transistors}
+	\label{kenn}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{schaltung1.eps}
+	\caption{Verst"arkerschaltung}
+	\label{schalt1}
+\end{figure}
+
+
+Der erste Quadrant zeigt die Kennlinien des Kollektorstroms "uber der Kollektor--Emitter--Spannung aufgetragen. Dabei l"asst sich feststellen, dass nur eine geringe Abh"angigkeit des Stroms von der Spannung besteht, da die Kurven im weiteren Verlauf nur leicht ansteigen. Der starke Anstieg am Anfang l"asst sich durch die Basisschwellspannung erkl"aren, welche zun"achst erreicht werden muss, damit der Emitter--Kollektor--Weg "`freigeschaltet"' wird. Der unterschiedlich starke Stromfluss wird durch die st"arke des Basisstroms $I_B$ bestimmt. Die fallende Gerade kommt erst nach dem Einf"ugen des Arbeitswiderstandes ins Spiel und beschreibt die durch eben diesen Widerstand vorgegebene Strom--Spannungs--Beziehung. Somit ist der Betrag der Steigung nach dem Ohmschen Gesetz wieder der Widerstand $R_A$.
+
+Im zweiten Quadranten wird der Kollektorstrom $I_C$ "uber dem Basisstrom $I_B$ aufgetragen. Der Betrag der Steigung der Geraden gibt die Verst"arkung des Stroms zwischen Eingang und Ausgang an. Der zugeh"orige Koeffizient wird $\beta$ genannt und ist wie folgt definiert:
+\begin{equation}
+\beta = \frac{I_C}{I_B} \label{statStr}
+\end{equation}
+
+Der dritte Quadrant zeigt die einfache Kennlinie einer Diode, wie sie bereits  anfangs beschrieben wurde, da der Basis--Emitter--"Ubergang letztendlich nichts anderes ist, als ein solches Bauteil. Hier gibt es ebenfalls eine Schwellspannung, die zum Aufbau eines Stromflusses erreicht werden muss.
+
+Im vierten Quadranten wird die R"uckwirkung der Emitter--Kollektor--Spannung auf die Basis--Emitter--Spannung festgehalten.
+
+\subsubsection*{Untersuchte Schaltungsbeispiele}
+Die zuerst untersuchte Verst"arkerschaltung ist bereits in Abb.~\ref{schalt1} dargestellt. Sie bewirkt die Verst"arkung einer zwischen Eingang und Erde angelegten Spannung, welche dann zwischen Ausgang und Erde abgegriffen werden kann. Damit auch das Anlegen einer Wechselspannung erm"oglicht wird, muss dieser eine Gleichspannung "uberlagert werden, so dass die Spannungschwankung innerhalb der Schaltung und am Transistor nur im positiven Bereich stattfindet. Zu diesem Zweck wird durch geeignete Wahl des Arbeitswiderstandes ein Arbeitspunkt (also eine Grundspannung von z.B.~\unit{6}{\volt}) eingestellt. Die Berechnung der Spannungverst"arkung erfolgt aus den Spannungsdifferenzen, bzw. "uber das Ohmsche Gesetz durch die Stromverst"arkung $\beta$
+\begin{equation}
+v = \frac{\Delta U_\text{EC}}{\Delta U_\text{EB}} = \frac{\beta \cdot R_A}{r_\text{EB}},
+\end{equation}
+wobei $r_\text{EB}$ der differentielle Eigenwiderstand $\frac{\Delta U_\text{EB}}{\Delta I_\text{B}}$ ist.
+
+Ein Problem dieser Schaltung ist die Ver"anderung der Widerst"ande innerhalb des Transistors durch thermische Einfl"usse oder Reaktionen. Um dies zu vermeiden wird eine Parallelgegenkopplung eingebaut, bei der ein Teil der verst"arkten Ausgangsspannung invertiert auf den Eingang zur"uckgef"uhrt wird und somit eine Ver"anderung des Verst"arkungsverh"altnisses verhindert. Die entsprechende Schaltung ist in Abb.~\ref{schalt2} dargestellt.
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.5\textwidth]{schaltung2.eps}
+	\caption{Verst"arkerschaltung mit Parallelgegenkopplung}
+	\label{schalt2}
+\end{figure}
+Die Schwankung der Ausgangspannung kann "uber den R"uckkopplungsfaktor $\alpha = \frac{U_\text{EB}}{U_\text{EC}}$ auch quantitativ erfasst werden. Dabei gilt:
+\begin{equation}
+\Delta U_\text{EC} = \frac{\Delta U_\text{EC}}{1 + \alpha v}
+\end{equation}
+
+\section{Aufgaben}
+\begin{enumerate}
+\item Aufnahme und Konstruktion des (statischen) Kennlinienfeldes eines npn--Transistors f"ur eine angenommene Betriebsspannung (Versorgungsspannung) von \unit{12}{\volt}. Bestimmung der Stromverst"arkung f"ur den statischen Fall.
+
+Aufbau einer Verst"arkerstufe mit einer Parallel--Gegenkopplung zur Stabilisierung.
+\item 
+\begin{enumerate}
+\item Dimensionierung der Schaltung: Absch"atzung des Arbeitswiderstandes und des Basisvorwiderstandes.
+\item Experimentelle "Uberpr"ufung der Kollektor--Widerstandsgeraden durch Variation des Basisvorwiderstandes und Bestimmung der Stromverst"arkung.
+\item Verst"arkung einer Eingangs--Wechselspannung als Signal. Messung der Spannungverst"arkung und Vergleich mit der theoretischen Erwartung.
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+\section{Auswertung}
+
+\subsection{Kennliniendiagramm des Transistors}
+In der zuerst aufgebauten Schaltung wurden die verschiedenen Spannungen und Str"ome am Transistor gem"a"s der Schaltskizze aus dem Messprotokoll bestimmt. Aus diesen Werten wurde das Kennliniendiagramm erstellt, welches sich am Ende dieser Auswertung befindet. Alle Berechnungen (au"ser die des differentiellen Eigenwiderstands) wurden anhand separater Plots vorgenommen, die bei den jeweiligen Aufgaben eingef"ugt wurden. Das gezeichnete Diagramm dient somit ausschlie"slich der qualitativen Begutachtung des Versuchs.
+
+Die Fehler s"amtlicher x-Werte wurden mit der Steigung der jeweiligen Ausgleichsgeraden auf die y-Fehler umgerechnet.
+
+
+\subsection{Statische Stromverst"arkung und Eigenwiderstand}
+Die statische Stromverst"arkung ergibt sich laut Gleichung~(\ref{statStr}) aus der Steigung der Ausgleichsgeraden in der Abb.~\ref{qua2}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth,angle=-90]{qua2.epsi}
+	\caption{Statische Stromverst"arkung}
+	\label{qua2}
+\end{figure}
+
+Die Anwendung des Verfahrens der Linearen Regression ergab einen Wert von
+\begin{equation}
+\beta = (192 \pm 11)
+\end{equation}
+
+Der differentielle Eigenwiderstand wurde direkt aus dem Kennliniendiagramm abgelesen. Auf Grund der kleinen Einheit des Basisstroms, liegt der relative Fehler bei 15 \%.
+\begin{equation}
+r_\text{EB} = (2500 \pm 400) \text{ } \Omega
+\end{equation}
+
+\subsection{Verst"arkerschaltung}
+In einem zweiten Experiment wurde eine Verst"arkerschaltung mit Parallelgegenkopplung aufgebaut. Aus den Messdaten f"ur die Kennlinien des 1.~Quadranten konnte ein Arbeitswiderstand f"ur den gew"unschten Arbeitspunkt bei \unit{6}{\volt} bestimmt werden. Aus unseren Messdaten errechneten wir einen Wert von
+\begin{equation}
+R_A \approx 315 \, \Omega
+\end{equation}
+Der tats"achlich verwendete Widerstand war jedoch mit 470 $\Omega$ angegeben (Messwert: $R_A = (464 \pm 3) \, \Omega$).
+
+Der Basisvorwiderstand sollte nach unseren Berechnungen etwa 42 k$\Omega$ betragen.
+
+In einer Messung variierten wir nun den Basisvorwiderstand. Daraus erhielten wir Messwerte f"ur die Kollektorwiderstandsgerade, welche in der Abb.~\ref{wid} gemeinsam mit der erwarteten Widerstandgeraden (dickere Linie) bei einer Versorgungsspannung von \unit{12}{\volt} graphisch dargestellt ist.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth,angle=-90]{qua1r.epsi}
+	\caption{Kollektorwiderstandsgerade}
+	\label{wid}
+\end{figure}
+
+Aus dem Kehrwert des Betrags der Steigung erh"alt man nun den experimentell bestimmten Arbeitswiderstand. Dieser hatte einen Wert von
+\begin{equation}
+R_A = (472 \pm 5) \, \Omega.
+\end{equation}
+Dieser Wert ist mit dem direkt gemessenen vertr"aglich.
+
+\subsection{Dynamische Stromverst"arkung}
+Aus den gewonnenen Messwerten im 2.~Experiment kann zudem noch die dynamische Stromverst"arkung bestimmt werden. In der Abb.~\ref{dyn} wurde dies anhand des dritten, vierten, f"unften und sechsten Messwerts vorgenommen. Erwartungsgem"a"s "andert sich die Stromverst"arkung je nach Basisvorwiderstand leicht.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth,angle=-90]{qua2d.epsi}
+	\caption{Dynamische Stromverst"arkung}
+	\label{dyn}
+\end{figure}
+
+Der aus der Steigung ermittelte Wert war
+\begin{equation}
+\beta_D = (137 \pm 10).
+\end{equation}
+
+\subsection{Verst"arktes Sinussignal}
+Im letzten Experiment wurde nun ein "`echtes"' Sinussignal an den Eingang der Verst"arkerschaltung gelegt und am Ausgang "uber ein Oszilloskop beobachtet. Die qualitativen Beobachtungen sind bereits im Messprotokoll beschrieben. Durch eine "Uberlagerung des Eingangs- und Ausgangssignals konnte die Spannungsverst"arkung qualitativ abgesch"atzt werden. Sie Betrug bei einer Frequenz von ca.~ \unit{1000}{\hertz} und einem Basisvorwiderstand von 10 k$\Omega$ etwa den Faktor 5. Das Ausgangssignal war im Vergleich zum Original um $\pi/2$ Phasenverschoben. Der Grund daf"ur liegt nat"urlich in den eingebauten Kondensatoren.
+
+Eine "Anderung der Frequenz erbrachte auch eine erhebliche "Anderung der Verst"arkung, so dass die aufgebaute Schaltung nicht f"ur einen tats"achlichen Einsatz als Frequenzverst"arker geeignet gewesen w"are. Die Verkleinerung des Basisvorwiderstands ergab auch eine Verkleinerung der Spannungsverst"arkung (wie im Realfall der Regler eines Verst"arkers).
+
+Bemerkenswert war zudem noch, dass ein zu gro"ses Eingangssignal bzw. eine zu gro"se Verst"arkung zu einem Abschneiden der Amplitude des Ausgangssignals f"uhrte. Die Diskussion der Gr"unde f"ur diese Beobachtung erfolgt unten.
+
+Im Anschluss an die qualitative Begutachtung wurde noch eine quantitative Messung f"ur zwei verschiedene Basisvorwiderst"ande vorgenommen. Diese sind im folgenden graphisch dargestellt.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth,angle=-90]{spannung.epsi}
+	\caption{Spannungsverst"arkung bei $R_V=10 \, k\Omega$}
+	\label{span1}
+\end{figure}
+
+Der aus der Steigung der Abb.~\ref{span1} ermittelte Wert f"ur die Spannungsverst"arkung betr"agt $v=(5,7 \pm 0,1)$. Er ist also mit der qualitativen Beobachtung vertr"aglich (unter Ber"ucksichtigung des hohen Fehlers der ersten Sch"atzung). F"ur einen Widerstand von 18 k$\Omega$ ergibt sich die in Abb.~\ref{span2} dargestellte Gerade.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.6\textwidth,angle=-90]{spannung2.epsi}
+	\caption{Spannungsverst"arkung bei $R_V=18 \, k\Omega$}
+	\label{span2}
+\end{figure}
+
+Der Wert der Verst"arkung betr"agt somit $v=(8,2 \pm 0,2)$.
+
+Beide Werte sind signifikant unterschiedlich zu dem theoretisch ermittelten Wert, welcher nur von der dynamischen Stromverst"arkung, dem Arbeitswiderstand und dem differentiellen Eingangswiderstand abh"angt, nicht jedoch von der Frequenz, welche wie bereits beschrieben, einen sehr starken Einfluss auf die Spannungsverst"arkung hat. Der theoretisch ermittelte Wert betr"agt $v=(25 \pm 4)$.
+
+\section{Zusammenfassung und Diskussion}
+Insgesamt betrachtet war der Versuch ein voller Erfolg. Es konnten alle relevanten Gr"o"sen ohne Probleme berechnet werden. Bei der Auswertung der einzelnen Messergebnisse stelle sich heraus, dass es keine "`Ausrei"ser"' vom erwarteten Wert gab. Die Bestimmung der Kennlinien des ersten Quadranten ($U_\text{EC}<1,5 \, V$) konnte auf Grund von nicht messbaren Bereichen nur gesch"atzt werden.
+
+Die zun"achst durchgef"uhrte Bestimmung der Stromverst"arkung zeigte einen linearen Verlauf mit sehr geringer Streuung um die Ausgleichsgerade. Der Schnittpunkt mit der y-Achse liegt im negativen, da der minimale Kollektorstrom bereits bei ca.~\unit{15}{\mu\ampere} Erreicht ist (Schwellspannung / -strom).
+
+Die Analyse der Kollektorwiderstandsgeraden ergab eine "Ubereinstimmung (innerhalb der Fehlertoleranz) mit der theoretisch ermittelten Geraden. Leichte parallele Verschiebungen k"onnen von einer ungenauen Bestimmung der tats"achlichen Versorgungsspannung herr"uhren.
+
+Der differentielle Eingangswiderstand wurde aus der handgefertigten Zeichnung bestimmt und ist auch auf Grund des kleinen Basisstroms nur sehr ungenau. Ein genauere Bestimmung war auf Grund der Messgenauigkeit der Ger"ate nicht m"oglich.
+
+Zuletzt wurde schlie"slich noch die Verwendbarkeit der Schaltung als Frequenzverst"arker "uberpr"uft. Die Berechneten Werte f"ur die Spannungsverst"arkung sind zwar sehr genau, variieren jedoch sehr stark in Abh"angigkeit der Frequenz. Der Vergleich mit dem theoretischen Wert schlug fehl, weil dieser keinerlei Abh"angigkeit von dem Basisvorwiderstand und der Frequenz ber"ucksichtigt. Bereits auf dem Oszilloskop konnte die Verst"arkung sehr gut eingesch"atzt werden. Der Grund f"ur teilweise abgeschnittene Amplituden des Ausgangssignals liegt in der am Arbeitspunkt herrschenden Betriebsspannung von \unit{6}{\volt}. Wird diese durch die Amplitude in den negativen Bereich gebracht, flie"st kein Strom mehr durch den Transistor und das Signal wird "`abgeflacht"'.
+
+
+\end{document}

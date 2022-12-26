@@ -1,0 +1,39 @@
+name: Build
+
+on: [push, ]
+
+jobs:
+
+  build_website:
+    name:  Build the website
+    runs-on: ubuntu-latest
+    env:
+      domain: michaelgoerz.net
+      SSH_HOST: webserver.michaelgoerz.net
+      SSH_PORT: 22
+      SSH_USER: goerz
+      SSH_OWNER: goerz:www-data
+      SSH_TARGET_DIR: /
+      # Note that rrsync is set up on server, hence the SSH_TARGET_DIR /
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        name: Install Python 3.11
+        with:
+          python-version: 3.11
+      - name: Build website
+        run: make generate
+      - name: Set up deploy key
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          ssh-keyscan -H $SSH_HOST | tee ~/.ssh/known_hosts
+      - name: Set permissions
+        run: chmod -R a+rX output
+      - name: Upload
+        run: |
+          rsync -e "ssh -p $SSH_PORT" \
+          --partial --progress --recursive --verbose --compress --checksum \
+          --delete --cvs-exclude \
+          --perms --owner --group --chown=$SSH_OWNER \
+          output/ $SSH_USER@$SSH_HOST:$SSH_TARGET_DIR

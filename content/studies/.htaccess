@@ -1,0 +1,28 @@
+Options +Indexes
+Options +MultiViews
+IndexOptions +FoldersFirst
+IndexOptions +FancyIndexing +SuppressHTMLPreamble
+IndexIgnore *.html *.php Makefile
+
+AddDescription "Lab reports and presentation from advanced lab course" fp
+AddDescription "Lab report on Mie Scattering" fp/a1.pdf
+AddDescription "Lab report on Compton Effect" fp/a4.pdf
+AddDescription "Lab report on He-Ne-Laser" fp/a10.pdf
+AddDescription "Lab report on Laser Spectroscopy" fp/a12.pdf
+AddDescription "Lab report on Holography" fp/a13.pdf
+AddDescription "Lab report on LEED" fp/a5.pdf
+AddDescription "Lab report on Structural Analysis by X-Ray" fp/a6.pdf
+AddDescription "Lab report on Pulsed Nuclear Spin Resonance (NMR)" fp/a9.pdf
+AddDescription "Lab report on Scanning Tunneling Microscopy" fp/b2.pdf
+AddDescription "Lab report on Magnetic Resonance in Ruby" fp/b7.pdf
+AddDescription "Lab report on Moessbauer Effect" fp/b8.pdf
+AddDescription "Slides for presentation on Scanning Tunneling Microscopy" fp/STM_vortrag_goerz.pdf
+
+AddDescription "C programs from course in computational physics" semester06/compphys
+
+AddDescription "Material from course on Solid State Physics" semester05/fkp
+AddDescription "lecture notes" semester05/fkp/mitschrift.pdf
+AddDescription "exam" semester05/fkp/klausur.pdf
+
+AddDescription "Material from course on Atoms and Molecules" semester05/amol
+AddDescription "exam" semester05/amol/klausur.pdfapplication-illustrator.png

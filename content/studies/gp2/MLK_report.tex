@@ -1,0 +1,146 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - MLK}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Lab Report on the Millikan Experiment}
+\author{Anton Haase, Michael Goerz}
+\date{28. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: M.~Antonkin
+
+\section{Introduction}
+In the middle of the 18th century the first physicists began to examine the general structure of electricity. Most theories where based on a model with spatially continuous charges. Faraday was one of the first who discovered hints for discrete elementary charges in his experiments and years later Stoney and Helmholtz finally declared that any charge consisted of an amount of elementary charges. In the following years, scientists all over the world tried to find the exact value of this elementary charge.
+
+Millikan developed a setup which allowed him to make a mass-independent measurements of this charge.  His best result was
+\begin{equation}
+e_0 = 1,5924(17) \cdot 10^{-19} \, \text{C}.
+\end{equation}
+Later, more accurate measurements where performed. Todays literature value is
+\begin{equation}
+e_0 = 1,6021829(22) \cdot 10^{-19} \, \text{C}.
+\end{equation}
+
+Millikan's setup was based on the equilibrium of forces of small charged particles (oil bubbles in this case) in an electric field (Fig.~\ref{mlk}.)
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.4\textwidth]{mlk.EPS}
+    \caption{Millikan Setup}
+    \label{mlk}
+\end{figure}
+
+If the experiment is performed under normal conditions (e.g. in air), four major forces act on the particle. Coulomb Force and buoyancy are pushing the particle up, and gravitational force and friction are pushing it down (in case of an particle, still resulting in an upward movement).
+\begin{equation}
+F_G + F_R = F_C + F_B
+\end{equation}
+The equilibrium leads to an equation for the charge.
+\begin{equation}
+q = \frac{4 \pi r^3 (\rho_\text{Oil}-\rho_\text{Air}) g + 18 \pi \eta r v}{3 U} d
+\end{equation}
+All relevant quantities are given, or are measurable with the setup, except the radius of the particle, which has to be measured separately by observing the particle's free fall. The maximum velocity then leads to the radius.
+\begin{equation}
+r = \sqrt{\frac{9}{2} \frac{\eta v}{(\rho_\text{Oil}-\rho_\text{Air}) g}}
+\end{equation}
+Millikan's measurements lead to the result that in order to get correct values, Stoke's Formula has to be used in a more complicated form than when used to calculate the charge $q$ (Correction to Stoke's Law, Eq.~\ref{stokes}).
+\begin{equation}
+F_R = - \frac{6 \pi \eta r v}{1+A \frac{\lambda}{r}} \label{stokes}
+\end{equation}
+He developed a graphical analysis to consider this correction with the values measured, because the exact value of the constant $A$ was unknown. The corresponding equation allows to get the true value of the elementary charge from a simple extrapolation.
+\begin{equation}
+e^{2/3} = e_0^{2/3} \left(1 + A\frac{\lambda}{r}\right)
+\end{equation}
+By plotting the measured values for $e$ over $\frac{1}{r}$, the elementary charge can be read from the resulting line and its intercept point with the y-axis. However, this method is still an approximation, because the correction of Stoke's Law has to be taken into account for the radius as well.
+\section{Assignment}
+Measure the elementary charge with oil bubbles using Millikan's Setup and consider the radius-dependent correction.
+
+\clearpage
+
+\section{Analysis}
+The Millikan Experiment is a classical way to observe the discrete composition of any electric charge and to determine the elementary charge. In our setup we used small, charged oil drops between two capacitor plates. The voltage at the capacitor was between \unit{200}{\volt} and \unit{400}{\volt}. The error of the time measurement was approximately \unit{0.5}{\second}.
+
+\subsection{Calculations}
+We calculated the velocities, the radius of each drop, its charge and the contained elementary charges (by using the literature value listed in the introduction) from the measured times and the fall and rise distance according to the equations given in the introduction. The results are presented in Table~\ref{table1}. We did more than one measurement for each drop whenever possible to reduce the statistical error of our values. Incomplete data (e.g.~missing rising or falling time) was not taken into account in the calculations.
+\begin{table}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{table1_part1.epsi}
+\end{table}
+\begin{table}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{table1_part2.epsi}
+\end{table}
+\begin{table}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{table1_part3.epsi}
+    \caption{Calculation Table}
+    \label{table1}
+\end{table}
+
+In a second step, we calculated an average value for each drop and determined the elementary charge from the number $n$. The results are presented in Table~\ref{table2}.
+\begin{table}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{table2.epsi}
+    \caption{Average Values}
+    \label{table2}
+\end{table}
+
+At last we constructed a table to consider the correction of Stoke's Law. The data required for the plot is listed in Table~\ref{table3}.
+
+\begin{table}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{table3.epsi}
+    \caption{Data for the Graphical Analysis}
+    \label{table3}
+\end{table}
+\clearpage
+
+\subsection{A Qualitative View on the Results}
+The calculation in Table~\ref{table1} allows us to do a first graphical analysis of the data. The figure should show a discret distribution of the charge. During the experiment, we tried to find small drops, because these typically contain a small charge. Therefore, we expect to get higher values of $q$ for a larger radius. However, the accuracy of our experiment was very low, which led to bad results (see Fig.~\ref{qualitative}).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=-90]{plot1.epsi}
+    \caption{Charge in Dependency of the Radius}
+    \label{qualitative}
+\end{figure}
+
+Discrete levels are hard to see, because of the high variance of the values. However, the minimum seems to be around \unit{$2.4\cdot10^{-19}$}{\coulomb}. The correction of Stokes Law hasn't been considered in the calculation of the data used. Therefore, we can't determine the elementary charge directly from Fig~\ref{qualitative}.
+\clearpage
+\subsection{Quantitative Data Analysis}
+We used the values listed in Table~\ref{table3} to proceed with Millikan's graphical correction of Stoke's Law (see Fig.~\ref{correction}).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=-90]{plot2var.epsi}
+    \caption{Millikan's Graphical Correction of Stoke's Law}
+    \label{correction}
+\end{figure}
+
+The values do not really show a linear behavior as expected. However, we still used linear regression to calculate an approximate line (best fit). The worst fit was calculated from the variance of the data, whereas every point was weighted by its total error. This procedure led to the value of
+\begin{equation}
+e =(1.1 \pm 0,3)\cdot 10^{-19} \, \text{C}
+\end{equation}
+for the elementary charge. This result is compatible to the literature value of $e_0 = 1,602 \cdot 10^{-19} \, \text{C}$, but only within the high relative error of about 25\%.
+\section{Conclusion}
+The setup of the Millikan Experiment uses macroscopic elements to measure a microscopic quantity. As a logical result, the correct calibration of the used components is essential to get accurate data. Our setup didn't fulfill this condition in every respect. The capacitor has to be exactly orthogonal to the direction of the gravity force, which was not possible with the simple setup we used. Our results show a nearly chaotic distribution instead of discrete charge levels. Another reason for this lies in the different charge of the oil drops. Some of them where charged negatively and others positively. Sometimes, we observed collisions of different drops. Therefore it can't be ruled out that collisions happend we did not notice. Indications for this can be found in the first table, where, for example, one drop changed its number of elementary charges from 3 to 1. Additionally, we observed chaotic movement to the left or right and even movement both up and down during one measurement. This might be explained by the influence of other drops, which carried opposite charge and came close to the observed drops.
+
+The observation itself was difficult as well. Sometimes we lost the drop during the measurement or the large number of other drops led to confusion. Therfore it is possible that a drop we considered as one, was another one instead.
+
+The error of each data point in the final calculation of the elementary charge doesn't consider the systematical errors described above. Therefore we determined the worst fit from the variance of our values. The result was a compatible value with an error of about 25\%.
+
+Although our measurement failed to clearly show the discrete composition of the electric charge, the setup could be improved to provide better results. The orientation the capacitor could be checked with a simple mechanic's level and the observation could be improved by using cameras and a computer supported measurement system.  Another important aspect is the number of observed oil drops. We needed three hours to measure 32 drops. A setup modified as suggested might be capable to measure 3--4 times more. Millikan himself for example was already capable to observe more than 500 different drops.
+\end{document}

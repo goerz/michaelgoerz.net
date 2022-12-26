@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{german}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[qm]{mymacros_goerz}
+\usepackage[utf8]{inputenc}
+\usepackage[
+      pdftitle={Flowchart List},
+      pdfauthor={Michael Goerz},
+      colorlinks=true,
+      linkcolor=black,
+      urlcolor=black,
+      citecolor=black,
+      bookmarksopen=false,
+      breaklinks=true,
+      plainpages=false,
+      pdfpagelabels
+]{hyperref}
+
+
+
+\title{Flowchart List Demo}
+\author{Michael Goerz}
+\date{\today}
+
+\newcommand\fcInstr[1]{%
+  \begin{tikzpicture}[x=10pt, y=10pt, remember picture]%
+    \node[coordinate] (#1) at (1,0.5) {};
+    \draw (0,0) rectangle (2,1);%
+  \end{tikzpicture}%
+}
+
+\newcommand\fcLoopStart[1]{%
+  \begin{tikzpicture}[x=10pt, y=10pt, baseline, remember picture]%
+    \node[coordinate] (#1) at (1,0.5) {};%
+    \draw (0,0) -- (0,0.5) -- (0.5,1) -- (1.5,1) -- 
+          (2,0.5) -- (2,0) -- (0,0) -- cycle;
+  \end{tikzpicture}%
+}
+
+\newcommand\fcLoopEnd[1]{%
+  \begin{tikzpicture}[x=10pt, y=10pt, baseline, remember picture]%
+    \node[coordinate] (#1) at (1,0.5) {};
+    \draw (0.5,0) -- (0,0.5) -- (0.0,1) -- (2,1) -- 
+          (2,0.5) -- (1.5,0) -- (0.5,0) -- cycle;
+  \end{tikzpicture}%
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Implementation of the New Algorithm}
+
+\begin{itemize}
+%\setlength{\itemsep}{-2pt}
+  \item[\fcInstr{a}] Set $t_n$: time grid for global $[0,T]$
+  \item[\fcInstr{b}] Set $\tau_j$: time grid for short-time $[t_n,t_{n+1}]$
+  \item[\fcInstr{c}] 
+     $i\frac{\partial}{\partial\tau}\ket{\Psi^0(\tau)} 
+      = \op{H}_n\ket{\Psi^0(\tau)}$ with
+     $\ket{\Psi^0(\tau=t_n)} = \ket{\Psi(t_n)}$;\\
+     $\tau \in [t_n,t_{n+1}]$
+  \item[\fcLoopStart{d}] Solve inhomog. TDSE iteratively:
+  \item[\fcInstr{e}] Evaluate $\ket{\Phi(\tau)}$ at sampling points and
+     calculate expansion coefficients of inhomog. term by a cosine 
+     transformation
+  \item[\fcInstr{f}] Determine $\ket{\lambda_{(j)}}$ from prev. iter. and
+     $\op{F}_m \ket{\lambda^{(m)}}$ from Cheby recursion
+  \item[\fcLoopEnd{g}] Vanishing inhomog. term: 
+     $\left\|\ket{\Psi^{k-1}(t_{n-1})}-\ket{\Psi^k(t_{n+1})}\right\| < \epsilon$
+  \item[\fcInstr{h}] Evaluate $\Psi(t_{n+1}) = \ket{\Psi^k(t_{n+1})}$
+\end{itemize}
+
+% Draw lines between boxes
+\begin{tikzpicture}[remember picture, overlay]
+ \draw[->] ($(a)+(0,-5pt)$) -- ($(b)+(0,5pt)$);
+ \draw[->] ($(b)+(0,-5pt)$) -- ($(c)+(0,5pt)$);
+ \draw[->] ($(c)+(0,-5pt)$) -- ($(d)+(0,5pt)$);
+ \draw[->] ($(d)+(0,-5pt)$) -- ($(e)+(0,5pt)$);
+ \draw[->] ($(e)+(0,-5pt)$) -- ($(f)+(0,5pt)$);
+ \draw[->] ($(f)+(0,-5pt)$) -- ($(g)+(0,5pt)$);
+ \draw[->] ($(g)+(0,-5pt)$) -- ($(h)+(0,5pt)$);
+ \draw[->] ($(g)+(-10pt,0)$)-- +(-6pt, 0) |- ($(d)+(-10pt,0)$);
+\end{tikzpicture}
+
+\end{document}

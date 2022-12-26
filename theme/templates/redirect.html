@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block redirect %}<meta http-equiv="refresh" content="0; url='{{ SITEURL }}/{{ url }}'" />{% endblock %}
+{% block title %}{{ SITENAME }} — Redirect{% endblock %}
+{% block content %}
+<p>Please follow <a href="{{ SITEURL }}/{{ url }}">this link</a>.</p>
+{% endblock %}

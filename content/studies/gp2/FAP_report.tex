@@ -1,0 +1,217 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - FAP}
+\chead{}
+\rhead{Haase, Goerz}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Lab Report on the Fabry-Perot-Etalon}
+\author{Anton Haase, Michael Goerz}
+\date{4. October 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: M.~Fushitani
+
+\section{Introduction}
+\subsubsection*{Multi-Ray-Interference}
+The diffraction pattern of a single and double slit is a well-known interference phenomenon, where the double slit produces more fringes than the single slit. By increasing the number of slits (using a grid instead, for example), we get a sharper pattern with small areas of constructive interference and large areas of destructive interference. This is the result of multi-ray-interference behind a regular structure of defracting elements. Huygens Principle is a simple geometric explanation for the observation behind such a setup. The higher number of slits leads to a multiplication of the wavelength difference, so that the condition for destructive interference is reached at a lower angle difference (from the angle of the related maximum) than behind a single slit. This means that the maxima are sharper and the resolution in a spectral application is higher.
+
+\subsubsection*{Fabry-Perot-Etalon}
+The Fabry-Perot-Etalon (FBE) is a optical resonator and a realization of a multi-ray-interference device. It consists of two parallel, semipermeable mirrors with an optical medium in between. Incoming light of a certain angle is partially transmitted and reflected between the two surfaces as shown in Fig.~\ref{fab}. The resulting phase difference between two rays can be calculated with a simple geometric interpretation (vector addition).
+\begin{equation}
+\delta = \overline{AC} + \overline{CD} -\overline{AB} = 2 \, d\,  \cos(\alpha)
+\end{equation}
+The phase difference of two rays must be $\delta = n \lambda$ to get constructive interference. The values of $n$ are called the order of interference.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.2\textwidth]{etalon.eps}
+    \caption{Fabry-Perot-Etalon}
+    \label{fab}
+\end{figure}
+
+The Fabry-Perot-Etalon realizes a very high amount of interacting rays and interference orders. Therefore it is a highly accurate device, used to distinguish small wavelength differences in spectroscopy, for example (high resolution).
+
+\subsubsection*{Dispersion Range}
+The spectral range of light which can be analyzed by an optical device like the Fabry-Perot-Etalon is limited. The difference between two bordering lines can be the value of the interference order or a small wavelength difference. The interference condition for this case is:
+\begin{equation}
+(z+1) \lambda = z (\lambda + \Delta\lambda)
+\end{equation}
+From this follows the dispersion range.
+\begin{equation}
+\Delta\lambda = \frac{\lambda}{z}
+\end{equation}
+The high interference order of the FPE mentioned in the beginning, and the resulting low dispersion range, makes it a perfect device to analyze nearly monochromatic light.
+
+\subsubsection*{Fabry-Perot-Spectrometer}
+The advantages of the FBE as a spectrometer have already been explained. The spectrometer is realized with incoming divergent light and a lens to project the interference pattern on an observation plane. The image then consists of concentric circles. The interfence condition for this specific setup is
+\begin{equation}
+z = \frac{2 d}{\lambda}\left[1-\frac{r^2}{2 f^2}\right], \label{cond}
+\end{equation}
+where $f$ is the focal length of the lens, $r$ is the radius of the observed circle and $\alpha$ was set to $\alpha=\frac{r}{f}$ and $\cos(\alpha)=1-\frac{1}{2}\alpha^2$, respectively.
+
+The measurement of at least two circles would be enough to calculate the distance between the two mirrors of the etalon. The equation comes from condition (\ref{cond}) by combining it for the two values of $r$ to
+\begin{equation}
+d = i \frac{\lambda f^2}{r_i^2 + r_0^2}, \label{dist}
+\end{equation}
+where $i$ is the number of circles counted from the innermost circle ($i=0$).
+
+Additionally, we get the relative weavelength difference by measuring the radius of a certain order for two separate wavelengths:
+\begin{equation}
+\Delta\lambda \approx \frac{\lambda}{2 f^2}\left(r^2 - r'^2\right)
+\end{equation}
+The accuracy of this calculation is determined by the accuracy of the radius measurement. To use the high efficiency of the FBE, it is necessary to calibrate the device. This can be done with light of a well known wavelength. The wavelength then will be calculated directly from the interference condition.
+
+\subsubsection*{Resolution of the Fabry-Perot-Spectrometer}
+The resolution of the FPS can be calculated with the Equation of Airy. It depends on the transmission and reflection coefficient of the mirrors.
+\begin{equation}
+\frac{I}{I_0} = \left[\frac{T}{1-R}\right]^2\frac{1}{1+\frac{4 R}{(1+R)^2}\sin^2(\phi \pi)}
+\end{equation}
+From this we get the full width at half maximum.
+\begin{equation}
+2 \Delta z = \frac{1-R}{\pi \sqrt{R}}
+\end{equation}
+
+\section{Assignments}
+\begin{enumerate}
+\item Construct and adjust the setup.
+\item Calculate the distance between the two planes of the FBE using the red line (\unit{643.9}{\nano\meter}) of an cadmium lamp and determine the interference order.
+\item Calculate the wavelength of the green and darkblue line of the cadmium lamp.
+\item Give an approximate value for the width of the maxima lines of the red line and compare them to the theoretical expectation of the setup.
+\end{enumerate}
+
+
+
+\section{Analysis}
+Our measurements with the FPE where performed using a cadmium lamp as light source.
+\subsection{Plane Distance and Interference Order}
+In the first setup, we examined the red line of the spectrum (\unit{643.9}{\nano\meter}) using a red filter to have a clear image. We measured the inner and outer border of each ring to get an average value for the real radius. The error was estimated from the thickness of the circles. The results of this first calculation are presented in Table~\ref{ass1_table}.
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{ass1_table.epsi}
+    \caption{Radii of the Red Circles}
+    \label{ass1_table}
+\end{table}
+
+Our intention was to determine the distance between the two planes in the Fabry-Perot-Etalon and to calculate the interference order from this result. The graphical analysis of our data, by plotting $r_i^2-r_0^2$ over $i$, clearly demonstrates the expected linear behavior.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth,angle=-90]{ass1.ps}
+    \caption{Graphical Analysis of the Radii of the Red Circles}
+    \label{ass1}
+\end{figure}
+
+We get the distance $d$ by reading off the slope of the approximate line and using Eq.~(\ref{dist}). The result then is a distance of
+\begin{equation*}
+d = (4.1 \pm 0.2) \cdot 10^{-3} \text{ \meter}.
+\end{equation*}
+
+The relatively high error of the radii does not allow a very accurate determination of the interference order. However an approximate analysis following Eq.~\ref{cond} shows that the order difference between two neighboring radii was exactly one, as expected. The calculated value for the interference order of the ring labeled zero was
+\begin{equation*}
+z = (13000 \pm 2000)
+\end{equation*}
+
+\subsection{Analysis of the Green Line}
+After the calibration of our setup in the first assignment, we changed the color filter to analyze the interference pattern of the blue and green line of the cadmium spectra. The purpose of these measurements was to determine the wavelength of both lines. The low quality of the color filters used, resulted into two measurements for the green line, because we assumed the circles we measured with the two filters to be different, which was mistaken. This additional measurement will however be used to improve the calculated value. Table~\ref{ass2green_table} shows the data we retrieved using the green filter.
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{ass2green_table.epsi}
+    \caption{Radii of the Green Circles}
+    \label{ass2green_table}
+\end{table}
+
+Again, a graphical analysis will be useful to determine the wavelength from Eq.~(\ref{dist}). The behavior is again highly linear as Fig.~\ref{ass2green} demonstrates.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth,angle=-90]{ass2green.ps}
+    \caption{Graphical Analysis of the Radii of the Green Circles}
+    \label{ass2green}
+\end{figure}
+From the slope we get the required values to calculate the wavelength of the light observed.
+\begin{equation*}
+\lambda_\text{green} = (532 \pm 20) \cdot 10^{-9} \text{ \meter}
+\end{equation*}
+\pagebreak
+
+The results of the second measurement are presented in Table~\ref{ass2green2_table} and Fig.~\ref{ass2green2}. The value from this calculation is
+\begin{equation*}
+\lambda_\text{green 2} = (544 \pm 20) \cdot 10^{-9} \text{ \meter}
+\end{equation*}
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{ass2green2_table.epsi}
+    \caption{Radii of the Green Circles (Second Measurement)}
+    \label{ass2green2_table}
+\end{table}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth,angle=-90]{ass2green2.ps}
+    \caption{Radii Differences of the Green Circles (Second Measurement)}
+    \label{ass2green2}
+\end{figure}
+
+
+The average value for both results then is
+\begin{equation*}
+\lambda_\text{green avg.} = (538 \pm 16) \cdot 10^{-9} \text{ \meter}.
+\end{equation*}
+This data is identical to a strong green line (\unit{537.9}{\nano\meter}) in the spectrum of the cadmium lamp\footnote{Source: \emph{National Physical Laboratory} (UK)}.
+
+\clearpage
+\subsection{Analysis of the Blue Line}
+In a final measurement we improved the quality of our blue filter by putting two of them together in front of the FBE. We were now able to observe the darkblue line of the spectrum. However, the results should be analyzed critically, because the interference pattern was more blurry and hard to observe. The radii calculation is presented in Table~\ref{ass2blue_table}.
+\begin{table}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{ass2blue_table.epsi}
+    \caption{Radii of the Darkblue Circles}
+    \label{ass2blue_table}
+\end{table}
+
+Again we performed a graphical analysis to calculate the wavelength from the slope by using Eq.\ref{dist}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth,angle=-90]{ass2blue.ps}
+    \caption{Radii Differences of the Blue Circles}
+    \label{ass2blue}
+\end{figure}
+
+The resulting wavelength from this plot is
+\begin{equation*}
+\lambda_\text{darkblue} =  (473 \pm 20) \cdot 10^{-9} \text{ \meter}.
+\end{equation*}
+This value is identical to the theoretical expectation as well.
+
+\subsection{Expected and Measured Linewidth of the Red Line}
+First of all, a theoretical value for the expected linewidth is hard to calculate. The reason for this is the roughly determined interference order. However, we tried to compare our measured values to the theoretical expectation. The linewidth we measured for a certain order was different from the width of other orders of course. The most accurate value was measured for the zeroth order, because any value for higher orders would come with a very high relative error and would therefore be meaningless. The linewidth we calculated was
+\begin{equation*}
+\Delta \lambda = (1.2 \pm 0.6) \cdot 10^{-12} \text{ \meter}
+\end{equation*}
+The theoretical expectation assuming a reflectivity of 80\% is
+\begin{equation*}
+\Delta \lambda = (1.9 \pm 0.3) \cdot 10^{-12} \text{ \meter}
+\end{equation*}
+The values are compatible within error. As already mentioned, a comparison of both values can only be qualitative. The different reasons for this will be explained in the conclusion below.
+
+
+\section{Conclusion}
+The Fabry-Perot-Spectrometer turned out to be a very accurate device to analyze light, as any other optical device we used in other experiments before. The high interference order allows us to examine very small wavelength differences. However, a careful calibration of the setup is necessary to obtain good results. Obviously, we did this very successfully, because our data shows only a very small deviation from the expected linear behavior. This applies to all measurements, except for the last. However, the accuracy is influenced by the quality of observation. This means that the interference pattern has to be projected sharply into the observation plane. The focusing was very hard, because the pattern itself was not sharp at all. The result of such systematical errors would be wrong measurements of the radii. Another problem of the adjustment is to get the pattern in the center of the observation plane, which is also necessary to read off the correct radii.
+
+If non-monochromatic light is used, additional problems with inadequate color filters lead to multiple rings of nearly the same color in one interference order, so that a correct measurement cannot be guaranteed.
+
+At last, the measurement of the linewidth is very inaccurate, because of the problems mentioned before. The rings do not have a clear border and the reading error from the micrometer scale is too high. The comparison to a theoretical expectation, which comes from the Fabry-Perot-Etalon only without considering the lenses or the observer, is therefore only rough. However, in our case, they were even compatible within (high) error, which confirms our data.
+
+\end{document}

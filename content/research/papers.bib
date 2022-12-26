@@ -1,0 +1,476 @@
+% Papers published in refereed journals
+@string{JCP = {J. Chem. Phys.}}
+@string{JPB = {J. Phys. B}}
+@string{NJP = {New J. Phys.}}
+@string{PRA = {Phys. Rev. A}}
+@string{PRB = {Phys. Rev. B}}
+@string{PRL = {Phys. Rev. Lett.}}
+@string{EPJD = {European Physical Journal D }}
+@string{SR = {Sci. Rep.}}
+@string{EPJQT = {EPJ Quantum Tech.}}
+@string{NPJQI = {npj Quantum Information}}
+@string{SPP = {SciPost Phys.}}
+@string{PRAPL = {Phys. Rev. Applied}}
+@string{QST = {Quantum Sci. Technol.}}
+@string{QUANT = {Quantum}}
+
+
+@article{GoerzQ2022,
+   Author = {Goerz, Michael H. and Carrasco, Sebastián C. and Malinovsky, Vladimir S.},
+   Title = {Quantum Optimal Control via Semi-Automatic Differentiation},
+   Journal = quant,
+   Year = {2022},
+   Doi = {10.22331/q-2022-12-07-871},
+   Pages = {871},
+   Volume = {6},
+   eprint = {2205.15044},
+   github = {https://github.com/ARLQCI/2022-04_semiad_paper},
+   icon = {images/quantum.png},
+   pdf = {research/GoerzQ2022.pdf},
+   abstract  = {We develop a framework of "semi-automatic differentiation"
+       that combines existing gradient-based methods of quantum optimal control
+       with automatic differentiation. The approach allows to optimize
+       practically any computable functional and is implemented in two open
+       source Julia packages, GRAPE.jl and Krotov.jl, part of the
+       QuantumControl.jl framework. Our method is based on formally
+       rewriting the optimization functional in terms of propagated states,
+       overlaps with target states, or quantum gates. An analytical application
+       of the chain rule then allows to separate the time propagation and
+       the evaluation of the functional when calculating the gradient. The
+       former can be evaluated with great efficiency via a modified GRAPE
+       scheme. The latter is evaluated with automatic differentiation, but
+       with a profoundly reduced complexity compared to the time
+       propagation. Thus, our approach eliminates the prohibitive memory
+       and runtime overhead normally associated with automatic
+       differentiation and facilitates further advancement in quantum
+       control by enabling the direct optimization of non-analytic
+       functionals for quantum information and quantum metrology,
+       especially in open quantum systems. We illustrate and benchmark the use
+       of semi-automatic differentiation for the optimization of perfectly
+       entangling quantum gates on superconducting qubits coupled via a
+       shared transmission line. This includes the first direct
+       optimization of the non-analytic gate concurrence.}
+}
+
+
+
+@article{RaithelQST2022,
+    author = {Raithel, Georg and Duspayev, Alisher and Dash, Bineet and Carrasco, Sebastián C. and Goerz, Michael H. and Vuletić, Vladan and Malinovsky, Vladimir S.},
+    title = {Principles of tractor atom interferometry},
+    journal = qst,
+    eprint = {2207.09023},
+    year = {2022},
+    doi = {10.1088/2058-9565/ac9429},
+    pages = {014001},
+    volume = {8},
+    pdf = {research/RaithelQST2022.pdf},
+    icon = {images/qst.png},
+    abstract  = {We present possible design concepts for a tractor atom
+       interferometer (TAI) based on three-dimensional confinement and
+       transport of ultracold atoms. The confinement reduces device size
+       and wave-packet dispersion, enables arbitrary holding times, and
+       facilitates control to create complex trajectories that allow for
+       optimization to cancel unwanted sensitivity, fast splitting and
+       recombination, and suppression of detrimental nonadiabatic
+       excitation. Thus, the design allows for further advancement of
+       compact, high-sensitivity, quantum sensing technology. In
+       particular, we focus on the implementation of quantum-enhanced
+       accelerometers and gyroscopes. We discuss TAI protocols for both
+       spin-dependent and scalar trapping potentials. Using optimal control
+       theory, we demonstrate the splitting of the wave function on a time
+       scale two orders of magnitude shorter than the previous proposal
+       using adiabatic dynamics, thus maximizing the time spent at full
+       separation, where the interferometric phase is accumulated. The
+       performance estimates for TAI give a promising perspective for
+       atom-interferometry-based sensing, significantly exceeding the
+       sensitivities of current state-of-the-art devices.}
+}
+
+
+
+@article{CarrascoPRAPL2022,
+   author    = {Carrasco, Sebastián C. and Goerz, Michael H. and Li, Zeyang and Colombo, Simone and Vuletić, Vladan and Malinovsky, Vladimir S.},
+   title     = {Generating Extreme Spin Squeezing},
+   doi       = {10.1103/physrevapplied.17.064050},
+   journal  = PRAPL,
+   number   = {6},
+   pages    = {064050},
+   title    = {Extreme Spin Squeezing via Optimized One-Axis Twisting and Rotations},
+   volume   = {17},
+   year     = {2022},
+   eprint    = {2201.01744},
+   pdf       = {research/CarrascoPRAPL2022.pdf},
+   icon      = {images/prapl.png},
+   abstract  = {We propose a novel scheme for the generation of optimal
+       squeezed states for Ramsey interferometry. The scheme consists of an
+       alternating series of one-axis twisting pulses and rotations, both
+       of which are straightforward to implement experimentally. The
+       resulting states show a metrological gain proportional to the
+       Heisenberg limit. We demonstrate that the Heisenberg scaling is
+       maintained even when placing constraints on the amplitude of the
+       pulses implementing the one-axis twisting and when taking into
+       account realistic losses due to photon scattering.}
+}
+
+
+@Article{GoerzSPP2019,
+   author    =      {Michael H. Goerz and Daniel Basilewitsch and Fernando Gago-Encinas and Matthias G. Krauss and Karl P. Horn and Daniel M. Reich and Christiane P. Koch},
+   title     =      {Krotov: A Python implementation of Krotov's method for quantum optimal control},
+   journal   =      SPP,
+   eprint    =      {1902.11284},
+   doi       =      {10.21468/SciPostPhys.7.6.080},
+   pdf       =      {research/GoerzSPP2019.pdf},
+   github    =      {https://github.com/qucontrol/krotov},
+   year      =      {2019},
+   volume    =      {7},
+   pages     =      {80},
+   icon      =      {images/scipost.png},
+   abstract  =      {We present a new open-source Python package, krotov,
+       implementing the quantum optimal control method of that name. It allows
+       to determine time-dependent external fields for a wide range of
+       quantum control problems, including state-to-state transfer, quantum
+       gate implementation and optimization towards an arbitrary perfect
+       entangler. Krotov's method compares to other gradient-based
+       optimization methods such as gradient-ascent and guarantees
+       monotonic convergence for approximately time-continuous control
+       fields. The user-friendly interface allows for combination with
+       other Python packages, and thus high-level customization.}
+ }
+
+@Article{GoerzQST2018,
+   author    =      {Michael H. Goerz and Kurt Jacobs},
+   title     =      {Efficient optimization of state preparation in quantum networks using quantum trajectories},
+   journal   =      QST,
+   eprint    =      {1801.04382},
+   doi       =      {10.1088/2058-9565/aace16},
+   pdf       =      {research/Goerz_QST2018.pdf},
+   year      =      {2018},
+   volume    =      {3},
+   pages     =      {045005},
+   icon      =      {images/qst.png},
+   abstract  =      {The wavefunction Monte-Carlo method, also referred to as
+       the use of 'quantum jump trajectories', allows efficient simulation of
+           open systems by independently tracking the evolution of many
+           pure-state 'trajectories'. This method is ideally suited to
+           simulation by modern, highly parallel computers. Here we show that
+           Krotov's method of numerical optimal control, unlike others, can be
+           modified in a simple way so that it becomes fully parallel in the
+           pure states without losing its effectiveness. This provides a highly
+           efficient method for finding optimal control protocols for open
+           quantum systems and networks. We apply this method to the problem of
+           generating entangled states in a network consisting of systems
+           coupled in a unidirectional chain. We show that due to the existence
+           of a dark state subspace in the network, nearly optimal control
+           protocols can be found for this problem by using only a single
+           pure-state trajectory in the optimization, further increasing the
+           efficiency.}
+ }
+
+
+@Article{SetserPRA2018,
+   author    =      {Arman A. Setser and Michael H. Goerz and Jason P. Kestner},
+   title     =      {Local gradient optimization of modular entangling sequences},
+   journal   =      PRA,
+   eprint    =      {1804.08783},
+   doi       =      {10.1103/PhysRevA.97.062339 },
+   pdf       =      {research/Setser_PRA2018.pdf},
+   year      =      {2018},
+   volume    =      {97},
+   pages     =      {062339},
+   icon      =      {images/pra.png},
+   abstract  =      {Implementation of logical entangling gates is an important
+            step towards realizing a quantum computer. We use a gradient-based
+            optimization approach to find single-qubit rotations which can be
+            interleaved between applications of a noisy nonlocal gate to
+            dramatically suppress arbitrary logical errors, while steering the
+            evolution operator towards the perfectly entangling subset of SU(4)
+            gates. The modularity of the approach allows for application to any
+            two-qubit system, regardless of the Hamiltonian or details of the
+            experimental implementation. This approach is effective for both
+            quasistatic and time-dependent 1/fᵃ noise. We also show how the
+            fidelity of the final operation depends on both the fidelity of the
+            local rotations and the noise strength.}
+ }
+
+@Article{GoerzNPJQI2017,
+   author    =      {Michael H. Goerz and Felix Motzoi and K. Birgitta Whaley and Christiane P. Koch},
+   title     =      {Charting the circuit QED design landscape using optimal control theory},
+   journal   =      NPJQI,
+   eprint    =      {1606.08825},
+   doi       =      {10.1038/s41534-017-0036-0},
+   pdf       =      {research/Goerz_NPJQI2017.pdf},
+   year      =      {2017},
+   volume    =      {3},
+   pages     =      {37},
+   icon      =      {images/npjqi.png},
+   abstract  =      {With recent improvements in coherence times,
+                     superconducting transmon qubits have become a promising platform for
+                     quantum computing. They can be flexibly engineered over a wide range
+                     of parameters, but also require us to identify an efficient
+                     operating regime. Using state-of-the-art quantum optimal control
+                     techniques, we exhaustively explore the landscape for creation and
+                     removal of entanglement over a wide range of design parameters. We
+                     identify an optimal operating region outside of the usually
+                     considered strongly dispersive regime, where multiple sources of
+                     entanglement interfere simultaneously, which we name the
+                     quasi-dispersive straddling qutrits regime. At a chosen point in
+                     this region, a universal gate set is realized by applying microwave
+                     fields for gate durations of 50 ns, with errors approaching the
+                     limit of intrinsic transmon coherence. Our systematic quantum
+                     optimal control approach is easily adapted to explore the parameter
+                     landscape of other quantum technology platforms.}
+ }
+
+@Article{GoerzEPJQT2015,
+  author    =      {Michael H. Goerz and K. Birgitta Whaley and Christiane P. Koch},
+  title     =      {Hybrid Optimization Schemes for Quantum Control},
+  journal   =      EPJQT,
+  eprint    =      {1505.05331},
+  doi       =      {10.1140/epjqt/s40507-015-0034-0},
+  pdf       =      {research/EPJQuTech_2_21_2015.pdf},
+  year      =      {2015},
+  volume    =      {2},
+  pages     =      {21},
+  icon      =      {images/epjqt.png},
+  abstract  =      {Optimal control theory is a powerful tool for solving
+                    control problems in quantum mechanics, ranging from the control of
+                    chemical reactions to the implementation of gates in a quantum
+                    computer. Gradient-based optimization methods are able to find high
+                    fidelity controls, but require considerable numerical effort and
+                    often yield highly complex solutions. We propose here to employ a
+                    two-stage optimization scheme to significantly speed up convergence
+                    and achieve simpler controls. The control is initially parametrized
+                    using only a few free parameters, such that optimization in this
+                    pruned search space can be performed with a simplex method. The
+                    result, considered now simply as an arbitrary function on a time
+                    grid, is the starting point for further optimization with a
+                    gradient-based method that can quickly converge to high fidelities.
+                    We illustrate the success of this hybrid technique by optimizing a
+                    holonomic phasegate for two superconducting transmon qubits coupled
+                    with a shared transmission line resonator, showing that a combination
+                    of Nelder-Mead simplex and Krotov's method yields considerably better
+                    results than either one of the two methods alone.}
+}
+
+@Article{WattsPRA2015,
+  author    =      {Paul Watts and Ji\vr\'i Vala and Matthias M. M\"uller and Tommaso Calarco and K. Birgitta Whaley and Daniel M. Reich and Michael H. Goerz and Christiane P. Koch},
+  title     =      {Optimizing for an arbitrary perfect entangler: I. Functionals},
+  journal   =      PRA,
+  eprint    =      {1412.7347},
+  doi       =      {10.1103/PhysRevA.91.062306},
+  pdf       =      {research/PRA_91_062306_2015.pdf},
+  year      =      {2015},
+  volume    =      {91},
+  pages     =      {062306},
+  icon      =      {images/pra.png},
+  abstract  =      {Optimal control theory is a powerful tool for improving
+                    figures of merit in quantum information tasks. Finding the solution to
+                    any optimal control problem via numerical optimization depends
+                    crucially on the choice of the optimization functional. Here, we
+                    derive a functional that targets the full set of two-qubit perfect
+                    entanglers, gates capable of creating a maximally-entangled state out
+                    of some initial product state. The functional depends on
+                    easily-computable local invariants and uniquely determines when a
+                    gate evolves into a perfect entangler. Optimization with our
+                    functional is most useful if the two-qubit dynamics allows for the
+                    implementation of more than one perfect entangler. We discuss the
+                    reachable set of perfect entanglers for a generic Hamiltonian that
+                    corresponds to several quantum information platforms of current
+                    interest.}
+}
+
+
+@Article{GoerzPRA2015,
+  author    =      {Michael H. Goerz and Giulia Gualdi and Daniel M. Reich and Christiane P. Koch and Felix Motzoi and K. Birgitta Whaley and Ji\vr\'i Vala and Matthias M. M\"uller and Simone Montangero and Tommaso Calarco},
+  title     =      {Optimizing for an arbitrary perfect entangler. II. Application},
+  journal   =      PRA,
+  eprint    =      {1412.7350},
+  doi       =      {10.1103/PhysRevA.91.062307},
+  pdf       =      {research/PRA_91_062307_2015.pdf},
+  year      =      {2015},
+  volume    =      {91},
+  pages     =      {062307},
+  icon      =      {images/pra.png},
+  abstract  =      {The difficulty of an optimization task in quantum
+                    information science depends on the proper mathematical expression of the
+                    physical target. Here we demonstrate the power of optimization
+                    functionals targeting an arbitrary perfect two-qubit entangler,
+                    creating a maximally-entangled state out of some initial product state.
+                    For two quantum information platforms of current interest, nitrogen
+                    vacancy centers in diamond and superconducting Josephson junctions,
+                    we show that an arbitrary perfect entangler can be reached faster and
+                    with higher fidelity than specific two-qubit gates or local
+                    equivalence classes of two-qubit gates. Our results are obtained with
+                    two independent optimization approaches, underlining the crucial role
+                    of the optimization target.}
+}
+
+@Article{GoerzPRA2014,
+  author    =      {Michael H. Goerz and Eli J. Halperin and Jon M. Aytac and Christiane P. Koch and K. Birgitta Whaley},
+  title     =      {Robustness of high-fidelity Rydberg gates with single-site addressability},
+  journal   =      PRA,
+  volume    =      {90},
+  pages     =      {032329},
+  eprint    =      {1401.1858},
+  doi       =      {10.1103/PhysRevA.90.032329},
+  pdf       =      {research/Goerz_PRA2014.pdf},
+  year      =      {2014},
+  icon      =      {images/pra_suggested.png},
+  comment   =      {Editor's suggestion},
+  abstract  =      {Controlled phase (CPHASE) gates can in principle be realized with trapped
+                    neutral atoms by making use of the Rydberg blockade. Achieving the ultra-high
+                    fidelities required for quantum computation with such Rydberg gates is however
+                    compromised by experimental inaccuracies in pulse amplitudes and timings, as
+                    well as by stray fields that cause fluctuations of the Rydberg levels. We
+                    report here a comparative study of analytic and numerical pulse sequences for
+                    the Rydberg CPHASE gate that specifically examines the robustness of the gate
+                    fidelity with respect to such experimental perturbations. Analytical pulse
+                    sequences of both simultaneous and stimulated Raman adiabatic passage (STIRAP)
+                    are found to be at best moderately robust under these perturbations. In
+                    contrast, optimal control theory is seen to allow generation of numerical
+                    pulses that are inherently robust within a predefined tolerance window. The
+                    resulting numerical pulse shapes display simple modulation patterns and their
+                    spectra contain only one additional frequency beyond the basic resonant Rydberg
+                    gate frequencies. Pulses of such low complexity should be experimentally
+                    feasible, allowing gate fidelities of order 99.90 - 99.99\% to be achievable
+                    under realistic experimental conditions.},
+}
+
+
+@Article{JaegerPRA2014,
+  author    =      {Georg J\"ager and Daniel M. Reich and Michael H. Goerz and Christiane P. Koch and Ulrich Hohenester},
+  title     =      {Optimal quantum control of Bose-Einstein condensates in magnetic microtraps: Comparison of GRAPE and Krotov optimization schemes},
+  journal   =      PRA,
+  volume    =      {90},
+  pages     =      {033628},
+  year      =      {2014},
+  eprint    =      {1409.2976},
+  doi       =      {10.1103/PhysRevA.90.033628},
+  pdf       =      {research/Jaeger_PRA2014.pdf},
+  icon      =      {images/pra.png},
+  abstract  =      {We study optimal quantum control of the dynamics of trapped
+                    Bose-Einstein condensates: The targets are to split a condensate,
+                    residing initially in a single well, into a double well, without inducing
+                    excitation; and to excite a condensate from the ground to the first
+                    excited state of a single well. The condensate is described in the
+                    mean-field approximation of the Gross-Pitaevskii equation. We compare
+                    two optimization approaches in terms of their performance and ease of
+                    use, namely gradient ascent pulse engineering (GRAPE) and Krotov's
+                    method. Both approaches are derived from the variational principle
+                    but differ in the way the control is updated, additional costs are
+                    accounted for, and second order derivative information can be
+                    included. We find that GRAPE produces smoother control fields and
+                    works in a black-box manner, whereas Krotov with a suitably chosen
+                    step size parameter converges faster but can produce sharp features
+                    in the control fields.}
+}
+
+
+@Article{FuerstNJP2014,
+  author    =      {Henning A. F\"urst and Michael H. Goerz and Ulrich G. Poschinger and Michael Murphy and Simone Montangero and Tommaso Calarco and Ferdinand Schmidt-Kaler and Kilian Singer and Christiane P. Koch},
+  title     =      {Controlling the transport of an ion: Classical and quantum mechanical solutions},
+  journal   =      NJP,
+  volume    =      {16},
+  pages     =      {075007},
+  doi       =      {10.1088/1367-2630/16/7/075007},
+  pdf       =      {research/Fuerst_NJP2014.pdf},
+  eprint    =      {1312.4156},
+  year      =      {2014},
+  icon      =      {images/njp.jpg},
+  comment   =      {Special issue on coherent control of complex quantum systems},
+  abstract  =      {We investigate the performance of different control
+                    techniques for ion transport in state-of-the-art segmented miniaturized
+                    ion traps. We employ numerical optimization of classical trajectories
+                    and quantum wavepacket propagation as well as analytical solutions
+                    derived from invariant based inverse engineering and geometric
+                    optimal control. We find that accurate shuttling can be performed
+                    with operation times below the trap oscillation period. The maximum
+                    speed is limited by the maximum acceleration that can be exerted on
+                    the ion. When using controls obtained from classical dynamics for
+                    wavepacket propagation, wavepacket squeezing is the only quantum
+                    effect that comes into play for a large range of trapping parameters.
+                    We show that this can be corrected by a compensating force derived
+                    from invariant based inverse engineering, without a significant
+                    increase in the operation time.},
+}
+
+
+@Article{GoerzNJP2014,
+  author    =      {Goerz, Michael H. and Reich, Daniel M. and Koch, Christiane P.},
+  title     =      {Optimal control theory for a unitary operation under dissipative evolution},
+  journal   =      NJP,
+  volume    =      {16},
+  pages     =      {055012},
+  eprint    =      {1312.0111},
+  doi       =      {10.1088/1367-2630/16/5/055012},
+  pdf       =      {research/Goerz_NJP2014.pdf},
+  year      =      {2014},
+  icon      =      {images/njp.jpg},
+  comment   =      {Special issue on coherent control of complex quantum systems},
+  abstract  =      {We show that optimizing a quantum gate for an open quantum
+                    system requires the time evolution of only three states irrespective of
+                    the dimension of Hilbert space. This represents a significant
+                    reduction in computational resources compared to the complete basis
+                    of Liouville space that is commonly believed necessary for this task.
+                    The reduction is based on two observations: The target is not a
+                    general dynamical map but a unitary operation; and the time evolution
+                    of two properly chosen states is sufficient to distinguish any two
+                    unitaries. We illustrate gate optimization employing a reduced set of
+                    states for a controlled phasegate with trapped atoms as qubit
+                    carriers and a $\sqrt{iSWAP}$ gate with superconducting
+                    qubits.},
+}
+
+@Article{TomzaPRA12,
+ author     =       {Tomza, Michał and Goerz, Michael H. and Musiał, Monica and Moszyński, Robert and Koch, Christiane P.},
+ title      =      {Optimal production of ultracold ground-state molecules: Stabilization employing potentials with ion-pair character and strong spin-orbit coupling},
+ journal    =      PRA,
+ volume     =      {86},
+ pages      =      {043424},
+ eprint     =      {1208.4331},
+ year       =      {2012},
+ doi        =      {10.1103/PhysRevA.86.043424},
+ pdf        =      {research/Tomza_PRA2012.pdf},
+ abstract   =      {We discuss the production of ultracold molecules in their
+                    electronic ground state by photoassociation employing electronically
+                    excited states with ion-pair character and strong spin-orbit
+                    interaction. A short photoassociation laser pulse drives a
+                    non-resonant three-photon transition for alkali atoms colliding in
+                    their lowest triplet state. The excited state wave packet is
+                    transferred to the ground electronic state by a second laser pulse,
+                    driving a resonant two-photon transition. After analyzing the transition
+                    matrix elements governing the stabilization step, we discuss the
+                    efficiency of population transfer using transform-limited and linearly
+                    chirped laser pulses. Finally, we employ optimal control theory to
+                    find the most efficient stabilization pathways. We find that the
+                    stabilization efficiency can be increased by one and two orders of
+                    magnitude for linearly chirped and optimally shaped laser pulses,
+                    respectively.},
+  icon      =      {images/pra.png},
+}
+
+@Article{GoerzJPB11,
+  author    =      {Goerz, Michael H. and Calarco, Tommaso and Koch, Christiane P.},
+  title     =      {The Quantum Speed Limit of Optimal Controlled Phasegates for Trapped Neutral Atoms},
+  journal   =      JPB,
+  volume    =      {44},
+  pages     =      {154011},
+  year      =      {2011},
+  eprint    =      {1103.6050},
+  abstract  =      {We study controlled phasegates for ultracold atoms in an
+                    optical potential. A shaped laser pulse drives transitions between the
+                    ground and electronically excited states where the atoms are subject
+                    to a long-range 1/R^3 interaction. We fully account for this
+                    interaction and use optimal control theory to calculate the pulse
+                    shapes. This allows us to determine the minimum pulse duration,
+                    respectively, gate time T that is required to obtain high fidelity. We
+                    accurately analyze the speed limiting factors, and we find the gate
+                    time to be limited either by the interaction strength in the excited
+                    state or by the ground state vibrational motion in the trap. The
+                    latter needs to be resolved by the pulses in order to fully restore
+                    the motional state of the atoms at the end of the gate.},
+  pdf       =      {research/Goerz_JPB2011.pdf},
+  doi       =      {10.1088/0953-4075/44/15/154011},
+  comment   =      {Special issue on quantum control theory for coherence and information dynamics},
+  icon      =      {images/jpb.jpg},
+}

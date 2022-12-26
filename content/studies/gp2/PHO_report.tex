@@ -1,0 +1,204 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{ngerman}
+\usepackage[german]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\lhead{GP2 - PHO}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+\title{Bericht zum Versuch Photoemission}
+\author{Michael Goerz, Anton Haase}
+\date{6. Oktober 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: K.~Lenz
+
+\section{Einf"uhrung}
+  Der Photoeffekt demonstriert ma"sgeblich die Existenz von Lichtquanten. Er ist mit einem klassischen Wellenbild nicht zu erkl"aren.
+
+  Grunds"atzlich ist es so, dass Metalle, wenn sie mit Licht bestrahlt werden, Ladungen emittieren k"onnen. Experimentell ergibt sich, dass bei der Bestrahlung einer geeigneten Metallplatte mit hochfrequentem Licht durch die zugef"uhrte Energie Elektronen frei werden. Dies geschieht bis zu einer gewissen Grenze, da sich die Metallplatte w"ahrend des Prozesses positiv auf\-l"adt, und dann dem Effekt entgegenwirkt (Hallwachs-Effekt). Die Spannung, die in diesem Gleichgewichtszustand an der Platte herrscht, nennt man das Haltepotential.
+
+  Nach klassischem Bild ist die Photoemission zwar im Prinzip verst"andlich, nicht jedoch in ihren Details. Man w"urde erwarten, dass mit der Intensit"at des Lichtes die kinetische Energie der Elektronen steigt. Au"serdem m"usste der Effekt erst nach einiger Zeit auftreten, da die Energie nach klassischem Bild von der Platte absorbiert wird, und sich erst genug Energie ``ansammeln'' muss, damit die Elektronen losgel"ost werden k"onnen. Die Wellenl"ange des Lichts sollte dabei keine gro"se Rolle spielen. All dies ist jedoch nicht der Fall.
+
+  Stattdessen stellt man fest, dass die kinetische Energie der Elektronen von der Wellenl"ange abh"angt, je k"urzer diese ist, desto h"oher die Energie. Die Intensit"at des Licht ist nur daf"ur verantwortlich, \emph{wieviele} Elektronen losgel"ost werden. Der Effekt tritt auch erst aber einer gewissen Wellenl"ange auf. Zudem l"asst sich keine Verz"ogerung feststellen, die Elektronen werden sofort frei.
+
+  All dies veranlasste dazu, vom klassischen Wellenbild zur Lichtquantenhypothese "uberzugehen, die durch den Photoemissionsversuch voll best"atigt wird. In diesem neuen Bild ist das Licht gequantelt. Jedes Quant besitzt eine feste Energie, abh"angig von der Frequenz des Lichtes. Der genaue Zusammenhang ist "uber das Plancksche Wirkungsquantum:
+  \begin{equation}
+    E = h \cdot \nu
+  \end{equation}
+  Die Intensit"at des Lichts bezeichnet die Anzahl der Quanten. Beim Auftreffen auf die Metallplatte geben die Lichtquanten ihre gesamte Energie genau an ein Elektron weiter. Ist diese Energie ausreichend, das Elektron zu befreien, tritt es aus der Platte aus. "Ubersch"ussige Energie kommt ihm als kinetische Energie zugute.
+
+  Die Energie, die notwendig ist, ein Elektron aus dem Festk"orper austreten zu lassen, ist materialabh"angig. G"angigerweise liegt sie im Bereich 4-5\electronvolt. Einige Materialien haben aber auch Austrittsenergien von ca.\ 2 \electronvolt. Die Frequenzgrenze f"ur den Photoeffekt liegt in diesem Fall im sichtbaren Bereich.
+
+  Um die kinetische Energie der Elektronen zu bestimmen, wird die Metallplatte, an der der Photoeffekt auftritt, als Kathode benutzt, der eine Anode gegen"ubergestellt wird. Es kann nun eine Spannung angelegt werden, die je nach Polung entweder die emittierten Elektronen ansaugt, oder sie bremst.
+
+  Wird die Spannung nun genau so eingestellt, dass gerade keine Elektronen mehr die Anode erreichen, kann man eine Energiebilanz aufstellen, die den Zusammenhang beschreibt. Die Austrittsarbeit sei mit $W_A$ bezeichnet, dann ist die kinetische Energie, die die Elektronen besitzen, die Energie des Lichtquants $h \cdot \nu$ abz"uglich dieser Austrittsarbeit.
+  \begin{equation}
+    E_{\text{kin}} = h \cdot \nu - W_A
+  \end{equation}
+  Diese Energie ist nun im genannten Fall genau gleich der Energie, die das Elektron braucht, um die Potentialdifferenz zwischen Kathode und Anode zu "uberwinden, als $U_0 \cdot e$. Insgesamt gilt also
+  \begin{equation}
+    U_0(\nu) = \frac{h}{e} \cdot \nu - \frac{W_A}{e} \label{hgerade}
+  \end{equation}
+
+  Betrachtet man die Kennlinie $U$--$I$ der Photozelle, wird man im negativen (bremsenden) Bereich erst ab der Spannung $U_0$ einen Strom messen k"onnen (theoretisch). Praktisch wird allerdings der eigtl.\ ungew"unschte Effekt auftreten, dass Kathode und Anode sich vertauschen und der Photoeffekt Elektronen an der Anode herausl"ost, die an der Kathode empfangen werden. Ab der maximalen Bremsspannung $U_0$ ist nun allerdings der gew"unschte Photoeffekt messbar, da die Elektronen nun gegen die Bremsspannung ankommen. Der Verlauf ist nahezu linear. Dies setzt sich fort, wenn die Spannung in den positiven Bereich kommt, die Elektronen also ansaugt, bis die S"attigungsstrom erreicht ist, und keine Steigerung des Stroms mehr erreicht werden kann.
+
+
+
+
+\section{Aufgaben}
+  \begin{enumerate}
+    \item Aufbau und Justierung der Apparatur.
+    \item Messung des S"attigungsstromes und der Bremsspannung einer
+      Kalium-Photozelle in Abh"angigkeit von der Beleuchtungsst"arke f"ur
+      die 436-\nano\meter-Linie (indigo/blau) von Quecksilber.
+    \item Aufnahme der Strom-Spannungskennlinien f"ur alle Hauptlinien
+      des Queck\-silber-Spektrums. Auswertung der Kennlinien und Bestimmung
+      des Planckschen Wirkungsquantums und der Austrittsarbeit von Kalium.
+    \item Theoretische Aufgabe f"ur die Ausarbeitung: Darstellung der
+      Widerspr"uche zwischen den experimentellen Ergebnissen der
+      Photoemission und der klassischen Wellentheorie des Lichts.
+  \end{enumerate}
+
+
+
+\clearpage
+
+
+\section{Auswertung}
+
+  \subsection{Aufbau und Kalibrierung}
+    Der Versuchsaufbau war wie in Abb. \ref{aufbau} dargestellt. Die Steuerung der Intensit"at erfolgte "uber die Blende. Mithilfe der Linsen musste der Strahlengang so kalibriert werden, dass die im Prisma getrennten Spektrallinien m"oglichst scharf auf die Photozelle projiziert wurden. Die Photozelle war verschiebbar, um die verschiedenen Spektrallinien aufzunehmen.
+
+    \begin{figure}[h]
+      \centering
+      \includegraphics[width=0.8\textwidth]{aufbau.eps}
+      \caption{Versuchsaufbau}
+      \label{aufbau}
+    \end{figure}
+
+
+  \subsection{Messung von S"attigungsstrom und Bremsspannung}
+    Es wurden in Abh"angigkeit von der Intensit"at ("Offnung der Blende) der S"attigungsstrom bei $U=\unit{8.0}{\volt}$ und die Bremsspannung f"ur $I=\unit{0}{\ampere}$ an der blauen Spektrallinie $\lambda = \unit{435.8}{\nano\meter}$ gemessen.
+
+    Nach der theoretischen Erwartung sollte dabei der S"attigungsstrom linear mit der Intensit"at ansteigen, die Bremsspannung unber"uhrt bleiben.
+
+    In Abb. \ref{assg2_I} ist der S"attigungsstrom "uber die Blenden"offnung aufgetragen.
+    \begin{figure}[htp]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg2_I.ps}
+    \caption{S"attigungsstrom "uber Blenden"offnung (Intensit"at)}
+    \label{assg2_I}
+    \end{figure}
+    Man erkennt, dass der Verlauf tats"achlich sehr linear ist. Eine tiefergehende quantitative Auswertung ist nicht m"oglich.
+
+    Die Bremsspannung folgte weniger gut den theoretischen Erwartungen. Sie ist in Abb. \ref{assg2_U} dargestellt.
+    \begin{figure}[htp]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg2_U.ps}
+    \caption{Bremsspannung "uber Blenden"offnung (Intensit"at)}
+    \label{assg2_U}
+    \end{figure}
+    Die Werte zeigen zun"achst einen starken Anstieg, halten sich dann in einem recht schmalen Bereich zwischen \unit{0.25}{\milli\meter} und \unit{0.50}{\milli\meter} Blenden"offnung jedoch einigerma"sen konstant, mit sinkender Tendenz am Ende. Der Mittelwert in diesem Bereich ist \unit{3.45}{\volt}. Dies ist zudem aber ein v"ollig anderer Wert, als sp"ater bei der Bestimmung der Kennlinien gemessen wurde. Das Ergebnis ist also "au"serst kritisch zu beurteilen.
+
+    Der Fehler wurde in beiden Messungen aus der Abweichung bei einer Kontrollmessung ermittelt.
+
+  \subsection{Kennlinien f"ur alle Spektrallinien}
+    In diesem Versuchsteil wurde die Intensit"at konstant belassen (mittlere Blenden"offnung) und die Spannung variiert, um den zugeh"origen Photostrom zu ermitteln. Dies wurde f"ur alle 5 Spektrallinien durchgef"uhrt. Die theoretische Erwartung w"are, dass nach einer kurzen Anfangsphase die Kennlinie nahezu linear verl"auft, bis sie ihren S"attigungswert erreicht.
+
+    Gemessen wurde dieser Bereich des S"attigungsstroms nicht mehr, in Hinblick auf die Zielsetzung wurde vor allem Wert gelegt auf den linearen Teil, aus dem durch Extrapolation die Bremsspannung gemessen werden kann.
+
+    Die tats"achlichen Versuchsdaten folgen dieser Erwartung nur grob qualitativ. Die Kennlinien f"ur die Verschiedenen Spektrallinien sind in Abb.~\ref{assg3_vi_ge} - \ref{assg3_bg} dargestellt.
+    \begin{figure}[p]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg3_vi_ge.ps}
+    \caption{Kennlinie f"ur die violette und gelbe Spektrallinie}
+    \label{assg3_vi_ge}
+    \end{figure}
+    \begin{figure}[p]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg3_in_gg.ps}
+    \caption{Kennlinie f"ur die blaue und gelb-gr"une Spektrallinie}
+    \label{assg3_in_gg}
+    \end{figure}
+    \begin{figure}[p]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg3_bg.ps}
+    \caption{Kennlinie f"ur die blau-gr"une Spektrallinie}
+    \label{assg3_bg}
+    \end{figure}
+    Eine genauere Betrachtung zeigt, dass die Daten einige unerwartete Verhaltensweisen zeigen. Die violette und die gelbe Spektrallinie knicken beide nach einem l"angeren linearen Verlauf ab, ohne jedoch den S"attigungsstrom schon zu erreichen. Noch erstaunlicher ist, dass ein Photostrom f"ur die gelbe Spektrallinie gemessen wurde, obwohl deren Wellenl"ange oberhalb der Grenze f"ur den Effekt (\unit{551}{\nano\meter}) liegt. F"ur die blaugr"une Linie ergibt sich ein nicht sinnvoller positiver Wert f"ur die Bremsspannung. Allerdings war diese Linie auch sehr schwach ausgepr"agt, sodass St"oreinfl"usse hier besonders ins Gewicht gefallen haben d"urften.
+
+    Prinzipiell kann nun anhand von Gl. \ref{hgerade} durch die Zuordnung von Wellenl"ange bzw.\ Frequenz zu Bremsspannung das Plancksche Wirkungsquantum $h$ und die Austrittsarbeit von Kalium ermittelt werden. Dies ist betragsm"a"sig in Abb.~\ref{assg3_final} dargestellt. Die Werte f"ur die blau-gr"une und die gelbe Linie, welche offensichtlich unsinnig sind, werden dabei nicht ber"ucksichtigt. Mit nur drei verbleibenden Punkten, auf denen die Gerade basiert, ergibt sich in der linearen Regression entsprechend ein sehr gro"ser Fehler.
+
+    \begin{figure}[p]
+      \centering
+      \includegraphics[width=0.7\textwidth,angle=270]{assg3_final.ps}
+    \caption{Bremsspannung "uber Frequenz}
+    \label{assg3_final}
+    \end{figure}
+
+    Multipliziert man die Steigung mit den Literaturwert von $e = 1.602 \cdot
+    10^{-19} $, erh"alt man den experimentellen Wert f"ur $h$.
+    \begin{equation*}
+      h = (4.527 \pm 1.157) \cdot 10^{-34}\,\joule\second
+    \end{equation*}
+    Der Literaturwert ist
+    \begin{equation*}
+      h = (6.6260 \pm 0.0002) \cdot 10^{-34}\,\joule\second
+    \end{equation*}
+    Ebenso ist am y-Achsenabschnitt direkt die Austrittsarbeit in \electronvolt\ von Kalium ablesbar. Man erh"alt den Wert
+    \begin{equation*}
+      U_A = \eunit{2.10401}{0.478866}{\electronvolt}.
+    \end{equation*}
+    Der Literaturwert ist
+    \begin{equation*}
+      U_A = \unit{2.25}{\electronvolt}
+    \end{equation*}
+
+  \subsection{Widerspr"uche zur Wellentheorie}
+    Obwohl, wie schon angedeutet, die Versuchsergebnisse haupts"achlich qualitativ bewertet werden k"onnen, zeigt sich dennoch ein Widerspruch zur Wellentheorie des Lichts und eine Best"atigung der Lichtquantenhypothese. Selbst wenn man einmal davon absieht, dass nach klassischem Bild eine Welle keinen Impuls besitzt und es daher eher unklar ist, wie die Energie auf ein Elektron "ubertragen wird, belegt doch der sehr deutliche lineare Verlauf des S"attigungsstroms in Abh"angigkeit von der Intensit"at die Quantenhypothese. Nach klassischem Bild sollte es keinen direkten linearen Zusammenhang zwischen Intensit"at und der Anzahl der Elektronen geben (bestenfalls eine untergeordnete Abh"angigkeit, da klassisch die gesamte Energie nur durch die Intensit"at bereit gestellt wird).
+
+    Ebenso deutlich ist, dass die Abh"angigkeit der Bremsspannung $U_0$ von der Intensit"at definitiv \emph{nicht} linear ist, wie die Wellentheorie dies ansetzen w"urde, auch wenn es eher gewagt w"are, die experimentellen Daten als ``konstant'' zu bezeichnen.
+
+    Diese Beobachtung f"uhrt sich bei der Aufnahme der Kennlinien fort. Nach klassischer Theorie d"urfte die Frequenz keine Rolle f"ur $U_0$ spielen. Dies ist jedoch bei der Messung in aller Deutlichkeit der Fall. Die Bremsspannung folgt ungef"ahr linear der Frequenz, wie dies die Lichtquantenhypothese verlangt. Dies ist der deutlichste Widerspruch zur klassischen Theorie in diesem Experiment.
+
+    Der zeitliche Verlauf des Stroms wurde zwar nicht explizit gemessen, allerdings ist w"ahrend dem Experiment keine Verz"ogerung aufgefallen. Nach klassischem Bild h"atte es einige 10 Sekunden dauern m"ussen, bis der Photostrom eingesetzt h"atte.
+
+    Ein Aspekt, der leider nicht beobachtet werden konnte, und der ein weiterer Widerspruch zur klassischen Theorie gewesen w"are, war die Existenz einer Wellenl"angengrenze, ab der der Photoeffekt erst auftreten kann.
+
+    Insgesamt zeigt das Experiment eine Reihe von Widerspr"uchen zur klassischen Wellentheorie, die alle problemlos durch die Lichtquantenhypothese zu erkl"aren sind.
+
+
+
+\section{Zusammenfassung und Diskussion}
+  Die Ergebnisse der Messungen folgen qualitativ den Erwartungen, quantitativ sind allerdings gro"se Ungenauigkeiten festzustellen.
+
+  Die Messung des S"attigungsstroms in Abh"angigkeit von der Intensit"at war dabei noch am genausten, lie"s jedoch keine weitere quantitative Analyse zu, da kein absolutes Ma"s f"ur die Intensit"at (nur die Spaltbreite) zur Verf"ugung stand.
+
+  Die Messung der Bremsspannung erwies sich als sehr ungenau. Zwar konnte ein linearer Verlauf ausgeschlossen werden, aber die Erwartung eines konstanten Wertes wurde nur sehr d"urftig erf"ullt. F"ur kleinere Spaltbreiten scheinen zus"atzliche nicht kontrollierbare Effekte ins Spiel zu kommen, die die Bremsspannung in diesem Bereich ansteigen lassen. W"ahrend der Messung drifteten die Werte zudem recht stark. Der zu erahnende konstante Wert bei dieser Messung ist zudem nicht konsistent zu dem bei der Kennlinienmessung ermittelten Wert.
+
+  Allgemein war das Messger"at bei allen Messungen extrem st"oranf"allig. Dies "uberrascht nicht in Anbetracht der extrem kleinen Str"ome, die gemessen wurden. Schon ein N"aherkommen hatte eine merklich Auswirkung auf die Messung. Zudem konnte beobachtet werden, dass es im Verlauf der Messung zu erheblichen inneren Aufladungen in der Photozelle kam, die das Ergebnis signifikant ver"andert haben.
+  F"ur eine genauere Messung sollte auf eine deutlich bessere Abschirmung der Ger"ate geachtet werden.
+
+  M"oglicherweise hatten auch Reste von Hintergrundlicht Einfluss auf die Messung (insbesondere bei den sehr schwachen Spektrallinien)
+
+  Sehr ungenau war auch die Messung der Kennlinien. Alle bisher genannten St"oreinfl"usse waren hier merklich vertreten. Wie schon in der Auswertung beschrieben, gab es einige atypische Erscheinungen. Was die darauf basierende Ermittlung von $h$ und $W_A$ betrifft, so ist zu bemerken, dass zwei der f"unf maximal zur Verf"ugung stehenden Werte verworfen werden mussten. Ob mit nur drei verbleibenden Messwerten sinnvoll ein linearer Verlauf festgestellt werden kann, ist fraglich. Der Fehler ist dann entsprechend hoch, und dank dieser Tatsache sind die ermittelten Werte mit den Literaturwerten vertr"aglich. F"ur eine aussagekr"aftige Messung sollten deutlich mehr Spektrallinien untersucht werden.
+  Als ernsthafte Methode f"ur die Bestimmung von $h$ ist dieser Aufbau so nicht als sinnvoll anzusehen.
+
+  Alles in allem war dieses Experiment von extremen St"oreinfl"ussen gekennzeichnet, die eine quantitative Analyse sehr schwer machen. Quantitativ konnten jedoch wesentliche Voraussagen best"atigt werden.
+
+
+\end{document}

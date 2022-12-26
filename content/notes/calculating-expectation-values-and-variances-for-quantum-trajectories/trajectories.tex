@@ -1,0 +1,227 @@
+\documentclass[letter,aps,pra,onecolumn,noshowpacs,superscriptaddress,preprintnumbers, kamsmath,amssymb]{revtex4}
+
+\def\Author{Michael Goerz}
+\def\Title{Calculating Expectation Values for Quantum Trajectories}
+
+\usepackage{amssymb, amsmath, amsfonts, amsthm}
+\usepackage{braket}
+\usepackage[utf8]{inputenc}
+\usepackage{caption}
+\captionsetup{justification=raggedright, singlelinecheck=true}
+\usepackage[
+  pdftitle={\Title},
+  pdfauthor={\Author},
+  colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black,
+  bookmarksopen=false, breaklinks=true, plainpages=false, pdfpagelabels
+]{hyperref}
+
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\var}{\operatorname{var}}
+\newcommand{\Norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Abs}[1]{\left|#1\right|}
+\newcommand{\AbsSq}[1]{\left|#1\right|^2}
+\newcommand{\Avg}[1]{\langle#1\rangle}
+\renewcommand{\bra}[1]{\ensuremath{\langle #1 \vert}}  % for normal text
+\renewcommand{\ket}[1]{\ensuremath{\vert #1 \rangle}}  % for normal text
+\renewcommand{\Bra}[1]{\left\langle #1 \right\vert}
+\newcommand{\KetBra}[2]{\Ket{#1}\kern-0.1em\Bra{#2}}
+\renewcommand{\Ket}[1]{\left\vert #1 \right\rangle}
+\newcommand{\Op}[1]{\ensuremath{\mathsf{\hat{#1}}}}
+
+\newtheorem{proposition}{Proposition}
+
+\begin{document}
+
+\title{\Title}
+\author{\Author}
+\date{\today}
+
+\begin{abstract}
+  This note examines the proposition that the total expectation value of an
+  operator is the average of the expectation value of all trajectories and that
+  the total variance is the average of the variance of all trajectories.  The
+  proposition holds exactly for the expectation value. For the variance, it
+  holds only under the approximation that the expectation values in each
+  trajectory deviate only negligibly from the mean over all trajectories. An
+  exact formula for the total variance is derived.
+\end{abstract}
+
+\maketitle
+
+\section{Assumptions}
+
+\begin{enumerate}
+
+\item
+When using quantum trajectories, we generate a set of $N$
+trajectories $\Ket{\Psi_i(t)}$, $i \in [1, N]$ by evolving $\Ket{\Psi(0)}$ using
+a stochastic differential equation (an ``unravelling of the master equation'').
+The basic assumption is now that for $N \rightarrow \infty$, the system density
+matrix can be reconstructed as
+\begin{equation}
+  \Op{\rho}_N(t) = \frac{1}{N} \sum_{i=1}^N \KetBra{\Psi_i(t)}{\Psi_i(t)}
+  \label{eq:rho_N}
+\end{equation}
+In the following, we drop the argument $t$.
+
+\item
+We further assume that for an Operator $\Op{A}$, and for a Hilbert space of
+dimension $n$ with an orthonormal basis  $\{ \Ket{j} \}, j\in[1,n]$, the
+expectation value of $\Op{A}$ is calculated as
+\begin{subequations}
+\label{eq:Avg}
+\begin{equation}
+  \Avg{\Op{A}}_{\Psi} = \Braket{\Psi | \Op{A} | \Psi}
+  = \sum_{k=1}^{n} \Braket{k|\Psi}\Braket{\Psi|\Op{A}|k}
+  \label{eq:Avg_Psi}
+\end{equation}
+in Hilbert space, and as
+\begin{equation}
+  \Avg{\Op{A}}_{\rho}
+  = \tr\left[\Op{\rho} \Op{A}\right]
+  = \sum_{k=1}^{n} \Braket{k | \Op{\rho} \Op{A} | k}
+  \label{eq:Avg_rho}
+\end{equation}
+\end{subequations}
+in Liouville space.
+
+\item
+Lastly, we assume that variances are defined as
+\begin{equation}
+  \var(\Op{A})_{\Psi, \rho}
+  \equiv \Avg{\Op{A}^2}_{\Psi, \rho} - \Avg{\Op{A}}_{\Psi, \rho}^2\,.
+  \label{eq:var_definition}
+\end{equation}
+\end{enumerate}
+
+\section{Calculating Expectation Values}
+
+\begin{proposition}
+  The total expectation value of an operator $\Op{A}$ is the average of the
+  expectation values from the individual trajectories.
+  \begin{equation}
+    \Avg{\Op{A}}_{\rho_N}
+    = \frac{1}{N} \sum_{i=1}^N \Avg{\Op{A}}_i\,;
+    \qquad
+    \Avg{\Op{A}}_i \equiv \Avg{\Op{A}}_{\Psi_i}
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  By plugging Eq.~\eqref{eq:rho_N} into Eq.~\eqref{eq:Avg_rho}, we find
+  \begin{equation}
+    \begin{split}
+    \Avg{\Op{A}}_{\rho_N}
+    & = \sum_{i=1}^N \sum_{k=1}^{n} \frac{1}{N}
+         \Braket{k | \Psi_i} \Braket{\Psi_i | \Op{A} | k} \\
+    & = \frac{1}{N} \sum_{i=1}^N \Braket{\Psi_i |
+         \Op{A} \left(\,\sum_{k=1}^{n} \KetBra{k}{k}\right)
+        | \Psi_i} \\
+    & = \frac{1}{N} \sum_{i=1}^N \Braket{\Psi_i | \Op{A} | \Psi_i} \\
+    & = \frac{1}{N} \sum_{i=1}^N \Avg{\Op{A}}_i
+    \end{split}
+    \label{eq:avg_proof}
+  \end{equation}
+\end{proof}
+
+
+\section{Calculating Variances}
+
+\begin{proposition}
+  The total variance of an operator $\Op{A}$ is (approximately) the average of
+  the variance from the individual trajectories.
+  \begin{equation}
+    \var({\Op{A}})_{\rho_N}
+    \approx \frac{1}{N} \sum_{i=1}^N \var({\Op{A}})_i\,;
+    \qquad \var({\Op{A}})_i \equiv \var({\Op{A}})_{\Psi_i}\,.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  We first rewrite the right hand side using Eq.~\eqref{eq:var_definition} as
+  \begin{equation}
+    \begin{split}
+      \frac{1}{N} \sum_{i=1}^N \var({\Op{A}})_i
+      &= \frac{1}{N} \sum_{i=1}^{N} \left( \Avg{\Op{A}^2}_i
+          - \Avg{\Op{A}}_i^2 \right) \\
+      &= \frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}^2}_i
+        - \frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_i^2\,.
+      \end{split}
+      \label{eq:var_proof_rhs}
+  \end{equation}
+  For the left hand side, by using Eq.~\eqref{eq:var_definition} and
+  Eq.~\eqref{eq:avg_proof}, we find
+  \begin{equation}
+    \begin{split}
+      \var(\Op{A})_{\rho_N}
+      &= \Avg{\Op{A}^2}_{\rho_N} - \Avg{\Op{A}}_{\rho_N}^2 \\
+      &= \frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}^2}_i
+      - \left(\frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_i\right)^2\,.
+    \end{split}
+    \label{eq:var_proof_lhs}
+  \end{equation}
+  The first term in Eq.~\eqref{eq:var_proof_lhs} already matches the first term
+  in Eq.~\eqref{eq:var_proof_rhs}. For the second term, we continue
+  \begin{equation}
+    \left(\frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_i\right)^2
+    = \left(\frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_i\right)
+      \left(\frac{1}{N} \sum_{j=1}^{N} \Avg{\Op{A}}_j\right)
+    = \left(\frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_{i}\right)
+      \Avg{\Op{A}}_{\rho_N}\,.
+  \end{equation}
+  At this point, we must make the approximation $\Avg{\Op{A}}_i \approx
+  \Avg{\Op{A}}_{\rho_N}$, that is, the expectation value obtained from any
+  trajectory deviates only slightly from the average expectation value.  Under
+  that approximation, we finally find
+  \begin{equation}
+    \var({\Op{A}})_{\rho_N}
+    \approx
+      \frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}^2}_i
+        - \frac{1}{N} \sum_{i=1}^{N} \Avg{\Op{A}}_i^2
+    = \frac{1}{N} \sum_{i=1}^N \var({\Op{A}})_i\,,
+    \label{eq:var_proof}
+  \end{equation}
+  Without the approximation, Eq.~\eqref{eq:var_proof_lhs} gives the exact
+  variance.
+\end{proof}
+
+\section{Updating the mean expectation value and variance}
+
+For numerical purposes, it is important to be able to update the mean of the
+expectation value and the variance with an $N+1$'st new trajectory, without
+keeping a record of the expectation values and variances of the $N$ old
+trajectories, but only the mean values $\Avg{\Op{A}}_{\rho_N}$
+and $\var(\Op{A})_{\rho_N}$
+
+For the mean expectation value, we can write
+\begin{equation}
+  \Avg{\Op{A}}_{\rho_{N+1}}
+  = \frac{1}{N+1} \left(
+      \left(N \Avg{\Op{A}}_{\rho_{N}}\right) + \Avg{\Op{A}}_{N+1}
+    \right)\,.
+  \label{eq:avg_update}
+\end{equation}
+
+If the mean variance is given (approximately) by Eq.~\eqref{eq:var_proof}, it
+can be updated with a formula equivalent to Eq.~\eqref{eq:avg_update}. If
+instead the mean variance is calculated exactly according to
+Eq.~\eqref{eq:var_proof_lhs}, we can update it as
+\begin{equation}
+  \var(\Op{A})_{\rho_{N+1}}
+  = \frac{1}{N+1} \left(
+    N \left( \var(\Op{A})_{\rho_{N}} + \Avg{\Op{A}}_{\rho_N}^2 \right)
+    + \Avg{\Op{A}^2}_{N+1}
+  \right)
+  - \left(\frac{1}{N+1} \left(
+    N \Avg{\Op{A}}_{\rho_N}
+    + \Avg{\Op{A}}_{N+1}
+\right)\right)^2\,.
+\end{equation}
+An alternative -- and preferred -- approach would be to keep a record of both
+$\Avg{\Op{A}}_{\rho_N}$ and $\Avg{\Op{A}^2}_{\rho_N}$, and to calculate the
+variance on the fly, as
+\begin{equation}
+  \var(\Op{A})_{\rho_{N+1}}
+  = \Avg{\Op{A}^2}_{\rho_{N+1}} - \Avg{\Op{A}}_{\rho_{N+1}}^2\,.
+\end{equation}
+
+%\bibliography{refs}
+\end{document}

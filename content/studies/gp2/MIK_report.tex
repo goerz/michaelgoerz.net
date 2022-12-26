@@ -1,0 +1,161 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[english]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - MIK}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Lab Report on Microscopy}
+\author{Michael Goerz, Anton Haase}
+\date{14. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: M. Fushitani
+
+\section{Introduction}
+\subsubsection*{General Laws of Lenses}
+The laws describing microscopes or similar optical devices result from the laws of a single lens.
+Most importantly, there is a fixed relation between the focal length of the lens, $f$, the distance between the object and the lens, $a$, and the image and the lens, $a'$, and the ratio of object size and image size, $\beta$:
+\begin{equation}
+\frac{1}{a} + \frac{1}{a'}=\frac{1}{f} \label{eq1}
+\end{equation}
+\begin{equation}
+\beta = \frac{a'}{a}
+\end{equation}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7 \textwidth]{thinlens.eps}
+    \caption{a thin lense}
+    \label{thinlens}
+\end{figure}
+
+For a thin lens, as in Fig. \ref{thinlens}, $a$ and $a'$ are simply measured from the object to the lens plane and from the image to the lens plane, respectively. However, if the lens reaches a certain thickness, this model is inadequate. Instead, we have to split the lens plane into two ``main'' planes separated by a distance $i$, and measure all distances from those planes, as shown if Fig. \ref{thicklens}.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7 \textwidth]{thicklens.eps}
+    \caption{a thick lense}
+    \label{thicklens}
+\end{figure}
+
+In this case, it is difficult to measure the focal length of the lens directly, but it can be measured indirectly by Bessel's method. The distance between object and image has to be fixed ($e$) and we then move the lens into the two positions that produce a sharp image (magnified and reduced). We then know that we moved the lens $a'-a$ between those two positions. Additionally, we can measure the size of the object and the size of the image, giving us $\beta$. With these three quantities, we can calculate $f$ and $i$ according to the following formulas:
+\begin{equation}
+f=\frac{a-a'}{1/\beta - \beta} \label{eqfocal1}
+\end{equation}
+\begin{equation}
+i = e - (a+a') = e + (a-a') \frac{\beta + 1}{\beta-1} \label{eqi}
+\end{equation}
+
+\subsubsection*{Magnification in a Microscope}
+A microscope consists of two lenses, the objective lens and the ocular. The magnification, which describes the increase of the visual angle, consists of the objective's object-image-ratio and the ocular's own magnification.
+\begin{equation}
+\Gamma = \beta_{ob} \cdot \Gamma_{oc}
+\end{equation}
+
+$\beta_{ob}$ depends on the microscopes tube length, and is calculated as
+\begin{equation}
+\beta_{ob} = \frac{t}{f_{ob}}
+\end{equation}
+
+The magnification of the ocular can be determined from Eq. (\ref{eq1}). If the eye is focused on the defined distance of $a_0 = \unit{250}{\milli\meter}$, we get
+\begin{equation}
+\Gamma_{oc}(a_0) = \frac{a_0}{f_{ok}}+1 \label{eqGamma}
+\end{equation}
+If the eye is relaxed, and focuses in infinity, the addend 1 disappears.
+
+Thus, the total magnification of the microscope is
+\begin{equation}
+\Gamma_{mik}(a_0) = \beta_{ob} \cdot \Gamma_{oc}= \frac{t}{f_{ob}} \cdot \left( \frac{a_0}{f_{oc}} + 1 \right)
+\end{equation}
+
+\subsubsection*{Resolution of a Microscope}
+For determining the maximum resolution of a microscope, we can use the model from Abbe's theory, which describes the object as a grid with some grid constant $d$. If light with a wavelength of $\lambda$  is diffracted from this grid, maxima will only be visible at those angles at which the waves from different slits interfere constructively. The condition for this is
+\begin{equation}
+\frac{d \sin \alpha}{\lambda} = n; \qquad n \in \sets{Z}
+\end{equation}
+
+Obviously, maxima will only be visible if there are waves from more than one beam, which makes $n=1$ the smallest possible value. Additionally, we could use some immersion material with a diffraction index of $n$, which lets us end up with the formula for the smallest resolution
+\begin{equation}
+d_{min}=\frac{\lambda}{n \cdot \sin \epsilon} \label{eqdmin}
+\end{equation}
+$n \cdot \sin \epsilon =: A$ is also called the numerical aperture of the objective lens.
+
+
+
+
+\section{Assignments}
+\begin{enumerate}
+\item Determine the focal length of a lens according to Bessel's method
+\item Construct the optical path of a microscope. Determine the magnification for three different tube lengths and compare the results with your theoretical expectations.
+\item Calibrate an ocular micrometer. Measure the grid constant and the wire thickness of a wire square grid.
+\item Verify Abbe's Theory. Observe the microscope's limit of resolution with the wire grid. Determine the numerical aperature in that specific state and compare the resulting smallest spacing between two points with the grid constant.
+\item Calculate the smallest possible spacing between two points that can still be resolved with the strongest objective lenses (numerical aperture $1.4$ with immersion material) and the greatest meaningful magnification optical microscopes can reach.
+\end{enumerate}
+\clearpage
+
+
+\section{Analysis}
+
+\subsection{Measurement of the Lense's Focal Length}
+We made two distinct measurements in this experiment, one at the distance $e_1=\eunit{18.0}{0.3}{\centi\meter}$ between the object and the image screen and one with $e_2=\eunit{22.5}{0.3}{\centi\meter}$, and observed the distance $D$ between the two lens positions that produced a sharp image (one magnified and one demagnified). The values for $D$ were $D_1=\eunit{5.3}{0.3}{\centi\meter}$ and $D_2=\eunit{11.7}{0.3}{\centi\meter}$. From that, we can find the lense's focal length according to the formula
+\begin{equation}
+f=\frac{e^2-D^2}{4e} \label{eqfocallength}
+\end{equation}
+The average from both measurements was $f=\eunit{4.11}{0.25}{\centi\meter}$. This compares to the value of \unit{4}{\centi\meter} from the lense's label.
+
+
+\subsection{Magnification of the Microscope at Different Tube Lengths}
+The magnification of the microscope was measured for three tube lengths, \unit{15}{\centi\meter}, \unit{20}{\centi\meter}, and \unit{30}{\centi\meter}. The measured values (from directly comparing object and image size) were $\Gamma_1=23 \pm 2$, $\Gamma_2=30 \pm 2$, and $\Gamma_3=44 \pm 2$.
+
+The theoretical prediction depends on the accommodation of the eye. If the eye is accommodated to the distance $a_0 = \unit{25}{\centi\meter}$, the values according to Eq.(\ref{eqGamma}) are $\Gamma_1=27.19 \pm 1.09$, $\Gamma_2=36.25 \pm 1.37$, and $\Gamma_3=54.38 \pm 2.00$. However, if the eye is relaxed, the addend $1$ in the equation disappears, and we get $\Gamma_1=23.44 \pm 1.05$, $\Gamma_2=31.25 \pm 1.34$, and $\Gamma_3=46.88 \pm 1.95$.
+
+\subsection{Measurement of Grid Constant and Wire Thickness.}
+First, we calibrated the micrometer scale by looking at a normal millimeter scale as the object. This yielded that 1 small unit on the micrometer scale corresponded to $(1.33 \pm 0.06) \cdot 10^{-2} \milli\meter$. The grid constant and the wire thickness was now measured directly, and the average from four measurements gave the results of $g=\eunit{0.0981}{0.0080}{\milli\meter}$ and $d=\eunit{0.027}{0.007}{\milli\meter}$.
+
+\subsection{Resolution of the Microscope}
+Visibility was lost between the shutter positions \unit{0.3}{\milli\meter} and \unit{0.2}{\milli\meter}. Thus we calculate the aperture for $B=\unit{0.3}{\milli\meter}$. The focal length was taken to be \unit{4}{\centi\meter}. The formula for the aperture is as follows:
+\begin{equation}
+A=\sin\left( \arctan\left( \frac{B}{2f} \right) \right) = \frac{B}{\sqrt{4f^2+B^2}} \approx \frac{B}{2f}
+\end{equation}
+This gives $A_{min} = 3.75 \cdot 10^{-3}$. Since we do not know where exactly between the two shutter positions we lose visibility, we have to assume an error of at least 30\% for this value.
+
+With the aperture, we can also calculate the maximum resolution (i.e. the minimum resolvable distance) from Eq.(\ref{eqdmin}). Assuming the light's wavelength to be \unit{550}{\nano\meter}, we get $d_{min}=\eunit{0.147}{0.45}{\milli\meter}$
+
+\subsection{Maximum Theoretical Resolution}
+With an aperture of $1.4$, and an assumed wavelength of $\lambda = \unit{550}{\nano\meter}$, the smallest resolvable distance is $d_{min} \approx \unit{390}{\nano\meter}.$
+
+For the maximum magnification, we propose that the ocular can magnify up to 20 times (the lab manual suggests even 30), that the distance between the object and the objective lens can be as small as \unit{0.1}{\milli\meter}, and that $a'$, the distance between the objective lens and the interim image, can realistically be up to \unit{20}{\centi\meter}. With these values, a total magnification of $\Gamma=40,000$ can be achieved, magnifying $d_{min}$ to \unit{1.6}{\centi\meter}.
+
+
+
+
+\section{Conclusion}
+Even though the errors in some of the measurements were rather large, due to the experimental setup, it is remarkable that all measured values, within error, can be interpreted as identical with the expected values.
+
+In assignment 1, the distance between the lense's main points, $i$, could not be determined. Apparently, Eq. (\ref{eqfocallength}) assumes $i = 0$, so it was not possible to determine $\beta$ and thus $i$ from Eq.(\ref{eqfocal1}) and Eq. (\ref{eqi}), as we expected. Nonetheless, because our value for $f$, which must then really be $i+f$, is so close to the given focal length of \unit{4}{\centi\meter}, we can assume $i$ to be several millimeter at most.
+
+The object-image-ratio should have been measured directly. Apart from that, Bessel's method was fully verified.
+
+In assignment 2, we found that the values for the magnification were not compatible with the theoretical expectations if we assume that the eye was accommodated to $a_0$. However, the values would be identical if the eye was relaxed. We believe that this systematic error is introduced by making the observation while wearing glasses.
+
+The grid constant measured in assignment 3 was identical to the labeled value \unit{0.1}{\milli\meter}. There was no given value for the wire thickness, which could only be measured to a rather large error.
+
+Because we only had a discrete selection of shutter positions, the error for assignment 4 was extremely large. The value for $d$ within that error is identical to the the measured grid constant. Abbe's theory was verified.
+
+
+\end{document}

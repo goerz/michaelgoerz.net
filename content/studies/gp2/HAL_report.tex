@@ -1,0 +1,282 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{german}
+\usepackage[german]{mymacros_goerz}
+\usepackage{fancyhdr}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - HAL}
+\chead{}
+\rhead{Goerz, Haase}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Bericht zum Versuch Hall-Effekt}
+\author{Michael Goerz, Anton Haase}
+\date{20. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: K. Lenz
+
+\section{Einf"uhrung}
+\subsubsection*{Hall-Effekt}
+Als Hall-Effekt bezeichnet man das Auftreten einer Spannung in einem stromdurchflossenen Leiter quer zur Richtung des Stroms (Steuerstrom), wenn sich der Leiter in einem "au"seren Magnetfeld befindet. Ursache hierf"ur ist die Lorentzkraft.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7 \textwidth,angle=0]{hall.eps}
+    \caption{Der Hall-Effekt}
+    \label{hall}
+\end{figure}
+
+
+Im einfachsten Modell ist der Leiter ein Quader der L"ange $l$, der Breite $b$ und der Dicke $d$, der senkrecht von einem homogenen Magnetfeld durchsetzt wird. Auf die flie"senden Ladungen wirkt dann die Lorentzkraft
+\begin{equation}
+F_L = q \cdot v_F \cdot B
+\end{equation}
+und lenkt die Ladungen senkrecht zur Richtung des Stroms und des Magnetfelds ab. In dieser Richtung wird daher innerhalb des Leiters ein elektrisches Feld aufgebaut, das der Lorentzkraft entgegenwirkt. Im Endzustand halten sich beide Kr"afte im Gleichgewicht:
+\begin{eqnarray}
+q \cdot v_D \cdot B &=& q \cdot E\\
+E &=& \frac{U_H}{d}\\
+v_D &=& \frac{j}{n \cdot q}\\
+I &=& (b \cdot d) \cdot j\\
+\Rightarrow U_H &=& \frac{I \cdot B}{n \cdot e \cdot d} = \frac{R_H}{d} \cdot I \cdot B
+\end{eqnarray}
+$R_H$ ist dabei die materialspezifische Hall-Konstante. Die Hall-Spannung ist von der Ladungsdichte $n$ abh"angig. Je niedriger die Ladungsdichte, desto h"oher die Hall-Spannung.
+
+Am Vorzeichen der Spannung kann man erkennen, ob es sich um positive oder um negative Ladungstr"ager handelt, da beide von der Lorentzkraft in dieselbe Richtung gedr"uckt werden! Mit dem Vorzeichen der Ladung "andert sich n"amlich auch die Richtung des Steuerstroms.
+
+\subsubsection*{Hall-Effekt in Halbleitern; B"andermodell}
+N"ahert sich eine Anzahl $m$ gleicher Atome stark an (d.h. als Festk"orper), so spalten sich deren Energieniveaus in je $m$ Zust"ande auf, die im Falle des "au"sersten Energieniveaus nicht mehr den einzelnen Atomen, sondern dem Gesamtsystem zuzuordnen sind, und die sehr dicht beieinanderliegen (``B"ander''). Die B"ander k"onnen als fast kontinuierlich aufgefasst werden. Dennoch gehorchen sie dem Pauli-Prinzip, sodass sich nur eine bestimmte Anzahl von Elektronen in einem Band aufhalten kann. Zwischen den B"andern k"onnen sich sog. Bandl"ucken befinden, also Energiebereiche, die keine Zust"ande erlauben.
+
+Elektrische Leitung kann nur in solchen B"andern stattfinden, die nicht voll besetzt sind. Das oberste Band, das noch Elektronen enth"alt, wird Valenzband genannt, das n"achste dar"uberliegende ist das Leitungsband. In einem Leiter ist das Valenzband nur zum Teil gef"ullt, Valenzband und Leitungsband fallen zusammen.
+
+In einem Halbleiter (genauer: einem Eigenhalbleiter) ist das Valenzband komplett gef"ullt, allerdings ist die Bandl"ucke zwischen Valenzband und dem dar"uberliegenden leeren Leitungsband relativ klein, sodass schon durch thermische Anregung Elektronen in das Leitungsband gelangen k"onnen. Die Ladungsdichte $n$ im Leitungsband ist dabei in Abh"angigkeit von der Temperatur  und der Breite der Bandl"ucke $\Delta E$ bestimmt durch
+\begin{equation}
+n(T) \propto T^{3/2} \cdot e^{\frac{\Delta E}{2 k T}}
+\end{equation}
+wobei $k$ die Boltzmankonstante ist.
+
+Die in das Leitungsband gehobenen Elektronen hinterlassen Fehlstellen im Valenzband, die ihrerseits als positive Ladungen wirken k"onnen und sich dort frei bewegen.
+
+Bei Halbleitern, anders als bei normalen Leitern, sinkt der spezifische Widerstand mit der Temperatur, da mehr Elektronen ins Leitungsband gehoben werden, was den Effekt der gr"o"seren thermischen Schwingung der Ionen im Gitter "ubersteigt, die normalerweise den Widerstand erh"oht.
+
+Bei dotierten Halbleitern werden Fremdatome in das Gitter eingebracht, deren "au"sere Elektronen sich auf einem Energieniveau in der Bandl"ucke zwischen Valenz- und Leitungsband befinden. Diese Atome geben dann entweder ein Elektron in das Leitungsband ab (n-Dotierung), oder nehmen eins aus dem Valenzband auf (p-Dotierung). Diese "Uberg"ange finden schon bei Raumtemperatur statt. Beim Hall-Effekt ist die Spannung bei einem p-dotierten Halbleiter entgegengesetzt der Spannung bei einem n-dotierten Halbleiter, allerdings kann dies bei h"oheren Temperaturen umschwingen, da dann Elektronen auch aus dem Valenzband in das Leitungband gelangen und aufgrund ihrer h"oheren Beweglichkeit gegen"uber den Fehlstellen im Valenzband st"arker zum Effekt beitragen.
+
+
+
+
+\section{Aufgaben}
+\begin{enumerate}
+\item Beobachtung des Hall-Effektes an Germanium (n- oder p-Ge) als Funktion von Steuerstrom und Magnetfeld. Berechnung der Hall-Konstante von Germanium. Bestimmung von Art und Konzentration der Ladungstr"ager
+\item Untersuchung der Temperaturabh"angigkeit der Hall-Spannung bei Germanium und Berechnung der Bandl"ucke.
+\item Aufgabe zur gemeinsamen Durchf"uhrung: Beobachtung des Hall-Effektes bei Cu und Zn. Absch"atzung der Hall-Konstanten sowie von Art und Konzentration der Ladungstr"ager.
+\end{enumerate}
+
+
+
+
+
+\section{Auswertung}
+
+\subsection{Hall-Effekt in Abh"angigkeit von Steuerstrom und Magnetfeld}
+\subsubsection*{Korrektur der Hallspannung}
+Um auszugleichen, dass die Hallspannung nicht an zwei genau gegen"uberliegenden Punkten abgegriffen werden konnte, wurde zun"achst eine Messung ohne Magnetfeld durchgef"uhrt. Die dabei gemessenen Werte sind in Abb. \ref{correctplot} aufgetragen.
+
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{correct.ps}
+         \caption{Messung der Hallspannung ohne Magnetfeld zur Korrektur}
+       \label{correctplot}
+\end{figure}
+
+An dieser Stelle kann man sich nocheinmal anhand der genauen Verdrahtung und mithilfe der rechten-Hand-Regel vergewissern, dass die Hallspannung mit dem korrekten Vorzeichen gemessen wird, ein positiver Wert also Ladungstransport durch negative Teilchen, ein negativer Wert Ladungstransport durch positive Teilchen bedeutet.
+
+Der Fehler ist dabei vernachl"assigbar klein (in der 4. Nachkommastelle der Steigung). Durch lineare Regression konnte also der Korrekturterm \begin{equation}
+k(U_H) = -1.221 \cdot U_H \label{cor}
+\end{equation}
+bestimmt werden. Er muss von jeder sp"ateren Messung abgezogen werden, um die tats"achliche Hallspannung zu erhalten.
+
+\subsubsection*{Umrechnung der Magnetfeldspannung ins Magnetfeld}
+F"ur die Erzeugung des Magnetfelds lag die in Abb. \ref{magcalibrate} dargestellte Kalibrierungskurve vor.
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{magcalibrat.ps}
+         \caption{Kalibrierungskurve von Magnetfeldstrom zu Magnetfeld}
+       \label{magcalibrate}
+\end{figure}
+Der funktionale Zusammenhang kann bestimmt werden als \begin{equation}
+B(I_B) = (136.62 \pm 2.92)\cdot I_B \; \frac{\milli\tesla}{\ampere} \label{cal}
+\end{equation}
+
+
+\subsubsection*{Messung von $U_H$ bei konstantem Steuerstrom}
+Um eine graphische Auswertung f"ur $R_H$ gem"a"s der Formel \begin{equation}
+U_H = R_H \cdot \left( \frac{I}{d}{B}\right) \end{equation} vornehmen zu k"onnen, muss das Magnetfeld anhand der Kalibrierungsformel Gl. (\ref{cal}) berechnet werden und selbstverst"andlich die Hallspannung mit Gl. (\ref{cor}) korrigiert werden. F"ur den Fehler der Hallspannung ist der Ger"atefehler bei der Messung des konstanten Steuerstroms ma"sgeblich (1\% + 1 Digit). Die berechneten Werte sind in der Tabelle in Abb. \ref{table1a} widergegeben.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=0]{table1a.ps}
+\caption{Werte zur Bestimmung der Hall-Konstanten (Aufg. 1a)}
+\label{table1a}
+\end{figure}
+F"ur die graphische Auswertung war zu ber"ucksichtigen, dass sowohl x- als auch y-Werte signifikante Fehler haben. Um dies sinnvoll auszuwerten, wurde der x-Fehler auf den y-Fehler umgerechnet, indem zu diesem das Produkt aus x-Fehler und Steigung der Ausgleichsgeraden addiert wurde. Der Plot ist in Abb. \ref{plot1a} zu sehen.
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{assg1a.ps}
+         \caption{Bestimmung der Hall-Konstanten (Aufg. 1a)}
+       \label{plot1a}
+\end{figure}
+Die Hall-Konstante f"ur Germanium kann hieraus mittels linearer Regression direkt ermittelt werden, man erh"alt $R_H = (0.00713 \pm 0.00010) \, \frac{\meter^3}{\ampere \second}$
+
+Aus der Tatsache, dass die gemessene Hallspannung nach Korrektur positiv war, l"asst sich schlie"sen, dass der Ladungstransport durch Elektronen erfolgt. Dies ist in "Ubereinstimmung damit, dass die Probe als n-dotiert gekennzeichnet war.
+
+Weiterhin l"asst sich die Konzentration der Ladungstr"ager in Form der Ladungsdichte $n$ bestimmen. Dies kann gem"a"s der Formel
+\begin{equation}
+B = n \cdot \left( \frac{e \cdot d \cdot U_H}{I} \right)
+\end{equation}
+graphisch erfolgen. Wiederum wird der Fehler des x-Wertes auf den Fehler des y-Wertes "ubertragen. Die berechneten Daten sind in Abb. \ref{table1a_n} dargestellt, der Plot in Abb. \ref{plot1a_n}.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=0]{table1a_n.ps}
+\caption{Werte zur Bestimmung der Ladungsdichte (Aufg. 1a)}
+\label{table1a_n}
+\end{figure}
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{assg1a_n.ps}
+         \caption{Bestimmung der Ladungsdichte (Aufg. 1a)}
+       \label{plot1a_n}
+\end{figure}
+Der daraus ermittelbare Wert ist $n = (8.77 \pm 0.13) \cdot 10^{20}\; \meter^{-3}$.
+
+\subsubsection*{Messung von $U_H$ bei konstantem Magnetfeld}
+Bei dieser Messung wurde das Magnetfeld konstant gehalten und der Steuerstrom variiert. Der Strom konnte direkt abgelesen werden, die Hallspannung musste wie zuvor korrigiert werden. F"ur den Fehler des Steuerstroms war der Ger"atefehler ma"sgeblich, f"ur die Hallspannung die gesch"atzte Schwankung. Der Fehler des x-Wertes wurde wiederum auf den Fehler des y-Wertes "ubertragen. Die Daten sind in Abb. \ref{table1b}, der Plot in Abb. \ref{plot1b} zu sehen. Der ermittelte Wert f"ur $R_H$ war $R_H = (0.00711 \pm 0.00009) \, \frac{\meter^3}{\ampere \second}$
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=0]{table1b.ps}
+\caption{Werte zur Bestimmung der Hall-Konstanten (Aufg. 1b)}
+\label{table1b}
+\end{figure}
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{assg1b.ps}
+         \caption{Bestimmung der Hall-Konstanten (Aufg. 1b)}
+       \label{plot1b}
+\end{figure}
+
+Wie zuvor kann auch die Ladungsdichte ermittelt werden, gem"a"s
+\begin{equation}
+I = n \cdot \left( \frac{e \cdot d \cdot U_H}{B} \right)
+\end{equation}
+Die Daten sind in Abb. \ref{table1b_n}, der Plot in Abb. \ref{plot1b_n}.
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.7\textwidth,angle=0]{table1b_n.ps}
+\caption{Werte zur Bestimmung der Ladungsdichte (Aufg. 1b)}
+\label{table1b_n}
+\end{figure}
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{assg1b_n.ps}
+         \caption{Bestimmung der Ladungsdichte (Aufg. 1b)}
+       \label{plot1b_n}
+\end{figure}
+Der daraus ermittelter Wert ist $n = (8.78 \pm 0.12) \cdot 10^{20}\; \meter^{-3}$.
+
+
+
+\subsection{Hall-Effekt in Abh"angigkeit von der Temperatur}
+In dieser Aufgabe wurden sowohl Steuerstrom als auch Magnetfeld konstant eingestellt. Das Germanium wurde dann mit einer Heizspannung aufgew"armt und w"ahrend des Abk"uhlens wurde die Hallspannung in regelm"a"sigen Abst"anden gemessen. So konnte der Zusammenhang zwischen Temperatur und Hallspannung gemessen werden.
+
+"Uberraschenderweise folgen die Daten nicht im geringsten der theoretischen Erwartung. Im Bereich hoher Temperaturen, der eigentlich f"ur die Messung als relevant angesehen werden sollte, sank die Hallspannung mit sinkender Temperatur, anstatt zu steigen. Im Bereich der niedrigeren Temperaturen stieg sie wieder, aber auch hier nicht einem exponentiellen Gesetz folgend. Es ist daher nicht m"oglich, die Bandl"ucke aus dem Verlauf der Werte zu ermitteln. Auch aus den einzelnen Messwerten ergibt sich kein sinnvoller Wert f"ur die Bandl"ucke.
+
+Der Verlauf der Hallspannung in Abh"angigkeit von der Temperatur ist in Abb. \ref{plot2} dargestellt.
+\begin{figure}[p]
+    \centering
+         \includegraphics[width=0.7\textwidth,angle=270]{assg2.ps}
+         \caption{Hallspannung in Abh"angigkeit von der Temperatur (Aufg. 2)}
+       \label{plot2}
+\end{figure}
+
+Es seien hier noch, in Abb. \ref{table2}, ohne Fehler die zugeh"origen Werte aufgelistet, zusammen mit einer Berechnung der Bandl"ucke gem"a"s der Formel
+\begin{equation}
+\Delta E = \ln \left( \frac{I \cdot B}{e \cdot d \cdot U_H \cdot T^{3/2}} \right) \cdot 2kT
+\end{equation}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=0.3\textwidth,angle=0]{table2.ps}
+\caption{Zusammenhang zwischen Hallspannung und Temperatur, Bandl"ucke (Aufg. 2)}
+\label{table2}
+\end{figure}
+
+
+\subsection{Qualitative Betrachtung einer Zn- und einer Cu-Probe}
+Zur groben qualitativen Absch"atzung seien die folgenden Berechnungen ohne Beachtung der Fehler durchgef"uhrt.
+
+\subsubsection*{Betrachtung der Zn-Probe}
+Zur Korrektur der Hallspannung kann $0.01 \milli\volt$ addiert werden, was der Anzeige des Messger"ats bei ausgeschaltetem Strom entspricht, also einem Mindestwert. Durch Umrechnung auf den Steuerstrom mithilfe des Messwiderstands und mit der Formel f"ur die Ladungskonzentration
+\begin{equation}
+n=\frac{I \cdot B}{e \cdot d \cdot U_H}
+\end{equation}
+erh"alt man die folgenden grob gerundeten Werte:
+\begin{center}
+% use packages: array
+\begin{tabular}{|l|l|l|l|}
+\hline
+$I / \ampere$ & $U_H / \milli\volt$ & $R_H / \frac{\meter^3}{\ampere \second}$ & $n / \meter^{-3}$ \\
+\hline
+$3.53$ & $0.0015$ & $1 \cdot 10^{-11}$ & $1.38 \cdot 10^{29}$ \\
+$4.72$ & $0.0025$ & $3 \cdot 10^{-11}$ & $1.12 \cdot 10^{29}$ \\
+$9.77$ & $0.0039$ & $3 \cdot 10^{-11}$ & $1.48 \cdot 10^{29}$ \\
+$14.38$ & $0.0066$ & $3 \cdot 10^{-11}$ & $1.29 \cdot 10^{29}$ \\
+$18.77$ & $0.0116$ & $5 \cdot 10^{-11}$ & $0.96 \cdot 10^{29}$\\
+\hline
+\end{tabular}
+\end{center}
+
+Die Hallkonstante befindet sich also in der Gr"o"senordnung um $5 \cdot 10^{-11} \; \frac{\meter^3}{\ampere \second}$. Die Ladungskonzentration liegt in der Gr"o"senordnung um $1 \cdot 10^{29} \; \meter^{-3}$.
+
+Die positiven Werte f"ur die Hall-Spannung deuten darauf hin, das die Probe elektronenleitend ist (was nicht stimmt, siehe Diskussion).
+
+\subsubsection*{Betrachtung der Cu-Probe}
+Die Korrektur der Hallspannung kann hier sinnvoll so gew"ahlt werden, dass der erste Wert bei $U_H = 0$ liegt. Man erh"alt dann analog zum Zn die folgende Tabelle
+\begin{center}
+% use packages: array
+\begin{tabular}{|l|l|l|l|}
+\hline
+$I / \ampere$ & $U_H / \milli\volt$ & $R_H / \frac{\meter^3}{\ampere \second}$ & $n / \meter^{-3}$ \\
+\hline
+$3.53$ & $0.0000$ & / & / \\
+$4.80$ & $-0.0006$ & $-1 \cdot 10^{-11}$ & $-5 \cdot 10^{29}$ \\
+$9.77$ & $-0.0025$ & $-3 \cdot 10^{-11}$ & $-2 \cdot 10^{29}$ \\
+$14.53$ & $-0.0036$ & $-3 \cdot 10^{-11}$ & $-2 \cdot 10^{29}$ \\
+$19.02$ & $-0.0051$ & $-3 \cdot 10^{-11}$ & $-2 \cdot 10^{29}$\\
+\hline
+\end{tabular}
+\end{center}
+
+Die Hallkonstante befindet sich also ebenfalls in der Gr"o"senordnung um $3 \cdot 10^{-11} \; \frac{\meter^3}{\ampere \second}$ und die Ladungskonzentration in der Gr"o"senordnung um $2 \cdot 10^{29} \; \meter^{-3}$.
+
+Die Werte f"ur die Hallspannung sind hier negativ, was darauf hindeutet, dass das Kupfer fehlstellenleitend ist (siehe Diskussion).
+
+Zus"atzlich wurde noch eine Messung mit der beheizten Kupfer-Probe gemacht. Dabei ergab sich, dass der Betrag der Hallspannung bei maximaler Beheizung um mehr als eine Gr"o"senordnung gr"o"ser war als bei der unbeheizten Probe und mit dem Abk"uhlen aber weiter stieg.
+
+
+\section{Zusammenfassung und Diskussion}
+Die Messung der Hall-Spannung in Abh"angigkeit von Steuerstrom und Magnetfeld lie"s sich mit relativ gro"ser Genauigkeit durchf"uhren. Schon die Messung des Korrekturwerts f"ur $U_H$ war sehr genau m"oglich. Die Fehlerbehandlung im weiteren Verlauf w"are in vollster Genauigkeit "au"serst komplex, da immer x- und y-Werte fehlerbehaftet waren. Es musste hier teilweise mit einer Sch"atzmethode gearbeitet werden. Mit die gr"o"ste Fehlerquelle war der Ger"atefehler der Multimeter. Leider standen f"ur die ermittelten Werte keine Vergleichswerte zur Verf"ugung, allerdings kann angesichts der hohen Konsistenz beider Messungen von einem guten und genauen Ergebnis ausgegangen werden, vorausgesetzt, es sind keine schwerwiegenden systematischen Fehler unterlaufen. Die Messung f"ur Aufgabe 1 d"urfte insgesamt also als erfolgreich angesehen werden.
+
+Im Gegensatz dazu konnte bei der Messung der Temperaturabh"angigkeit keinerlei "Ubereinstimmung mit der Theorie ermittelt werden. Die Ursache hierf"ur ist unklar. M"oglicherweise gab es Fehler im Versuchsaufbau oder in den Ger"aten. Der ermittelte Wert f"ur die Bandl"ucke erscheint zu gro"s und kann nicht f"ur sinnvoll erachtet werden.
+
+Bei der Betrachtung von Zn- und Cu-Proben konnten qualitative Aussagen in Bezug auf die Gr"o"senordnung von Hallkonstante und Ladungsdichte sowie die Dotierung erreicht werden. Eine Fehleranalyse war hier nicht sinnvoll, die genauen Zahlenwerte d"urften kaum als aussagekr"aftig gelten. Etwas schwierig war eine sinnvolle Korrektur der Werte f"ur die Hallspannung. Die Messung der beheizten Probe "uberraschte wieder mit unerwarteten Ergebnissen. Ausserdem war das Vorzeichen genau entgegengesetzt der Erwartung. Kupfer ist ein Elektronenleiter, Zink ein Fehlstellenleiter! M"oglicherweise wurden bei der Messung unbeabsichtigt die Anschl"usse vertauscht. Alles in allem d"urfte jedoch auch dieser Versuchsteil als erfolgreich angesehen werden.
+
+
+\end{document}

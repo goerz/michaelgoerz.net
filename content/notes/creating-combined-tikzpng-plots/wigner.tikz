@@ -1,0 +1,104 @@
+\begin{tikzpicture}[gnuplot]
+%% generated with GNUPLOT 4.2p5  (Lua 5.1.4; terminal rev. 81, script rev. 88)
+%% Sat Jan 23 21:57:29 2010
+\tikzstyle{every node}+=[font= \tiny ]
+\color{gp_lt_color_b}
+\node[gp node right] at (7.147,6.162) {"wig" u 1:2:3};
+\node[anchor=north west,inner sep=0pt,outer sep=0pt] at (1.663,6.198)
+  {\includegraphics[width=5.943cm,height=4.456cm]{wigner.png}};
+\gpsetlinetype{gp_lt_border}
+\gpsetlinewidth{1.00}
+\draw[gp path] (1.663,6.198)--(1.663,1.742)--(7.606,1.742)--(7.606,6.198)--cycle;
+\draw[gp path] (1.664,1.744)--(1.664,2.038);
+\node[gp node center] at (1.664,1.239) { 0};
+\draw[gp path] (1.664,6.198)--(1.664,5.903);
+\draw[gp path] (2.513,1.744)--(2.513,2.038);
+\node[gp node center] at (2.513,1.239) { 200};
+\draw[gp path] (2.513,6.198)--(2.513,5.903);
+\draw[gp path] (3.363,1.744)--(3.363,2.038);
+\node[gp node center] at (3.363,1.239) { 400};
+\draw[gp path] (3.363,6.198)--(3.363,5.903);
+\draw[gp path] (4.211,1.744)--(4.211,2.038);
+\node[gp node center] at (4.211,1.239) { 600};
+\draw[gp path] (4.211,6.198)--(4.211,5.903);
+\draw[gp path] (5.059,1.744)--(5.059,2.038);
+\node[gp node center] at (5.059,1.239) { 800};
+\draw[gp path] (5.059,6.198)--(5.059,5.903);
+\draw[gp path] (5.907,1.744)--(5.907,2.038);
+\node[gp node center] at (5.907,1.239) { 1000};
+\draw[gp path] (5.907,6.198)--(5.907,5.903);
+\draw[gp path] (6.757,1.744)--(6.757,2.038);
+\node[gp node center] at (6.757,1.239) { 1200};
+\draw[gp path] (6.757,6.198)--(6.757,5.903);
+\draw[gp path] (7.606,1.744)--(7.606,2.038);
+\node[gp node center] at (7.606,1.239) { 1400};
+\draw[gp path] (7.606,6.198)--(7.606,5.903);
+\draw[gp path] (1.664,1.744)--(1.935,1.744);
+\node[gp node right] at (1.387,1.744) { 20500};
+\draw[gp path] (7.606,1.744)--(7.335,1.744);
+\draw[gp path] (1.664,2.189)--(1.935,2.189);
+\node[gp node right] at (1.387,2.189) { 21000};
+\draw[gp path] (7.606,2.189)--(7.335,2.189);
+\draw[gp path] (1.664,2.635)--(1.935,2.635);
+\node[gp node right] at (1.387,2.635) { 21500};
+\draw[gp path] (7.606,2.635)--(7.335,2.635);
+\draw[gp path] (1.664,3.081)--(1.935,3.081);
+\node[gp node right] at (1.387,3.081) { 22000};
+\draw[gp path] (7.606,3.081)--(7.335,3.081);
+\draw[gp path] (1.664,3.526)--(1.935,3.526);
+\node[gp node right] at (1.387,3.526) { 22500};
+\draw[gp path] (7.606,3.526)--(7.335,3.526);
+\draw[gp path] (1.664,3.971)--(1.935,3.971);
+\node[gp node right] at (1.387,3.971) { 23000};
+\draw[gp path] (7.606,3.971)--(7.335,3.971);
+\draw[gp path] (1.664,4.415)--(1.935,4.415);
+\node[gp node right] at (1.387,4.415) { 23500};
+\draw[gp path] (7.606,4.415)--(7.335,4.415);
+\draw[gp path] (1.664,4.861)--(1.935,4.861);
+\node[gp node right] at (1.387,4.861) { 24000};
+\draw[gp path] (7.606,4.861)--(7.335,4.861);
+\draw[gp path] (1.664,5.306)--(1.935,5.306);
+\node[gp node right] at (1.387,5.306) { 24500};
+\draw[gp path] (7.606,5.306)--(7.335,5.306);
+\draw[gp path] (1.664,5.752)--(1.935,5.752);
+\node[gp node right] at (1.387,5.752) { 25000};
+\draw[gp path] (7.606,5.752)--(7.335,5.752);
+\draw[gp path] (1.664,6.198)--(1.935,6.198);
+\node[gp node right] at (1.387,6.198) { 25500};
+\draw[gp path] (7.606,6.198)--(7.335,6.198);
+\draw[gp path] (1.663,6.198)--(1.663,1.742)--(7.606,1.742)--(7.606,6.198)--cycle;
+\shade[bottom color=\gprgb{0}{0}{1000},top color=\gprgb{1000}{1000}{1000}] (7.754,1.742) rectangle (8.051,4.005);
+\shade[bottom color=\gprgb{1000}{1000}{1000}, top color=\gprgb{1000}{16}{16}] (7.754,3.969) rectangle (8.051,6.198);
+\draw[gp path] (7.754,1.742)--(8.051,1.742)--(8.051,6.198)--(7.754,6.198)--cycle;
+\draw[gp path] (8.051,1.742)--(7.842,1.742);
+\node[gp node left] at (8.264,1.742) {-0.0015};
+\draw[gp path] (7.754,1.742)--(7.963,1.742);
+\draw[gp path] (8.051,2.484)--(7.842,2.484);
+\node[gp node left] at (8.264,2.484) {-0.001};
+\draw[gp path] (7.754,2.484)--(7.963,2.484);
+\draw[gp path] (8.051,3.227)--(7.842,3.227);
+\node[gp node left] at (8.264,3.227) {-0.0005};
+\draw[gp path] (7.754,3.227)--(7.963,3.227);
+\draw[gp path] (8.051,3.969)--(7.842,3.969);
+\node[gp node left] at (8.264,3.969) { 0};
+\draw[gp path] (7.754,3.969)--(7.963,3.969);
+\draw[gp path] (8.051,4.712)--(7.842,4.712);
+\node[gp node left] at (8.264,4.712) { 0.0005};
+\draw[gp path] (7.754,4.712)--(7.963,4.712);
+\draw[gp path] (8.051,5.455)--(7.842,5.455);
+\node[gp node left] at (8.264,5.455) { 0.001};
+\draw[gp path] (7.754,5.455)--(7.963,5.455);
+\draw[gp path] (8.051,6.198)--(7.842,6.198);
+\node[gp node left] at (8.264,6.198) { 0.0015};
+%% coordinates of the plot area
+\coordinate (gpbb south west 1) at (0.635,0.971);
+\coordinate (gpbb south east 1) at (8.635,0.971);
+\coordinate (gpbb north east 1) at (8.635,6.971);
+\coordinate (gpbb north west 1) at (0.635,6.971);
+\coordinate (gpbb north 1) at (4.635,6.971);
+\coordinate (gpbb south 1) at (4.635,0.971);
+\coordinate (gpbb west 1) at (0.635,3.971);
+\coordinate (gpbb east 1) at (8.635,3.971);
+\draw[gp path] (7.754,6.198)--(7.963,6.198);
+\end{tikzpicture}
+%% gnuplot variables

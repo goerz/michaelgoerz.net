@@ -1,0 +1,344 @@
+\documentclass[a4paper]{article}
+\usepackage{german, graphicx, epsfig, subfigure}
+\setlength{\parindent}{0em}
+\setlength{\topmargin}{0in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+%\setlength{\textwidth}{6.0in}
+\setlength{\textheight}{9.5in}
+\setlength{\unitlength}{2.3cm}
+\usepackage[german]{mymacros_goerz}
+\usepackage[bookmarks=true,colorlinks=true]{hyperref}
+
+\title{Zusammenfassung Vektorrechnung und Komplexe Zahlen}
+\author{Michael Goerz}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vektoren, Geraden und Ebenen}
+
+\subsection{L"ange eines Vektors}
+Die L"ange eines Vektors ist die Wurzel aus der Summe der Quadrate seiner Koordinaten.
+$$\vec{a} = \vecttt{a_1}{a_2}{a_3} \;\Leftrightarrow\; \vert \vec{a} \vert = \sqrt{a_1^2 + a_2^2 + a_3^2}$$
+Bsp.:
+$$\vec{a} = \vecttt{3}{-4}{7} \;\Leftrightarrow\; \vert \vec{a} \vert = \sqrt{(3)^2 + (-4)^2 + (7)^2} = \sqrt{74} = 8.607$$
+\paragraph{Einheitsvektor:}
+Ein Einheitsvektor ist ein Vektor der L"ange 1.
+$$a_0 = \frac{1}{|\vec{a}|} \cdot \vec{a}$$
+Bsp.:
+$$a_0 = \frac{1}{\sqrt{74}} \cdot \vecttt{3}{-4}{7} = \frac{\sqrt{74}}{74} \cdot \vecttt{3}{-4}{7}$$
+
+\subsection{Skalarprodukt}
+$$\vec{a} = \vecttt{a_1}{a_2}{a_3}, \qquad \vec{b} = \vecttt{b_1}{b_2}{b_3}$$
+$$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3$$
+Bsp.:
+$$\vec{a} = \vecttt{-3}{7}{-5}, \qquad \vec{b} = \vecttt{-7}{2}{1}$$
+$$\vec{a} \cdot \vec{b} = (-3)(-7) + 7 \cdot 2 + (-5) \cdot 1 = 30$$
+\paragraph{Winkel zwischen zwei Vekoren}
+\begin{eqnarray*}
+\cos{\alpha} &=& \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}\\
+             &=& \frac{a_1b_1 + a_2b_2 + a_3b_3}{\sqrt{a_1^2 + a_2^2 + a_3^2}\cdot\sqrt{b_1^2 + b_2^2 + b_3^2}}
+\end{eqnarray*}
+Bsp.:
+\begin{eqnarray*}
+\cos{\alpha} &=& \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|} \\
+             &=& \frac{(-3)(-7) + 7 \cdot 2 + (-5) \cdot 1}{\sqrt{(-3)^2 + (7)^2 + (-5)^2}\cdot\sqrt{(7)^2 + (2)^2 +(1)^2}}\\
+ \;\Rightarrow\; \alpha &=& 63.38\degree
+\end{eqnarray*}
+
+\subsection{Darstellungen der Ebene}
+\subsubsection{Normalenform der Ebene}
+Die Normalenform einer Ebene lautet: $E: \; \left[ \vec{x} - \vec{p} \right] \cdot \vec{n} = 0$.
+\paragraph{Normalenform aus Parametergleichung}
+\begin{itemize}
+\item Bestimmung des Normalenvektors $\vec{n}$.
+\item Aufstellung der Normalenform.
+\end{itemize}
+\begin{eqnarray*}
+E:\; \vec{x} &=& \vec{p} + r\cdot\vec{u} + s\cdot\vec{v}
+\end{eqnarray*}
+\begin{eqnarray*}
+\text{I) }\vec{u} \cdot \vec{n} = 0\\
+\text{II) }\vec{v} \cdot \vec{n} = 0\\
+\end{eqnarray*}
+
+
+
+Bsp.:
+\begin{eqnarray*}
+E:\; \vec{x} &=& \vecttt{2}{4}{3} + r\cdot\vecttt{1}{1}{1} + s\cdot\vecttt{2}{-1}{4}
+\end{eqnarray*}
+\begin{eqnarray*}
+\text{I) } n_1 + n_2 +n_3 = 0\\
+\text{II) } 2n_1 - n_2 + 4n_3 = 0
+\end{eqnarray*}
+\begin{eqnarray*}
+\dots\\
+n_2 &=& \frac{2}{3} \; n_3, \quad n_3 \text{ sei gleich 3 } \\
+\Rightarrow n_2 &=& 2\\
+\Rightarrow\; n_1 &=& -5\\
+\vec{n} &=& \vecttt{-5}{2}{3}
+\end{eqnarray*}
+
+\begin{eqnarray*}
+E:\; \left[ \vec{x} - \vecttt{2}{4}{5} \right]-\vecttt{-5}{2}{3} = 0
+\end{eqnarray*}
+
+
+\paragraph{Normalenform aus Koordinatenform}
+\begin{itemize}
+\item Normalenvektor kann abgelesen werden ($E:\; n_1x_1 + n_2 x_2 + n_3x_3+r=0$)
+\item Punkt der Ebene bestimmen ($x_1$ und $x_2$ festlegen, $x_3$ bestimmen)
+\item Aufstellung der Normalenform
+\end{itemize}
+
+\paragraph{Normalenform aus Gerade und Punkte}
+\begin{itemize}
+\item Differenzvektor $\vec{QP}$ bilden
+\item $\vec{n}$ aus $\vec{u} \cdot \vec{n} = 0$ und $\vec{PQ} \cdot \vec{n} = 0$ bestimmen
+\item Aufstellung der Normalenform
+\end{itemize}
+
+
+\paragraph{Normalenform aus drei Punkten}
+\begin{itemize}
+\item Zwei Differenzvektoren bilden
+\item $\vec{n}$ bestimmen
+\item Aufstellung der Normalenform
+\end{itemize}
+
+\paragraph{Normalenform aus zwei parallelen Geraden}
+\begin{itemize}
+\item Differenzvektor $\vec{PQ}$ der St"utzvektoren bestimmen
+\item $\vec{n}$ bestimmen
+\item Aufstellung der Normalenform
+\end{itemize}
+
+\paragraph{Normalenform aus zwei Geraden}
+\begin{itemize}
+\item $\vec{n}$ aus den beiden Richtungsvektoren bestimmen
+\item Aufstellung der Normalenform
+\end{itemize}
+
+
+\subsubsection{Parameterform aus Koordinatenform}
+Die Parameterform einer Ebene lautet $E:\; \vec{x} = \vec{p} + r \cdot \vec{u} + s \cdot \vec{v}$.
+\begin{itemize}
+\item Drei Punkte suchen
+\item $\vec{u}$ und $\vec{v}$ sind Differenzvektoren verschiedener Punkte
+\item Aufstellung der Parameterform
+\end{itemize}
+Bsp.:
+$$ x_1 - x_2 + 2x_3 = 1 \;\Leftrightarrow \; x_3 = \frac{1}{2}(1-x_1+x_2) $$
+$$ A(2|1|0), \; B(4|1|1), \; C(1|0|0) $$
+$$ \vec{u} = \vec{AB} = \vecttt{2}{0}{1}, \; \vec{v} =\vec{CB}=\vecttt{3}{1}{1} $$
+$$ E:\; \vec{x}=\vecttt{1}{0}{0} + r \cdot \vecttt{2}{0}{1} + s \cdot \vecttt{3}{1}{1} $$
+
+\subsubsection{Koordinatenform aus Normalenform}
+Man erh"alt die Koordinatenform durch ausmultiplizieren der Normalenform.
+$$E:\; \left[ \vecttt{x_1}{x_2}{x_3} - \vecttt{p_1}{p_2}{p_3} \right] \cdot \vecttt{n_1}{n_2}{n_3} = 0$$
+$$E:\; n_1x_1 + n_2x_2 + n_3x_3 - (p_1n_1+p_2n_2+p_3n_3)$$
+Bsp.:
+$$E:\; \left[ \vec{x} - \vecttt{1}{2}{1} \right] \cdot \vecttt{2}{3}{-1} = 0$$
+$$E:\; 2 x_1 + 3 x_2 -x_3 - (2+6-1) = 2 x_1 + 3 x_2 - x_3 - 7 = 0$$
+
+\subsection{Orthogonalit"at von Geraden und Ebenen}
+\paragraph{zwei Geraden}
+Zwei Geraden sind orthogonal wenn ihre Richtungsvektoren orthogonal sind. Dies gilt auch f"ur windschiefe Geraden.\\
+Bsp:
+$$g_1: \; \vecttt{1}{2}{5} + r \cdot \vecttt{3}{0}{-2}; \quad g_2:\; \vecttt{5}{6}{1} + r \cdot \vecttt{4}{-1}{6}$$
+$$ \vec{u_1} \cdot \vec{u_2} = 12 + 0 - 12 = 0 \quad \Rightarrow g_1 \text{ und } g_2 \text{ sind orthogonal}$$
+
+\paragraph{zwei Ebenen}
+Zwei Ebenen sind orthogonal wenn ihre Normalenvektoren orthogonal sind.
+
+\paragraph{eine Gerade und eine Ebene}
+Eine Gerade und eine Ebene sind orthogonal, wenn der Normalenvektor und der Richtungsvektor der Geraden linear abh"angig sind.
+
+\subsection{Achsenschnittpunkte}
+Man berechnet den Schnittpunkt mit der
+\begin{itemize}
+\item $x_1$-Achse, indem man $x_2 = x_3 = 0$ setzt.
+\item $x_2$-Achse, indem man $x_1 = x_3 = 0$ setzt.
+\item $x_3$-Achse, indem man $x_1 = x_2 = 0$ setzt.
+\end{itemize}
+
+Bsp.:
+$$E:\; 5x_1 - 4x_2 +x_3 =9$$
+$$S_1 (9/5|0|0)$$
+$$S_2 (0|-9/4|0)$$
+$$S_3 (0|0|9)$$
+
+\subsection{Lagebestimmung von Gerade und Ebene}
+\paragraph{Zwei Geraden: }
+Man ermittelt die Lagebeziehung zweier Geraden, indem man ihre Gleichungen gleich setzt. Zwei Geraden
+\begin{itemize}
+\item schneiden sich bei einer L"osung des LGS.
+\item sind gleich bei unendlich vielen L"osungen des LGS
+\item sind parallel bei keiner L"osung des LGS und wenn die Richtungsvektoren linear abh. sind.
+\item sind windschief bei keiner L"osung des LGS und wenn die Richtungsvektoren linear unabh. sind.
+\end{itemize}
+
+\paragraph{Zwei Ebenen}
+\begin{itemize}
+\item sind gleich, wenn ihre Koordinatengleichungen gleich sind.
+\item sind parallel, wenn ihre Normalenvektoren linear abh"angig sind.\
+\item schneiden sich, wenn ihre Normalenvektoren linear unabh"angig sind. F"ur den Schnittwinkel gilt $$\cos(\alpha) = \frac{\vec{n_1} \cdot \vec{n_2}}{|\vec{n_1}| \cdot |\vec{n_2}}$$
+\end{itemize}
+
+
+\paragraph{Eine Gerade und eine Ebene:}
+Man ermittelt die Lagebeziehung einer Gerade und einer Ebene, indem die Geradengleichung koordinatenweise in die Koordinatengleichung der Ebene einsetzt. Die Gerade
+\begin{itemize}
+\item liegt auf der Ebene, wenn sich eine allgemeing"ultige Aussage ergibt.
+\item ist parallel zur Ebene, wenn sich eine falsche Aussage ergibt.
+\item schneidet die Ebene in dem Punkt mit dem Parameter $r$, wenn sich f"ur $r$ ein konkreter Wert ergibt. F"ur den Winkel zwischen Gerade und Ebene gilt $$\sin(\alpha)= \frac{\vec{n} \cdot \vec{u}}{|\vec{n}| \cdot |\vec{u}}$$
+\end{itemize}
+Bsp.:
+$$g:\; \vec{x} = \vecttt{1}{2}{-1} + r \cdot \vecttt{-1}{6}{2}$$
+$$E:\; 2x_1+x_2 -3x_3 = 13$$
+$$2(1-r) (2+6r) - 3(-1+2r) = 13 \; \Rightarrow\; -2r + 7 = 13 \;\Rightarrow\; r=-3$$
+$$S(4|-16|-7)$$
+$$\alpha = 4,79\degree$$
+
+
+
+
+
+\section{Abst"ande}
+\subsection{Abstand eines Punktes von einer Ebenen}
+Den Abstand eines Punktes von einer Geraden ermittelt man mit Hilfe der Hesseschen Normalenform
+$$d = (\vec{x} - \vec{p}) \quad \Leftrightarrow \quad d = \frac{ax_1 + bx_2 + cx_3 -r}{\sqrt{a^2+b^2+c^2}}$$
+F"ur $x$ werden die Koordinaten des Punktes eingesetzt, z.Bsp.:
+$$E: \; 3x_1 -x_2+5x_3 = 9; \qquad R: (8 | 4| 1)$$
+$$d = \frac{3 \cdot 8 - 1 \cdot 4 + 5\cdot 1 -9}{\sqrt{3^2+(-1)^2}+5^2}=2.7$$
+
+\subsection{Abstand eines Punktes $P$ von einer Geraden $g$ im $\sets{R}^2$}
+\begin{itemize}
+\item Bestimme eine Gerade $h$, die senkrecht auf $g$ steht und durch den Punkt $P$ geht.
+\item Bestimme den Schnittpunkt $S$ von $g$ und $h$.
+\item Bestimme die L"ange des Vektors $\vec{SP}$.
+\end{itemize}
+Bsp.:
+$$g: \; \vec{x} = \vectt{1}{2} + r \cdot \vectt{3}{-1}; \qquad P: \; (4|9)$$
+$$H: \; \vec{x} = \vectt{4}{9} + s \cdot \vectt{1}{3}$$
+$$g=h \;\Rightarrow\; s = -2.4\;\Rightarrow\;r=0.2\;\Rightarrow\;S(1.6|1.8|)$$
+$$d=\sqrt{(4-1.6)^2+(9-1.8)^2} = 7.59$$
+
+\subsection{Abstand eines Punktes $P$ von einer Geraden $g$ im $\sets{R}^3$}
+\begin{itemize}
+\item Bestimme eine Ebene $E$, die senkrecht zu $g$ ist und durch den Punkt $P$ geht.
+\item Bestimme den Schnittpunkt $S$ von $g$ und $E$ durch koordinatenweises Einsetzen von $g$ in die Koordinatengleichung von $E$.
+\item Bestimme den Betrag des Vektors $\vec{SP}$.
+\end{itemize}
+Bsp.:
+$$g: \; \vec{x} = \vecttt{1}{3}{0} + r \cdot \vecttt{2}{-1}{1}; \qquad P: \; (5|-1|2)$$
+$$E: \; \left[ \vec{x} - \vecttt{5}{-1}{2} \right] \cdot \vecttt{2}{-1}{1} = 0 \;\Leftrightarrow\; 2x_1 - x_2 + x_3 -13 = 0$$
+$$2(1+2r) - (3-r) + r-13 = 0  \;\Leftrightarrow\; r = 2.33 \; \Rightarrow \; S = \left( 5.67 | 0.67| 2.33 \right)$$
+$$d = \sqrt{\left(5-5.67\right)^2 + \left( (-1) - 0.67 \right)^2 + \left(2-2.33 \right)^2} = 1.83$$
+
+\section{Komplexe Zahlen}
+\subsection{Darstellung}
+\begin{center}
+% use packages: array
+\begin{tabular}{|p{.5\textwidth}  | p{.5\textwidth}|}
+\hline
+Summenform & Polarform \\
+\hline
+\begin{eqnarray*}
+z &=& a+i \cdot b
+\end{eqnarray*} &
+\begin{eqnarray*}
+z &=& r \cdot ( \cos \alpha + i \cdot \sin \alpha) \\
+  &=& r \cdot \text{cis } \alpha
+\end{eqnarray*}\\
+\hline
+\end{tabular}
+\end{center}
+
+\renewcommand{\cis}{\text{cis }}
+\subsection{Rechenarten}
+\begin{tabular}{| p{0.5\textwidth} | p{0.5\textwidth} |}
+\hline
+\begin{eqnarray*}
+z_1 &=& a + b \cdot i\\
+z_2 &=& c + d \cdot i
+\end{eqnarray*} &
+\begin{eqnarray*}
+z_1 = r \cdot \cis \alpha\\
+z_2 = s \cdot \cis \beta
+\end{eqnarray*}\\
+\hline
+\end{tabular}
+
+\subsubsection{Addition}
+\begin{tabular}{| p{0.5\textwidth} | p{0.5\textwidth} |}
+\hline
+\begin{eqnarray*}
+z_1 + z_2 = (a + c) + (b+d) \cdot i
+\end{eqnarray*} & \\
+\hline
+\end{tabular}
+
+\subsubsection{Subtraktion}
+\begin{tabular}{| p{0.5\textwidth} | p{0.5\textwidth} |}
+\hline
+\begin{eqnarray*}
+z_1 - z_2 = (a - c) + (b-d) \cdot i
+\end{eqnarray*} & \\
+\hline
+\end{tabular}
+
+
+\subsubsection{Multiplikation}
+\begin{tabular}{| p{0.5\textwidth} |  p{0.5\textwidth} |}
+\hline
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{eqnarray*}
+    z_1 \cdot z_2 &=& (a + b \cdot i) \cdot (c + c \cdot i)\\
+     &=& ( a \cdot c - b \cdot d) \\
+     && + (a \cdot d + b \cdot c) \cdot i\\
+    \end{eqnarray*}
+\end{minipage}
+&
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{eqnarray*}
+    z_1 \cdot z_2 = r \cdot s \cdot \cis(\alpha + \beta)\\
+    \end{eqnarray*}
+\end{minipage}\\
+\hline
+\end{tabular}
+
+\subsubsection{Division}
+\begin{tabular}{| p{0.5\textwidth} |  p{0.5\textwidth} |}
+\hline
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{eqnarray*}
+    \frac{z_1}{z_2} &=& \frac{a+b \cdot i}{c + d \cdot i} = \frac{a+b\cdot i}{c+d\cdot i} \cdot \frac{c-d\cdot i}{c-d\cdot i}\\
+     &=& \frac{(a \cdot c + b \cdot d) + (b \cdot c - d \cdot a) \cdot i}{c^2 + d^2}\\
+    \end{eqnarray*}
+\end{minipage}
+&
+\begin{minipage}[t]{0.5\textwidth}
+    \begin{eqnarray*}
+    \frac{z_1}{z_2} &=& \left( \frac{r}{s} \right) \cdot \cis (\alpha - \beta)\\
+    \end{eqnarray*}
+\end{minipage}\\
+\hline
+\end{tabular}
+
+\subsection{Berechnung von Quadratwurzeln}
+\begin{eqnarray*}
+z &=& \sqrt{r \cdot \cis(\alpha)}
+\end{eqnarray*}
+hat die beiden L"osungen
+\begin{eqnarray*}
+z_1 &=& \sqrt{r} \cdot \cis\left( \frac{\alpha}{2} \right)\\
+z_2 &=& \sqrt{r} \cdot \cis\left( \frac{\alpha}{2} + 180\degree \right)
+\end{eqnarray*}
+
+
+\end{document}

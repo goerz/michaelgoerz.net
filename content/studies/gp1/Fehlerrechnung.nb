@@ -1,0 +1,554 @@
+(************** Content-type: application/mathematica **************
+                     CreatedBy='Mathematica 5.0'
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used with any Mathematica-compatible
+application, such as Mathematica, MathReader or Publicon. The data
+for the notebook starts with the line containing stars above.
+
+To get the notebook into a Mathematica-compatible application, do
+one of the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the
+  application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing
+the word CacheID, otherwise Mathematica-compatible applications may
+try to use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+*******************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[     11555,        401]*)
+(*NotebookOutlinePosition[     12199,        423]*)
+(*  CellTagsIndexPosition[     12155,        419]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(\(\(Aufgabe\ 4\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(Liste\  = \ {0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 
+          1};\)\), "\[IndentingNewLine]", 
+    \(\(Laenge\  = \ 11;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(xs\  = \ 
+      N[\(1\/Laenge\) \(\[Sum]\+\(n = 1\)\%Laenge Liste\_\(\(\
+\[LeftDoubleBracket]\)\(n\)\(\[RightDoubleBracket]\)\)\)]\), "\
+\[IndentingNewLine]", 
+    \(\[Sigma]\  = \@\(\(\ \)\(\(1\/\(Laenge - 1\)\) \(\[Sum]\+\(n = \
+1\)\%Laenge\((Liste\_\(\(\[LeftDoubleBracket]\)\(n\)\(\[RightDoubleBracket]\)\
+\)\  - \ xs)\)^2\)\)\)\), "\[IndentingNewLine]", 
+    \(\[Sigma]x\  = \@\(\(\ \)\(\(1\/Laenge\) \[Sigma]^2\)\)\)}], "Input"],
+
+Cell[BoxData[
+    \(0.6363636363636364`\)], "Output"],
+
+Cell[BoxData[
+    \(0.504524979109513`\)], "Output"],
+
+Cell[BoxData[
+    RowBox[{\(General::"spell1"\), \(\(:\)\(\ \)\), "\<\"Possible spelling \
+error: new symbol name \\\"\\!\\(\[Sigma]x\\)\\\" is similar to existing \
+symbol \\\"\\!\\(\[Sigma]\\)\\\". \\!\\(\\*ButtonBox[\\\"Mehr\[Ellipsis]\\\", \
+ButtonStyle->\\\"RefGuideLinkText\\\", ButtonFrame->None, \
+ButtonData:>\\\"General::spell1\\\"]\\)\"\>"}]], "Message"],
+
+Cell[BoxData[
+    \(0.15212000482437738`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\[IndentingNewLine]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 5\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(U\  = \ 3.45\), "\[IndentingNewLine]", 
+    \(\[CapitalDelta]U\  = \ 0.03\)}], "Input"],
+
+Cell[BoxData[
+    \(Kaufm\[ADoubleDot]nnisch\ ist\ Millimeter\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Auf\ die\ Zweite\ Stelle\)\(\[IndentingNewLine]\)
+    \)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 7\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(x = \ 35.5;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]x\  = \ 7.1;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\[Delta]\  = \ \[CapitalDelta]x\/x\)], "Input"],
+
+Cell[BoxData[
+    \(0.19999999999999998`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\[IndentingNewLine]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 9\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(L1\  = \ 200.0;\)\), "\[IndentingNewLine]", 
+    \(\(L2\  = \ 200.0;\)\), "\[IndentingNewLine]", 
+    \(\(L3\  = \ 96.8;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]L1\  = \ 0.5;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]L2\  = \ 0.5;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]L3\  = \ 0.5;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(L\  = \ L1 + L2 + L3\), "\[IndentingNewLine]", 
+    \(\[CapitalDelta]L\  = \ \@\(\((\[CapitalDelta]L1)\)^2 + \((\
+\[CapitalDelta]L2)\)^2\  + \ \[CapitalDelta]L3^2\)\)}], "Input"],
+
+Cell[BoxData[
+    \(496.8`\)], "Output"],
+
+Cell[BoxData[
+    \(0.8660254037844386`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\(Aufgabe\ 10\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(s\  = \ 50\ /1000;\)\), "\[IndentingNewLine]", 
+    \(\(t\  = \ 8.7\ /\((60*60)\);\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]s\  = \ 5\ /1000;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]t\  = \ 0.5\ /\((60*60)\);\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(v = s\/t\), "\[IndentingNewLine]", 
+    \(v \@\(\((\[CapitalDelta]t\/t)\)\^2 + \ \
+\((\[CapitalDelta]s\/s)\)\^2\)\)}], "Input"],
+
+Cell[BoxData[
+    \(20.689655172413797`\)], "Output"],
+
+Cell[BoxData[
+    \(2.3863116984392265`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 11\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(r0\  = \ 1;\)\), "\[IndentingNewLine]", 
+    \(\(t0 = \ 12.67;\)\), "\[IndentingNewLine]", 
+    \(\(t1\  = \ 3.1;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]t0\  = \ 0.11;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]t1\  = \ 0.2;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]r0\  = \ 0.005;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(r1 = \@\(t0\/t1\)\ r0\), "\[IndentingNewLine]", 
+    \(r1\ \ \ \@\(\((\[CapitalDelta]t0\/t0)\)\^2\ \  + \ \((\[CapitalDelta]t1\
+\/t1)\)\^2\  + \ \((2\ \[CapitalDelta]r0\/r0)\)\^2\)\ /2\)}], "Input"],
+
+Cell[BoxData[
+    \(2.0216569378095652`\)], "Output"],
+
+Cell[BoxData[
+    \(0.06657444560186658`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\[IndentingNewLine]\)\(\(Aufgabe\ \
+12\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(d\  = \ 400;\)\), "\[IndentingNewLine]", 
+    \(\(t = \ 72;\)\), "\[IndentingNewLine]", 
+    \(\(d2\  = \ 1000;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]t\  = \ 1;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]d\  = \ 10;\)\), "\[IndentingNewLine]", 
+    \(\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(\(v\  = \ d\/t;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]v\  = 
+        v\ \@\(\((\[CapitalDelta]d\/d)\)\^2 + \((\[CapitalDelta]t\/t)\)\^2\);\
+\)\), "\[IndentingNewLine]", 
+    \(N[t2 = d2\/\(\(v\)\(\ \ \)\)]\), "\[IndentingNewLine]", 
+    \(N[t2\ \@\(\((\[CapitalDelta]d\/d)\)\^2 + \
+\((\[CapitalDelta]v\/v)\)\^2\)]\)}], "Input"],
+
+Cell[BoxData[
+    \(180.`\)], "Output"],
+
+Cell[BoxData[
+    \(6.837397165588672`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\[IndentingNewLine]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 13\)\(\ \)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(a\  = \ 18.7;\)\), "\[IndentingNewLine]", 
+    \(\(b\  = \ 13.8;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]a\  = \ 0.2;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]b\  = \ 0.2;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(f\  = \ \(\((a\ b)\)\(/\)\((a + b)\)\(\ \)\)\), "\[IndentingNewLine]", 
+    \(fehler\  = \ 
+      f \@\(\((\[CapitalDelta]a\/a)\)^2 + \((\[CapitalDelta]b\/b)\)^2\  + \((\
+\@\(\((\[CapitalDelta]a)\)^2\  + \((\[CapitalDelta]b)\)^2\)\/\(a + \
+b\))\)\^2\)/2\)}], "Input"],
+
+Cell[BoxData[
+    \(7.940307692307693`\)], "Output"],
+
+Cell[BoxData[
+    \(0.07941960901332858`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\[IndentingNewLine]\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(Aufgabe\ 14\)\(:\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(d\  = \ 24.0;\)\), "\[IndentingNewLine]", 
+    \(\(b\  = 8.8;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]d\  = \ 0.2;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]b = 0.2;\)\)}], "Input"],
+
+Cell[BoxData[
+    \(f\  = \ \(\(\((d - b)\) \(b\)\(\ \)\)\/d = \(d\ b - \(\(b\)\(^\)\(2\)\(\
+\ \)\)\)\/d\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(f\  = \ \(\((d - b)\) \(b\)\(\ \)\)\/d\)], "Input"],
+
+Cell[BoxData[
+    \(5.573333333333333`\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\@\(\((\[CapitalDelta]d\ D[f, \ d])\)\^2 + \ \((\[CapitalDelta]b\ D[f, \
+\ b])\)\^2\)\)], "Input"],
+
+Cell[BoxData[
+    \(\@\(\((\(-\(b\/d\)\) + \(\(-b\) + d\)\/d)\)\^2\ \[CapitalDelta]b\^2 + \
+\((b\/d - \(b\ \((\(-b\) + d)\)\)\/d\^2)\)\^2\ \[CapitalDelta]d\^2\)\)], \
+"Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\@\(\((\(-\(b\/d\)\) + \(\(-b\) + d\)\/d)\)\^2\ \[CapitalDelta]b\^2 + \
+\((b\/d - \(b\ \((\(-b\) + d)\)\)\/d\^2)\)\^2\ \[CapitalDelta]d\^2\)\)], \
+"Input"],
+
+Cell[BoxData[
+    \(0.05972819091621189`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\[IndentingNewLine]\)\(\(Aufgabe\ \
+15\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(a\  = \ 1.0;\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]a\  = \ 0.66;\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(b = 1.5*\((a + 1/a)\)\), "\[IndentingNewLine]", 
+    \(\(z\  = \ 1.5*\((a + 1/a)\);\)\), "\[IndentingNewLine]", 
+    \(\(zp\  = \ 
+        1.5*\((\((a\  - \ \[CapitalDelta]a)\) + 
+              1/\((a\  - \ \[CapitalDelta]a)\))\);\)\), \
+"\[IndentingNewLine]", 
+    \(fehler\  = \ zp - z\)}], "Input"],
+
+Cell[BoxData[
+    \(3.`\)], "Output"],
+
+Cell[BoxData[
+    \(1.921764705882353`\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\[IndentingNewLine]\)\(\(Aufgabe\ \
+16\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(\[Lambda]\  = \ 632.8\ 10^\(-9\);\)\), "\[IndentingNewLine]", 
+    \(\(z\  = \ 1;\)\), "\[IndentingNewLine]", 
+    \(\(\[Alpha] = 22.3\/360\ 2\ \[Pi];\)\), "\[IndentingNewLine]", 
+    \(\(\[CapitalDelta]\[Alpha]\  = \ 0.5\/360\ 2\ \[Pi];\)\)}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(d\  = \ \(\(\ \)\(z\ \[Lambda]\)\)\/Sin[\[Alpha]]\)], "Input"],
+
+Cell[BoxData[
+    \(1.6676498301818438`*^-6\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(D[\(\(\ \)\(z\ \[Lambda]\)\)\/Sin[\[Alpha]], \ \[Alpha]]\)], "Input"],
+
+Cell[BoxData[
+    \(\(-z\)\ \[Lambda]\ Cot[\[Alpha]]\ Csc[\[Alpha]]\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(-z\)\(\ \)\(\[Lambda]\)\(\ \)\(Cot[\[Alpha]]\)\(\ \)\(Csc[\[Alpha]]\
+\)\(\ \)\(\[CapitalDelta]\[Alpha]\)\(\ \)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(-3.5483856523247234`*^-8\)\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\(Aufgabe\ 17\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(0.1598\)\(+\)\)\)], "Input"],
+
+Cell[BoxData[
+    \(\(\(\[IndentingNewLine]\)\(\(Aufgabe\ 18\)\(:\)\)\)\)], "Input"],
+
+Cell[BoxData[{
+    \(\(k\  = \ 1.5;\)\), "\[IndentingNewLine]", 
+    \(\(Messbereich\  = \ 300;\)\), "\[IndentingNewLine]", 
+    \(\(Skt\  = \ 30;\)\), "\[IndentingNewLine]", 
+    \(\(USkt\  = \ 12.7;\)\), "\[IndentingNewLine]", 
+    \(\(SktFehler\  = \ 0.1;\)\)}], "Input"],
+
+Cell[BoxData[
+    \(\(\[CapitalDelta]x = Messbereich\ k/100;\)\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+    \(U\  = \ \(USkt\/Skt\) Messbereich\), "\[IndentingNewLine]", 
+    \(fehler\  = \ SktFehler\/Skt\ Messbereich + \[CapitalDelta]x\)}], "Input"],
+
+Cell[BoxData[
+    \(126.99999999999999`\)], "Output"],
+
+Cell[BoxData[
+    \(5.5`\)], "Output"]
+}, Open  ]]
+},
+FrontEndVersion->"5.0 for Microsoft Windows",
+ScreenRectangle->{{0, 1280}, {0, 877}},
+WindowSize->{495, 719},
+WindowMargins->{{9, Automatic}, {Automatic, 33}}
+]
+
+(*******************************************************************
+Cached data follows.  If you edit this Notebook file directly, not
+using Mathematica, you must remove the line containing CacheID at
+the top of  the file.  The cache data will then be recreated when
+you save this file from within Mathematica.
+*******************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1754, 51, 56, 1, 30, "Input"],
+Cell[1813, 54, 150, 3, 50, "Input"],
+
+Cell[CellGroupData[{
+Cell[1988, 61, 455, 8, 143, "Input"],
+Cell[2446, 71, 53, 1, 29, "Output"],
+Cell[2502, 74, 52, 1, 29, "Output"],
+Cell[2557, 77, 365, 5, 52, "Message"],
+Cell[2925, 84, 54, 1, 29, "Output"]
+}, Open  ]],
+Cell[2994, 88, 52, 1, 50, "Input"],
+Cell[3049, 91, 56, 1, 30, "Input"],
+Cell[3108, 94, 108, 2, 50, "Input"],
+Cell[3219, 98, 74, 1, 30, "Input"],
+Cell[3296, 101, 93, 2, 50, "Input"],
+Cell[3392, 105, 56, 1, 30, "Input"],
+Cell[3451, 108, 115, 2, 50, "Input"],
+
+Cell[CellGroupData[{
+Cell[3591, 114, 67, 1, 42, "Input"],
+Cell[3661, 117, 54, 1, 29, "Output"]
+}, Open  ]],
+Cell[3730, 121, 52, 1, 50, "Input"],
+Cell[3785, 124, 56, 1, 30, "Input"],
+Cell[3844, 127, 357, 6, 130, "Input"],
+
+Cell[CellGroupData[{
+Cell[4226, 137, 199, 3, 52, "Input"],
+Cell[4428, 142, 40, 1, 29, "Output"],
+Cell[4471, 145, 53, 1, 29, "Output"]
+}, Open  ]],
+Cell[4539, 149, 84, 1, 50, "Input"],
+Cell[4626, 152, 270, 4, 90, "Input"],
+
+Cell[CellGroupData[{
+Cell[4921, 160, 148, 3, 84, "Input"],
+Cell[5072, 165, 53, 1, 29, "Output"],
+Cell[5128, 168, 53, 1, 29, "Output"]
+}, Open  ]],
+Cell[5196, 172, 57, 1, 30, "Input"],
+Cell[5256, 175, 353, 6, 130, "Input"],
+
+Cell[CellGroupData[{
+Cell[5634, 185, 219, 3, 97, "Input"],
+Cell[5856, 190, 53, 1, 29, "Output"],
+Cell[5912, 193, 54, 1, 29, "Output"]
+}, Open  ]],
+Cell[5981, 197, 109, 2, 70, "Input"],
+Cell[6093, 201, 311, 6, 130, "Input"],
+
+Cell[CellGroupData[{
+Cell[6429, 211, 362, 7, 166, "Input"],
+Cell[6794, 220, 39, 1, 29, "Output"],
+Cell[6836, 223, 52, 1, 29, "Output"]
+}, Open  ]],
+Cell[6903, 227, 52, 1, 50, "Input"],
+Cell[6958, 230, 63, 1, 30, "Input"],
+Cell[7024, 233, 233, 4, 90, "Input"],
+
+Cell[CellGroupData[{
+Cell[7282, 241, 288, 5, 107, "Input"],
+Cell[7573, 248, 52, 1, 29, "Output"],
+Cell[7628, 251, 54, 1, 29, "Output"]
+}, Open  ]],
+Cell[7697, 255, 52, 1, 50, "Input"],
+Cell[7752, 258, 57, 1, 30, "Input"],
+Cell[7812, 261, 226, 4, 90, "Input"],
+Cell[8041, 267, 119, 2, 42, "Input"],
+
+Cell[CellGroupData[{
+Cell[8185, 273, 71, 1, 42, "Input"],
+Cell[8259, 276, 52, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8348, 282, 118, 2, 33, "Input"],
+Cell[8469, 286, 176, 3, 51, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8682, 294, 175, 3, 51, "Input"],
+Cell[8860, 299, 54, 1, 29, "Output"]
+}, Open  ]],
+Cell[8929, 303, 109, 2, 70, "Input"],
+Cell[9041, 307, 117, 2, 50, "Input"],
+
+Cell[CellGroupData[{
+Cell[9183, 313, 322, 7, 90, "Input"],
+Cell[9508, 322, 37, 1, 29, "Output"],
+Cell[9548, 325, 52, 1, 29, "Output"]
+}, Open  ]],
+Cell[9615, 329, 109, 2, 70, "Input"],
+Cell[9727, 333, 276, 4, 117, "Input"],
+
+Cell[CellGroupData[{
+Cell[10028, 341, 82, 1, 44, "Input"],
+Cell[10113, 344, 57, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10207, 350, 89, 1, 44, "Input"],
+Cell[10299, 353, 81, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[10417, 359, 149, 2, 30, "Input"],
+Cell[10569, 363, 62, 1, 29, "Output"]
+}, Open  ]],
+Cell[10646, 367, 26, 0, 30, "Input"],
+Cell[10675, 369, 84, 1, 50, "Input"],
+Cell[10762, 372, 52, 1, 30, "Input"],
+Cell[10817, 375, 84, 1, 50, "Input"],
+Cell[10904, 378, 274, 5, 110, "Input"],
+Cell[11181, 385, 75, 1, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[11281, 390, 161, 2, 76, "Input"],
+Cell[11445, 394, 53, 1, 29, "Output"],
+Cell[11501, 397, 38, 1, 29, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+(*******************************************************************
+End of Mathematica Notebook file.
+*******************************************************************)
+

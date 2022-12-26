@@ -1,0 +1,177 @@
+  %\tikzset{help lines/.style=gray, ultra thin}
+  %\tikzset{help lines/.style=white, ultra thin}
+  %\draw[style=help lines, step=1cm] (0,0) grid (20,15);
+
+%%% propagation boxes
+\draw[color=gray!20, fill=gray!20,rounded corners=10] (2,2.8) rectangle (16,4.5);
+\draw[color=gray!20, fill=gray!20,rounded corners=10] (14,2.8) rectangle (16,4.75);
+\draw[color=gray!20, fill=gray!20,rounded corners=10] (2,5.5) rectangle (16,7.2);
+\draw[color=gray!20, fill=gray!20,rounded corners=10] (14,5.25) rectangle (16,7.2);
+
+%%% forward propagation
+
+\node (psifw1) at (3,4) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,-0.25)--(1,0);
+    \node at (0.5,0.25) {$\Psi_i$};
+  \end{tikzpicture}
+};
+
+\node (psifw2) at (6,4) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,-0.25)--(1,0);
+    \node at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+  \end{tikzpicture}
+};
+\draw[->] (psifw1) .. controls +(1,-1) and +(-1,-1) .. node(epsn1)[fill=gray!20]{$\tilde{\epsilon}_1$} (psifw2);
+
+\node (psifw3) at (9,4) {
+  \begin{tikzpicture}
+    \draw[color=gray!20] (0,0)--(0.5,-0.25)--(1,0);
+    \node[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+    \node at (0.5,0.25) {\dots};
+  \end{tikzpicture}
+};
+\draw[->] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3);
+
+\node (psifw4) at (12,4) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,-0.25)--(1,0);
+    \node at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+  \end{tikzpicture}
+};
+\draw[->] (psifw3) .. controls +(1,-1) and +(-1,-1) .. node(epsn3)[fill=gray!20]{$\tilde{\epsilon}_{nt-2}$} (psifw4);
+
+\node (psifw5) at (15,4) {
+  \begin{tikzpicture}
+    \draw[color=gray!20](0,0)--(0.5,-0.25)--(1,0);
+    \node[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(T)$};
+  \end{tikzpicture}
+};
+\node at (15,4.2) {
+  \begin{tikzpicture}
+    \draw(0,0)--(0.5,-0.25)--(1,0);
+    \node at (0.5,0.4) {$\Psi_{\text{fw}}(T)$};
+  \end{tikzpicture}
+};
+\draw[->] (psifw4) .. controls +(1,-1) and +(-1,-1) .. node(epsn4)[fill=gray!20]{$\tilde{\epsilon}_{nt-1}$} (psifw5);
+
+%%% backward propagation
+
+\node (psibw1) at (3,6) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,0.25)--(1,0);
+    \node at (0.5,-0.25) {$\Psi_{\text{bw}}(t_0)$};
+  \end{tikzpicture}
+};
+
+\node (psibw2) at (6,6) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,0.25)--(1,0);
+    \node at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+  \end{tikzpicture}
+};
+\draw[<->] (psibw1) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_1$} (psibw2);
+
+\node (psibw3) at (9,6) {
+  \begin{tikzpicture}
+    \draw[color=gray!20] (0,0)--(0.5,0.25)--(1,0);
+    \node[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+    \node at (0.5,-0.25) {\dots};
+  \end{tikzpicture}
+};
+\draw[<->] (psibw2) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_2$} (psibw3);
+
+\node (psibw4) at (12,6) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,0.25)--(1,0);
+    \node at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+  \end{tikzpicture}
+};
+\draw[<->] (psibw3) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_{nt-2}$} (psibw4);
+
+\node (psibw5) at (15,6) {
+  \begin{tikzpicture}
+    \draw[color=gray!20] (0,0)--(0.5,0.25)--(1,0);
+    \node[color=gray!20] at (0.5,-0.25) {$\Psi_t$};
+  \end{tikzpicture}
+};
+\node at (15,5.8) {
+  \begin{tikzpicture}
+    \draw (0,0)--(0.5,0.25)--(1,0);
+    \node at (0.5,-0.4) {$\Psi_t$};
+  \end{tikzpicture}
+};
+\draw[<->] (psibw4) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_{nt-1}$} (psibw5);
+
+%%% mu
+\node (mu1) at (3,5) {
+  \begin{tikzpicture}
+    \draw (-0.5,0.4)--(0.5,0.4);
+    \node at (0,0) {$\hat\mu$};
+    \draw (-0.5,-0.4)--(0.5,-0.4);
+  \end{tikzpicture}
+};
+\draw[->] (mu1) -| (epsn1);
+
+\node (mu2) at (6,5) {
+  \begin{tikzpicture}
+    \draw (-0.5,0.4)--(0.5,0.4);
+    \node at (0,0) {$\hat\mu$};
+    \draw (-0.5,-0.4)--(0.5,-0.4);
+  \end{tikzpicture}
+};
+\draw[->] (mu2) -| (epsn2);
+
+\node (mu3) at (9,5) {
+  \begin{tikzpicture}
+    \draw[color=white] (-0.5,0.4)--(0.5,0.4);
+    \node[color=white] at (0,0) {$\hat\mu$};
+    \node at (0,0) {\dots};
+    \draw[color=white] (-0.5,-0.4)--(0.5,-0.4);
+  \end{tikzpicture}
+};
+\draw[->] (mu3) -| (epsn3);
+
+\node (mu4) at (12,5) {
+  \begin{tikzpicture}
+    \draw (-0.5,0.4)--(0.5,0.4);
+    \node at (0,0) {$\hat\mu$};
+    \draw (-0.5,-0.4)--(0.5,-0.4);
+  \end{tikzpicture}
+};
+\draw[->] (mu4) -| (epsn4);
+
+\node at (15,5) {
+  \begin{tikzpicture}
+    \draw (-0.5,0)--(0.5,0);
+  \end{tikzpicture}
+};
+\node at (16.1,5) {
+  \begin{tikzpicture}
+    \node at (0,0) {$ = \; \tau$};
+  \end{tikzpicture}
+};
+
+
+%%% time grid
+\path (epsn1) ++(0,-1.6) node{\small $t_0 + \frac{dt}{2}$};
+\path(epsn1) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (epsn2) ++(0,-1.6) node{\small $t_0 + \frac{3}{2}dt$};
+\path(epsn2) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (psibw3) ++(0,-4.45) node{\small \dots};
+\path (epsn3) ++(0,-1.6) node{\small $T - \frac{3}{2}dt$};
+\path(epsn3) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (epsn4) ++(0,-1.6) node{\small $T - \frac{dt}{2}$};
+\path(epsn4) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+
+\path (psibw1) ++(0,2.5) node{\small $t_0$};
+\draw[fill=black] (psibw1) ++(0,2) circle (1pt);
+\path (psibw2) ++(0,2.5) node{\small $t = t_0+dt$};
+\draw[fill=black] (psibw2) ++(0,2) circle (1pt);
+\path (psibw3) ++(0,2.5) node{\small \dots};
+\path (psibw4) ++(0,2.5) node{\small $t = T-dt$};
+\draw[fill=black] (psibw4) ++(0,2) circle (1pt);
+\path (psibw5) ++(0,2.5) node{\small $T = t_0 + nt \cdot dt$};
+\draw[fill=black] (psibw5) ++(0,2) circle (1pt);
+

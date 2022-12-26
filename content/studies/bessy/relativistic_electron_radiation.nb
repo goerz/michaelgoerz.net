@@ -1,0 +1,286 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 6.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     10845,        277]
+NotebookOptionsPosition[     10217,        253]
+NotebookOutlinePosition[     10590,        269]
+CellTagsIndexPosition[     10547,        266]
+WindowFrame->Normal
+ContainsDynamic->False*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Radiation of a Relativistic Electron", "Title",
+ CellChangeTimes->{{3.404141102949974*^9, 3.404141141121325*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"values", " ", "=", " ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"e", "\[Rule]", " ", "1"}], ",", " ", 
+     RowBox[{"c", "\[Rule]", " ", "1"}], ",", " ", 
+     RowBox[{"a", "\[Rule]", " ", "1"}]}], "}"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.403621991044502*^9, 3.403622034338764*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[Gamma]", "=", " ", 
+   RowBox[{"1", "/", 
+    SqrtBox[
+     RowBox[{"1", "-", 
+      SuperscriptBox["\[Beta]", "2"]}]]}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.403621040816166*^9, 3.403621759060225*^9, {3.40362180619469*^9, 
+   3.403621811814711*^9}, 3.403623417764976*^9, {3.403623613609324*^9, 
+   3.40362361900969*^9}, {3.403626765037918*^9, 3.403626765176486*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", "[", 
+   RowBox[{"\[Theta]_", ",", " ", "\[Beta]_"}], "]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      SuperscriptBox["e", "2"], 
+      RowBox[{"4", " ", "\[Pi]", " ", 
+       SuperscriptBox["c", "3"]}]], 
+     FractionBox[
+      SuperscriptBox["a", "2"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", 
+         RowBox[{"\[Beta]", " ", 
+          RowBox[{"Cos", "[", "\[Theta]", "]"}]}]}], ")"}], "3"]], 
+     RowBox[{"(", 
+      RowBox[{"1", " ", "-", " ", 
+       FractionBox[
+        SuperscriptBox[
+         RowBox[{"Sin", "[", "\[Theta]", "]"}], "2"], 
+        RowBox[{
+         SuperscriptBox["\[Gamma]", "2"], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            RowBox[{"\[Beta]", " ", 
+             RowBox[{"Cos", " ", "[", "\[Theta]", "]"}]}]}], ")"}], "2"]}]]}],
+       ")"}]}], "/.", "values"}], "//", "FullSimplify"}]}]], "Input",
+ CellChangeTimes->{{3.403620784347051*^9, 3.403620912470743*^9}, {
+   3.403620955930953*^9, 3.403620958823917*^9}, {3.403621744510446*^9, 
+   3.403621772418147*^9}, 3.403621838069661*^9, {3.403622058486116*^9, 
+   3.403622063845197*^9}, {3.403623383695009*^9, 3.403623391186563*^9}, {
+   3.403626796982223*^9, 3.403626797735119*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"polars", "=", 
+  RowBox[{"Table", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"PolarPlot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"P", "[", 
+        RowBox[{"\[Theta]", ",", "\[Beta]"}], "]"}], "/.", "values"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"\[Theta]", ",", "0", ",", 
+        RowBox[{"2", "\[Pi]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"0.1", "+", "\[Beta]"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotLabel", "\[Rule]", " ", 
+       RowBox[{"\"\<\[Beta]=\>\"", ".", "\[Beta]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Ticks", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0.1", "+", "\[Beta]"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"0.1", "+", "\[Beta]"}], "}"}]}], "}"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"300", ",", "300"}], "}"}]}]}], "\[IndentingNewLine]", "]"}], 
+    ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Beta]", ",", "0", ",", "1", ",", "0.3"}], "}"}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"regulars", "=", 
+  RowBox[{"Table", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Plot", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"P", "[", 
+        RowBox[{"\[Theta]", ",", "\[Beta]"}], "]"}], "/.", "values"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"\[Theta]", ",", 
+        RowBox[{"-", "\[Pi]"}], ",", "\[Pi]"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"PlotLabel", "\[Rule]", " ", 
+       RowBox[{"\"\<\[Beta]=\>\"", ".", "\[Beta]"}]}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"300", ",", "300"}], "}"}]}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Ticks", "\[Rule]", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "\[Pi]"}], ",", " ", 
+           FractionBox[
+            RowBox[{"-", "\[Pi]"}], "2"], ",", "0", ",", " ", 
+           FractionBox["\[Pi]", "2"], ",", "\[Pi]"}], "}"}], ",", 
+         "Automatic"}], "}"}]}]}], "\[IndentingNewLine]", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"\[Beta]", ",", "0", ",", "1", ",", "0.3"}], "}"}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.403694053367395*^9, 3.403694093179496*^9}, {
+  3.403694203038916*^9, 3.403694308900514*^9}, {3.403694362996182*^9, 
+  3.403694380324023*^9}, {3.403694502594102*^9, 3.403694606730045*^9}, {
+  3.403694640825124*^9, 3.403694673758854*^9}, {3.403694822377993*^9, 
+  3.403694880092381*^9}, {3.40369493951326*^9, 3.403694978772905*^9}, {
+  3.403695031931409*^9, 3.403695034587289*^9}, {3.403695161113819*^9, 
+  3.403695179906445*^9}, {3.403695213489533*^9, 3.403695252335171*^9}, {
+  3.403695300199945*^9, 3.403695326967497*^9}, {3.403695743202124*^9, 
+  3.403695745708653*^9}, {3.403695901013926*^9, 3.403695901833165*^9}, {
+  3.403696410035467*^9, 3.40369641339363*^9}, {3.40369658149237*^9, 
+  3.403696622957076*^9}, {3.403696675897115*^9, 3.403696696728703*^9}, {
+  3.40369679655504*^9, 3.403696822844031*^9}, {3.403696859242858*^9, 
+  3.403696863421325*^9}, {3.403696976566071*^9, 3.403696977499044*^9}, {
+  3.403697106015752*^9, 3.4036971132454*^9}, {3.403697144395513*^9, 
+  3.403697192972304*^9}, {3.403697245564926*^9, 3.403697247526528*^9}, {
+  3.403697277995264*^9, 3.403697279437769*^9}, {3.403697324613908*^9, 
+  3.403697327091378*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<polar1.png\>\"", ",", " ", 
+   RowBox[{"polars", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], 
+   ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<polar2.png\>\"", ",", " ", 
+   RowBox[{"polars", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], 
+   ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<polar3.png\>\"", ",", " ", 
+   RowBox[{"polars", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}], 
+   ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<polar4.png\>\"", ",", " ", 
+   RowBox[{"polars", "\[LeftDoubleBracket]", "4", "\[RightDoubleBracket]"}], 
+   ",", " ", "\"\<PNG\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.403695793438942*^9, 3.403695834465249*^9}, {
+  3.403696356406005*^9, 3.403696356827277*^9}, {3.403696418551519*^9, 
+  3.403696419838722*^9}, {3.40369649432101*^9, 3.40369653852031*^9}, {
+  3.403700658905876*^9, 3.403700690773925*^9}, {3.403700805877527*^9, 
+  3.40370081173909*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<regular1.png\>\"", ",", " ", 
+   RowBox[{"regulars", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}],
+    ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<regular2.png\>\"", ",", " ", 
+   RowBox[{"regulars", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}],
+    ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<regular3.png\>\"", ",", " ", 
+   RowBox[{"regulars", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}],
+    ",", " ", "\"\<PNG\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<regular4.png\>\"", ",", " ", 
+   RowBox[{"regulars", "\[LeftDoubleBracket]", "4", "\[RightDoubleBracket]"}],
+    ",", " ", "\"\<PNG\>\""}], "]"}]}], "Input",
+ CellChangeTimes->{{3.403695793438942*^9, 3.403695834465249*^9}, {
+  3.403696356406005*^9, 3.403696356827277*^9}, {3.403696418551519*^9, 
+  3.403696419838722*^9}, {3.40369649432101*^9, 3.40369653852031*^9}, {
+  3.403700658905876*^9, 3.403700721571778*^9}, {3.403700802094461*^9, 
+  3.403700816246511*^9}}],
+
+Cell[BoxData[
+ RowBox[{"fullpolar", " ", "=", " ", 
+  RowBox[{"PolarPlot", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"P", "[", 
+      RowBox[{"\[Theta]", ",", "0.98"}], "]"}], "/.", "values"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"\[Theta]", ",", "0", ",", 
+      RowBox[{"2", "\[Pi]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotRange", "\[Rule]", 
+     RowBox[{"{", "10000", "}"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{"PlotLabel", "\[Rule]", " ", "\"\<\[Beta]=0.98\>\""}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"Ticks", "\[Rule]", " ", 
+     RowBox[{"{", 
+      RowBox[{"Automatic", ",", " ", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "300"}], ",", " ", "300"}], "}"}]}], "}"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ImageSize", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"700", ",", "100"}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.403696897152315*^9, 3.403696947015104*^9}, {
+  3.403697395763515*^9, 3.403697604041985*^9}, {3.403697688941083*^9, 
+  3.403697729003635*^9}, {3.403697934321094*^9, 3.403697934423079*^9}, {
+  3.40370059101095*^9, 3.403700620772527*^9}, {3.403700731269158*^9, 
+  3.403700740375833*^9}}],
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<fullpolar.png\>\"", ",", "fullpolar", ",", " ", "\"\<PNG\>\""}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.403700745952204*^9, 3.403700753925769*^9}}]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"Presentation",
+WindowSize->{1272, 899},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"6.0 for Linux x86 (32-bit) (April 20, 2007)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[590, 23, 119, 1, 94, "Title"],
+Cell[712, 26, 328, 8, 35, "Input"],
+Cell[1043, 36, 410, 10, 59, "Input"],
+Cell[1456, 48, 1303, 35, 73, "Input"],
+Cell[2762, 85, 3663, 80, 506, "Input"],
+Cell[6428, 167, 1134, 21, 102, "Input"],
+Cell[7565, 190, 1151, 21, 102, "Input"],
+Cell[8719, 213, 1272, 30, 190, "Input"],
+Cell[9994, 245, 207, 5, 35, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

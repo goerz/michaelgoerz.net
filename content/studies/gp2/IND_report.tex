@@ -1,0 +1,214 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{german}
+\usepackage[german]{mymacros_goerz}
+\usepackage{fancyhdr, fancyunits}
+
+% Header and Footer
+\pagestyle{fancy}
+\lhead{GP2 - IND}
+\chead{}
+\rhead{Haase, Goerz}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0 pt}
+
+
+%opening
+\title{Bericht zum Versuch Induktion}
+\author{Anton Haase, Michael Goerz}
+\date{12. September 2005}
+
+\begin{document}
+
+\maketitle
+\noindent GP II
+
+\noindent Tutor: W. Theis
+
+\section{Einf"uhrung}
+Das Farraday'sche Induktionsgesetz gibt die durch einen zeitlich ver"anderlichen magnetischen Fluss induzierte Spannung in einer Leiterschleife an. Es gilt
+\begin{equation}
+U_{\text{ind}} = \frac{\dd \phi}{\dd t}\text{,}
+\end{equation}
+wobei der magnetische Fluss als
+\begin{equation}
+\phi = \int \limits_{A} \vec{B} \cdot \dd \vec{A}
+\end{equation}
+definiert ist. Die Richtung des Fl"achenelements $\dd \vec{A}$ wird durch den Fl"achennormalenvektor gegeben. Die induzierte Spannung erreicht ihren Maximalwert dementsprechend f"ur ein senkrecht auf die Fl"ache wirkendes Magnetfeld (Feldlinien parallel zum Vektor $\dd \vec{A}$). F"ur den Fall einer zeitlich unver"anderlichen Fl"ache mit dazu senkrechtem, r"aumlich konstantem Magnetfeld ergibt sich f"ur die Induktionsspannung in der Leiterschleife der einfache Zusammenhang
+\begin{equation}
+U_{\text{ind}} = \dot{B} \, A
+\end{equation}
+Erh"oht sich die Zahl der Leiterschleifen (Windungen) wie bei einer Spule, so muss die rechte Seite der Formel noch mit der Anzahl der Windungen $n$ multipliziert werden.
+
+Die magnetische Felddichte $\vec{B}$, oft auch magnetische Feldst"arke genannt, l"asst sich ihrerseits "uber den Zusammenhang
+\begin{equation}
+\vec{B} = \mu \, \mu_0 \, \vec{H}
+\end{equation}
+durch die magnetische Erregung $\vec{H}$ ausdr"ucken. Da es sich bei der Feldst"arke im Gegensatz zur magnetischen Erregung um eine materialabh"angige Gr"o"se handelt, kommt die einheitenlose Permeabilit"at $\mu$ als zus"atzlicher Faktor in die Gleichung hinein. Im Vakuum betr"agt dieser Faktor $\mu = 1$. F"ur Luft gilt in guter N"aherung der gleiche Wert. Bei Eisenkernen sind Permeabilit"aten in der Gr"o"senordnung $\mu = 400$ h"aufig, da dort das Magnetfeld bei gleicher Erregung erheblich dichter ist. Der Faktor $\mu_0$ wird als Permeabilit"atskonstante bezeichnet.
+
+Das oben genannte Induktionsgesetz findet nicht nur bei "au"serer Einwirkung eines Magnetfeldes auf einen Leiter Anwendung, sondern auch f"ur den Fall eines selbsterzeugten Feldes. Die St"arke der sog. Selbstinduktion wird durch den Proportionalit"atsfaktor $L$ (Induktivit"at) angeben. Es gilt der Zusammenhang
+\begin{equation}
+U_\text{ind} = - L \, \frac{\dd I}{\dd t} \text{,}
+\end{equation}
+wobei die induzierte Spannung gem"a"s der Lenz'schen Regel immer ihrer Ursache entgegenwirkt ("`Lenz'sches Minus"'). Als konkretes Beispiel f"ur diese Beobachtung betrachten wir eine Spule, welche an eine Rechteckspannung angelegt ist. Die Induktivit"at wird mit $L$ bezeichnet, der Ohm'sche Widerstand mit $R_L$. Die angelegte Generatorspannung nennen wir $U_G$ mit dem dazugeh"origen Innenwiederstand $R_i$. Die Kirchhoff'sche Maschenregel liefert uns eine Differentialgleichung f"ur den Strom $I$:
+\begin{eqnarray}
+R_L I + R_i I + L \dot{I} &=& U_G \nonumber \\
+\Rightarrow \qquad \dot{I} + \frac{R_L + R_i}{L} I &=&  \frac{U_G}{L}
+\end{eqnarray}
+Der Ansatz
+\begin{equation}
+I(t) = I_0 \, e^{- \frac{R_L + R_i}{L} t}
+\end{equation}
+stellt zun"achst eine L"osung f"ur die homogene Gleichung dar. Die inhomogene L"osung l"asst sich allein durch scharfes Hinsehen leicht erraten. Ein zus"atzlicher Term, welcher bei der Ableitung nach der Zeit verschwindet liefert das gew"unschte Ergebnis:
+\begin{equation}
+I(t) = I_0 \, e^{- \frac{R_L + R_i}{L} t} + \frac{U_G}{R_L + R_i}
+\end{equation}
+Somit ergibt sich f"ur den Strom $I$ im Grenzfall $t \rightarrow \infty$ die Formel:
+\begin{equation}
+I(t \rightarrow \infty) = \frac{U_G}{R_L + R_i}
+\end{equation}
+Unter der Voraussetzung, dass zum Zeitpunkt $t=0$ eine Umschaltung von $-U_G$ nach $+U_G$ stattfindet, kann die Amplitude $I_0$ bestimmt werden. Es muss gelten:
+\begin{equation}
+I(0) = - \frac{U_G}{R_L + R_i}
+\end{equation}
+Um dies zu erreichen, folgt f"ur die Amplitude:
+\begin{equation}
+I_0 = - 2 \frac{U_G}{R_L + R_i}
+\end{equation}
+Daraus ergibt sich als vollst"andige L"osung f"ur die Differentialgleichung schlie"slich:
+\begin{equation}
+I(t) = \frac{U_G}{R_L + R_i} \left(1 - 2 \, e^{- \frac{R_L + R_i}{L} t} \right)
+\end{equation}
+
+M"ochte man die Wirkung des Magnetfeldes einer Spule an einer Rechteckspannung auf eine andere Spule beschreiben, so erfolgt dies ebenfalls unter Anwendung des Farraday'schen Induktionsgesetzes. Zu diesem Zweck muss lediglich die Fl"ache der Induktionsspule, sowie das wirkende Magnetfeld bekannt sein. Letzteres ergibt sich nat"urlich aus den Daten der Feldspule. Dabei ist zu beachten, dass das Magnetfeld innerhalb dieser Spule keinesfalls konstant ist. Um dieses Problem zu umgehen wird ein mittleres Magnetfeld $\overline{B}(s)$ eingef"uhrt, wobei $s$ die L"ange der Induktionsspule angibt:
+\begin{equation}
+\overline{B}(s) = \mu_0 \cdot \frac{n}{l} \cdot I(t) \cdot \overline{F}(s)
+\end{equation}
+Der Korrekturfaktor $\overline{F}(s)$ ist wie folgt definiert:
+\begin{equation}
+\overline{F}(s) = \frac{1}{s} \int \limits_{\frac{l-s}{2}}^{\frac{l+s}{2}} \left( \frac{1}{2} \left[ \frac{a}{\sqrt{r^2 + a^2}} + \frac{l- a}{\sqrt{r^2 + (l-a)^2}}\right]\right) \, \dd a
+\end{equation}
+Somit folgt f"ur die induzierte Spannung in der Induktionsspule durch Einsetzen in das Farraday'sche Induktionsgesetz:
+\begin{equation}
+U_\text{ind} = 2 \cdot n_I \cdot \mu_0 \frac{n_F}{l} \cdot \frac{U_G}{L_F} \cdot e^{- \frac{R_L + R_i}{L_F} t} \cdot \overline{F}(s)  \cdot A_I \label{Uind1}
+\end{equation}
+
+Legt man statt der Rechteckspannung eine herk"ommliche Sinusspannung an, so lautet die Gleichung f"ur den Strom:
+\begin{equation}
+I(t) = I_0 \cos(\omega t)
+\end{equation}
+Damit folgt f"ur die induzierte Spannung in v"olliger Analogie zu oben:
+\begin{equation}
+U_\text{ind} = n_I \cdot \mu_0 \frac{n_F}{l} \cdot \omega \cdot I_0 \cdot \sin(\omega t) \cdot \overline{F}(s)  \cdot A_I \label{UindSin}
+\end{equation}
+Wird die Induktionsspule schlie"slich noch gegen"uber den Magnetfeldlinien um den Winkel $\phi$ verkippt, so wird die Durchflussfl"ache $A_I$ nur anteilig ber"ucksichtigt:
+\begin{equation}
+U_\text{ind} = n_I \cdot \mu_0 \frac{n_F}{l} \cdot \omega \cdot I_0 \cdot \sin(\omega t) \cdot \overline{F}(s)  \cdot A_I \cdot \cos(\phi) \label{UindWinkel}
+\end{equation}
+\section{Aufgaben}
+\begin{enumerate}
+\item Untersuchung der Induktionsspannung in Abh"angigkeit von der Zeit an einer Probespule (Induktionsspule) innerhalb einer Magnetspule (Feldspule) bei Anlegen einer Rechteckspannung an die Feldspule. Berechnung der induzierten Spannung f"ur $t=0$ und des Selbstinduktionskoeffizienten der Feldspule. Vergleich der Ergebnisse mit den theoretischen Erwartungen.
+\item Messung der Induktionsspannung (Effektivwert) an der Induktionsspule bei einem Wechselstrom durch die Feldspule in Abh"angigkeit von Frequenz des Feldstroms. Qualitativer und quantitativer Vergleich des Ergebnisses mit der theoretischen Erwartung.
+\item Messung der Induktionsspannung (Effektivwert) an der Induktionsspule bei einem Wechselstrom durch die Feldspule in Abh"angigkeit von der Orientierung der Induktionsspule bei einer Frequenz von \unit{100}{\hertz}. Zus"atzliche Messung der Induktionsspannung bei einer Frequenz von \unit{1000}{\hertz} bei der Winkelstellung 0\degree. Qualitativer und quantitativer Vergleich der Ergebnisse mit den theoretischen Erwartungen. 
+\end{enumerate}
+
+\pagebreak
+\newpage
+\section{Auswertung}
+
+\subsection{Aufgabe 1}
+In den Messungen zur 1. Aufgabe haben wir das Abklingverhalten der an einer Probespule (Induktionsspule mit 500 Windungen) induzierten Spannung aufgenommen. Die Probespule befand sich innerhalb einer Feldspule mit 1000 Windungen, welche an eine Rechteckspannung (\unit{100}{\hertz}) angeschlossen war. Die Kurvenverl"aufe zeigten auf beiden Kan"alen (d.h. f"ur Feld- und Induktionsspule) einen exponentiellen Abfall, wie es in der Abbildung im Messprotokoll dargestellt ist. Dabei waren die Spannungskurven im Vergleich zwar unterschiedlich, die Kurve der Feldspule war jedoch \emph{nicht} wie erwartet doppelt so hoch wie die der Induktionsspule. Leider vers"aumten wir w"ahrend der Messung die Aufnahme des Spannungs--Zeit--Verlaufs an der Feldspule, so dass eine messtechnische Bestimmung des Selbstinduktionskoeffizienten nicht m"oglich ist. Die theoretische Bestimmung erfolgt mittels der Gleichung
+\begin{equation}
+L = \mu_0 \cdot n^2 \cdot \frac{A}{l} \cdot \overline{F}(s)
+\end{equation}
+Dies ergibt nach Einsetzen der im Platzskript genannten Werte und Berechnung des Korrekturfaktors zu $\overline{F}=0.89$ eine Induktivit"at von:
+\begin{equation}
+L = (10,9 \pm 0,2) \text{ mH}
+\end{equation}
+
+Die theoretische Bestimmung der in der Induktionsspule induzierten Spannung erfolgt anhand von Gleichung (\ref{Uind1}). Das Einsetzen der gleichen L"angen von Feld- und Induktionsspule, sowie der Induktivit"at $L_F$ der Feldspule ergeben eine kurze Gleichung:
+\begin{equation}
+U_{\text{ind}} = 2 \cdot \frac{n_I}{n_F} \cdot \frac{A_I}{A_F} \cdot U_G
+\end{equation} 
+Damit lautet der berechnete Wert f"ur die induzierte Spannung (mit einer Generatorspannung von: $U_G = (1,25 \pm 0,05) \text{ V}$):
+\begin{equation}
+U_{\text{ind}} = (1,01 \pm 0,03) \text{ V}
+\end{equation}
+Die Auswertung der Messergebnisse erfolgt in diesem Fall grafisch. Zu diesem Zweck wird die Spannung "uber der Zeit einfachlogarithmisch aufgetragen und anschlie"send eine Ausgleichsgerade bestimmt.
+\begin{figure}[htb]
+	\centering
+	     \includegraphics[width=0.7\textwidth,angle=270]{V1Ind.ps}
+	     \caption{Spannungs--Zeit--Messreihe an der Induktionsspule}
+       \label{fig:1}
+\end{figure}
+Die Anwendung der linearen Regression auf dieses Problem liefert als extrapolierten Wert der induzierten Spannung (siehe Abb. \ref{fig:1}) zum Zeitpunkt $t=0$:
+\begin{equation}
+U_{\text{ind}} = (1,01 \pm 0,02) \text{ V}
+\end{equation}
+Im Vergleich sind theoretischer und experimenteller Wert identisch.
+\newpage
+\subsection{Aufgabe 2}
+Gemessen wurde die induzierte Spannung in einer Induktionsspule in Abh"angigkeit von der Frequenz der an einer Feldspule angelegten Sinusspannung. Gem"a"s der Gleichung (\ref{UindSin}) aus der Einleitung ist auf Grund der Proportionalit"at zu $\omega$ bei konstantem Strom $I_0$ ein linearer Zusammenhang zu erwarten. Den theoretischen Wert f"ur den gesuchten Proportionalit"atsfaktor erh"alt man folglich durch einsetzen der gegeben bzw. gemessenen Gr"o"sen in die Effektivwertgleichung. Diese ergibt sich direkt aus Gleichung (\ref{UindSin}):
+\begin{equation}
+U_{\text{ind, eff}} = \frac{1}{\sqrt{2}} \cdot n_I \cdot \mu_0 \frac{n_F}{l} \cdot 2 \pi f \cdot I_0  \cdot \overline{F}(s)  \cdot A_I
+\end{equation}
+Als theoretischen Wert f"ur die erwartete Gerade erh"alt man somit:
+\begin{equation}
+U_{\text{ind, eff}} = (0,00031 \pm 0,00004) \text{V} \text{s} \cdot f
+\end{equation}
+Die Messwerte werden wieder grafisch ausgewertet (siehe Abb. \ref{fig:2}). 
+\begin{figure}[htb]
+	\centering
+	     \includegraphics[width=0.7\textwidth,angle=270]{out.ps}
+	     \caption{Frequenz--Spannungs--Messreihe}
+       \label{fig:2}
+\end{figure}
+Der daraus gewonnene Wert f"ur die Steigung der Ausgleichsgeraden lautet:
+\begin{equation}
+U_{\text{ind, eff}} = (0,00041 \pm 0,00007) \text{V} \text{s} \cdot f
+\end{equation}
+Somit sind theoretischer und experimenteller Wert vertr"aglich.
+\newpage
+\subsection{Aufgabe 3}
+In dieser Aufgabe haben wir die Winkelabh"angigkeit der induzierten Spannung untersucht. Dazu wurde eine im Winkel verstellbare Induktionsspule mit $n=300$ Windungen verwendet und in das Zentrum der bereits zuvor benutzten Feldspule mit $n=1000$ Windungen gebracht. Da das Magnetfeld dort nahezu homogen ist, ergibt sich der Korrekturfaktor in diesem Fall zu $\overline{F}(s)=0.99$. Die Berechnung der theoretischen Erwartung erfolgt analog zu Aufgabe 2 aus der Gleichung (\ref{UindWinkel}):
+\begin{equation}
+U_\text{ind, eff} = n_I \cdot \mu_0 \frac{n_F}{l} \cdot 2 \pi f \cdot I_0 \cdot \frac{1}{\sqrt{2}} \cdot \overline{F}(s)  \cdot A_I \cdot \cos(\phi)
+\end{equation}
+Das Einsetzen der Werte liefert:
+\begin{equation}
+U_\text{ind, eff} = (0,018 \pm 0,003) \text{ V} \cdot \cos(\phi)
+\end{equation}
+Die graphische Darstellung der Messwerte f"ur die induzierte Spannung aufgetragen "uber dem Cosinus des Neigungswinkels liefert den gemessenen Wert f"ur den Proportionalit"atsfaktor (siehe Abb. \ref{fig:3}:
+\begin{equation}
+U_\text{ind, eff} = (0,025 \pm 0,001) \text{ V} \cdot \cos(\phi)
+\end{equation}
+\begin{figure}[htb]
+	\centering
+	     \includegraphics[width=0.7\textwidth,angle=270]{V3.ps}
+	     \caption{Winkel--Spannungs--Messreihe}
+       \label{fig:3}
+\end{figure}
+Unter Ber"ucksichtigung des gro"sen Fehlerintervalls beim theoretischen Wert, sind die beiden Ergebnisse vertr"aglich.
+
+F"ur die Messung bei 1000 Hz ergibt sich bei einem Strom von $I_0= 15 mA$ und einem Winkel von $\alpha = 0\degree$ ein theoretischer Wert von
+\begin{equation}
+U_\text{ind} = (0,054 \pm 0.007) \text{ V}
+\end{equation}
+Der gemessene Wert lautet
+\begin{equation}
+U_\text{ind} = (0,029 \pm 0,006) \text{ V}
+\end{equation}
+Die Werte sind somit signifikant unterschiedlich.
+
+\newpage
+\section{Zusammenfassung und Diskussion}
+Um die Messwerte s"amtlicher Versuche in ihrer Genauigkeit einordnen zu k"onnen, ist zun"achst eine Beurteilung der Messmethoden erforderlich. W"ahrend der Messung stellte sich heraus, dass die Position der Spulen relativ zu den Spannungs- und Strommessger"aten einen sichtbaren Einfluss auf die Messwerte hatte. Dies ist mit Sicherheit auf das magnetische Feld zur"uckzuf"uhren, welches selbstverst"andlich auch in allen Kabeln und Leitern innerhalb der Ger"ate eine Spannung induziert. Die Berechnung des erzeugten Magnetfeldes als Mittelwert "uber die gesamte Spule stellt auch nur eine fehlerbehaftete N"aherung dar und beeinflusst damit die Genauigkeit der Messung.
+
+Das Aufnehmen von Messwerten unter Verwendung eines Oszilloskops ist ebenfalls nicht optimal. Die Skaleneinteilung l"asst lediglich die Protokollierung weniger Messpunkte zu, welche unter anderem auf Grund der Strahldicke einen Fehler von mindestens einem Skalenteil aufweisen. Dennoch ist diese Messmethode geeignet, um den qualitativen Verlauf der Spannung mit der Zeit zu beobachten. Die im Messprotokoll festgehaltene Kurve entspricht genau der theoretischen Erwartung an die Induktionsspannung.
+
+Die Beobachtung der induzierten Spannung in Abh"angigkeit von der Frequenz ergab in der qualitativen und quantitativen Auswertung eine Best"atigung der theoretischen Erwartung. Die Proportionalit"at zwischen Spannung und Frequenz (bei konstantem Strom) wurde durch den linearen Verlauf der Messwerte verdeutlicht. Der relativ hohe Fehler erkl"art sich durch die gro"se Anzahl fehlerbehafteter Begleitmessungen, wie zum Beispiel der Strom- und Frequenzmessung.
+
+F"ur die Messung der Winkelabh"angigkeit der Induktionsspannung gelten "ahnliche Bedingungen. Der Fehler der Frequenzmessung konnte hier jedoch gegen"uber der anderen Fehler vernachl"assigt werden. In diesem Fall liefert die Berechnung des theoretischen Werts den gr"o"seren Fehler, da bei der Bestimmung viele fehlerbehaftete Gr"o"sen eingehen. Der qualitivative Verlauf unserer Messkurve (aufgetragen "uber dem Cosinus des Winkels) ist linear, wobei die Streuung um die Ausgleichsgerade sehr gering ist. Dies deutet darauf hin, dass die Messung und die Winkeleinstellungen sehr genau waren.
+\end{document}

@@ -1,0 +1,24 @@
+{% extends "page.html" %}
+
+{% from 'bibliography.j2' import bibliography %}
+
+{% block content %}
+    <section id="content" class="body">
+        <h1 class="entry-title">{{ page.title }}</h1>
+        <hr />
+        <div class="entry-content">
+          <div class="row" id="bio">
+            <div class="col-md-3">
+              <img src="{{ page.profilepicture }}" alt="Profile Picture"></img>
+            </div>
+            <div class="col-md-7">
+              {{ page.content }}
+            </div>
+          </div>
+          <hr />
+          {% for bibtitle, bibfile in page.bibliography %}
+            {{ bibliography(bibtitle, read_bibtex(bibfile)) }}
+          {% endfor %}
+        </div>
+    </section>
+{% endblock %}

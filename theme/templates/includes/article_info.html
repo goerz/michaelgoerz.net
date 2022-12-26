@@ -1,0 +1,33 @@
+<footer class="post-info">
+
+    {% if page.modified %}
+    <span class="label label-default">First Published</span>
+    {% else %}
+    <span class="label label-default">Dated</span>
+    {% endif %}
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="{{ page.date.isoformat() }}"> {{ page.date.strftime("%A, %d %B %Y") }}</time>
+        {% if page.revised %}<span class="label label-default">Revised</span>  <i class="fa fa-calendar"></i><time datetime="{{ page.revised.isoformat() }}"> {{ page.revised.strftime("%A, %d %B %Y") }}</time>{% endif %}
+        {% if page.history | length > 1 %}— <i class="fa fa-history"></i> <a href="{{ HISTORY }}/{{  page.file }}">versions</a>{% endif %}
+    </span>
+
+    {% if SHOW_ARTICLE_CATEGORY %}
+        <div>
+        <span class="label label-default">Category</span>
+        <a href="{{ SITEURL }}/{{ page.category.url }}">{{ page.category }}</a>
+        </div>
+    {% endif %}
+
+    {% if page.tags %}
+    <div>
+    <span class="label label-default">Tags</span>
+    {% for tag in page.tags %}
+    	<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+        {% if not loop.last %}
+            &middot;
+        {% endif %}
+    {% endfor %}
+    </div>
+    {% endif %}
+
+</footer><!-- /.post-info -->

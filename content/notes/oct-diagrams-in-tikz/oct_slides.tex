@@ -1,0 +1,70 @@
+\documentclass[8pt]{beamer}
+
+\usepackage{beamerthemesplit}
+\usepackage{tikz,nicefrac,amsmath,pifont}
+\usetikzlibrary{arrows,snakes,backgrounds,patterns,matrix,shapes,fit,calc,shadows,plotmarks}
+
+\title{Implementations of OCT}
+\author{Michael Goerz}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+%\section[Outline]{}
+%\frame{\tableofcontents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame {
+\begin{center}\huge
+  OCT with Full Storage \\of Backward-Propagated States
+\end{center}
+}
+
+\frame {
+  \frametitle{OCT with Full Storage}
+
+\hspace*{-12pt}
+  \begin{tikzpicture}[scale=0.8]
+     \input{oct_storeall.tikz}
+  \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame {
+\begin{center}\huge
+  OCT with No Storage \\of Backward-Propagated States
+\end{center}
+}
+
+\frame {
+  \frametitle{OCT without Storage}
+
+\hspace*{-12pt}
+  \begin{tikzpicture}[scale=0.8]
+     \input{oct_storenone.tikz}
+  \end{tikzpicture}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame {
+\begin{center}\huge
+  OCT with Segmented Storage \\of Backward-Propagated States
+\end{center}
+}
+
+\frame {
+  \frametitle{OCT with Segmentation}
+
+\hspace*{-12pt}
+  \begin{tikzpicture}[scale=0.8]
+     \input{oct_segments.tikz}
+  \end{tikzpicture}
+}
+
+\end{document}
+

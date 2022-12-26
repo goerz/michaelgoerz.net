@@ -1,0 +1,325 @@
+  %\tikzset{help lines/.style=gray, ultra thin}
+  %\tikzset{help lines/.style=white, ultra thin}
+  %\draw[style=help lines, step=1cm] (0,0) grid (20,15);
+
+%%% propagation boxes
+% forward
+  \draw[color=gray!20, fill=gray!20,rounded corners=10] (2,2.8) rectangle (16,4.5);
+
+% extra at T
+  \draw<13->[color=gray!20, fill=gray!20,rounded corners=10] (14,2.8) rectangle (16,4.75);
+  \draw<13->[color=gray!20, fill=gray!20,rounded corners=10] (14,5.25) rectangle (16,7.2);
+
+% backward
+  \draw[color=gray!20, fill=gray!20,rounded corners=10] (2,5.5) rectangle (16,7.2);
+  \draw<1-8>[color=gray!30, fill=gray!30,rounded corners=10] (2,5.5) rectangle (7,7.2); % segment 1
+  \draw<9-12>[color=gray!30, fill=gray!30,rounded corners=10] (8,5.5) rectangle (16,7.2); % segment 2
+
+%%% forward propagation
+
+\node (psifw1) at (3,4) {
+  \begin{tikzpicture}
+
+    % bra
+    \draw<1-4>[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+    \draw<5> (0,0)--(0.5,-0.25)--(1,0);
+    \draw<6->[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+
+    % text
+    \node at (0.5,0.25) {$\Psi_i$};
+
+  \end{tikzpicture}
+};
+
+
+\node (psifw2) at (6,4) {
+  \begin{tikzpicture}
+
+    % bra
+    \draw<1-6>[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+    \draw<7> (0,0)--(0.5,-0.25)--(1,0);
+    \draw<8->[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+    % text
+    \node<1-5>[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; %invisible
+    \node<6-10> at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+    \node<11->[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; %invisible
+
+  \end{tikzpicture}
+};
+% psi_i -> psi2
+\draw<1-4>[->][color=gray!20] (psifw1) .. controls +(1,-1) and +(-1,-1) .. node(epsn1)[fill=gray!20]{$\tilde{\epsilon}_1$} (psifw2); % invisible
+\draw<5>[->][color=gray!20] (psifw1) .. controls +(1,-1) and +(-1,-1) .. node(epsn1)[color=black, fill=gray!20]{$\tilde{\epsilon}_1$} (psifw2);
+\draw<6>[->] (psifw1) .. controls +(1,-1) and +(-1,-1) .. node(epsn1)[fill=gray!20]{$\tilde{\epsilon}_1$} (psifw2);
+\draw<7->[->][color=gray!20] (psifw1) .. controls +(1,-1) and +(-1,-1) .. node(epsn1)[color=black, fill=gray!20]{$\tilde{\epsilon}_1$} (psifw2);
+
+
+\node (psifw3) at (9,4) {
+  \begin{tikzpicture}
+    % bra
+    \draw[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); %invisible
+    % text
+    \node<1-7>[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; %invisible
+    \node<8-10> at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+    \node<11->[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; %invisible
+    \node<11> at (0.5,0.25) {\dots};
+
+  \end{tikzpicture}
+};
+% psi_2 -> ...
+\draw<1-6>[->][color=gray!20] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3); % invisible
+\draw<7>[->][color=gray!20] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[color=black, fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3); % only eps
+\draw<8>[->] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3);
+\draw<9-11>[->][color=gray!20] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[color=black, fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3); % only eps
+%\draw<11>[->] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3);
+\draw<12->[->][color=gray!20] (psifw2) .. controls +(1,-1) and +(-1,-1) .. node(epsn2)[color=black, fill=gray!20]{$\tilde{\epsilon}_2$} (psifw3); % only eps
+
+
+\node (psifw4) at (12,4) {
+  \begin{tikzpicture}
+    % bra
+    \draw<1-10>[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+    \draw<11> (0,0)--(0.5,-0.25)--(1,0);
+    \draw<12->[color=gray!20] (0,0)--(0.5,-0.25)--(1,0); % invisible
+    % text
+    \node<1-10>[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; % invisible
+    \node<11> at (0.5,0.25) {$\Psi_{\text{fw}}(t)$};
+    \node<12->[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(t)$}; % invisible
+  \end{tikzpicture}
+};
+
+% ... -> psi4
+\draw<1-10>[->][color=gray!20] (psifw3) .. controls +(1,-1) and +(-1,-1) .. node(epsn3)[fill=gray!20]{$\tilde{\epsilon}_{nt-2}$} (psifw4); % invisible
+\draw<11>[->] (psifw3) .. controls +(1,-1) and +(-1,-1) .. node(epsn3)[fill=gray!20]{$\tilde{\epsilon}_{nt-2}$} (psifw4);
+\draw<12->[->][color=gray!20] (psifw3) .. controls +(1,-1) and +(-1,-1) .. node(epsn3)[color=black, fill=gray!20]{$\tilde{\epsilon}_{nt-2}$} (psifw4); % only eps
+
+
+% normal psi_fw(T)
+\node (psifw5) at (15,4) {
+  \begin{tikzpicture}
+    % bra
+    \draw[color=gray!20](0,0)--(0.5,-0.25)--(1,0); % invisible
+    %text
+    \node<1-10>[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(T)$}; % invisible
+    \node<11-12> at (0.5,0.25) {$\Psi_{\text{fw}}(T)$};
+    \node<13->[color=gray!20] at (0.5,0.25) {$\Psi_{\text{fw}}(T)$}; % invisible
+  \end{tikzpicture}
+};
+% raised psi_fw(T)
+\node at (15,4.2) {
+  \begin{tikzpicture}
+    % bra
+    \draw<13->(0,0)--(0.5,-0.25)--(1,0);
+    % text
+    \node<13-> at (0.5,0.4) {$\Psi_{\text{fw}}(T)$};
+  \end{tikzpicture}
+};
+
+% psi4 -> psi(T)
+\draw<1-10>[->][color=gray!20] (psifw4) .. controls +(1,-1) and +(-1,-1) .. node(epsn4)[fill=gray!20]{$\tilde{\epsilon}_{nt-1}$} (psifw5); % invisible
+\draw<11>[->] (psifw4) .. controls +(1,-1) and +(-1,-1) .. node(epsn4)[fill=gray!20]{$\tilde{\epsilon}_{nt-1}$} (psifw5);
+\draw<12->[->][color=gray!20] (psifw4) .. controls +(1,-1) and +(-1,-1) .. node(epsn4)[color=black, fill=gray!20]{$\tilde{\epsilon}_{nt-1}$} (psifw5); % only eps
+
+%%% backward propagation
+
+\node (psibw1) at (3,6) {
+  \begin{tikzpicture}
+    % ket
+    \draw<1-4>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<5> (0,0)--(0.5,0.25)--(1,0);
+    \draw<6-8>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<9->[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    % text
+    \node<1-2>[color=gray!30] at (0.5,-0.25) {$\Psi_{\text{bw}}(t_0)$}; % invisible
+    \node<3-8> at (0.5,-0.25) {$\Psi_{\text{bw}}(t_0)$};
+    \node<9->[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t_0)$}; % invisible
+  \end{tikzpicture}
+};
+
+\node (psibw2) at (6,6) {
+  \begin{tikzpicture}
+    % ket
+    \draw<1-6>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<7> (0,0)--(0.5,0.25)--(1,0);
+    \draw<8>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<9->[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    % text
+    \node<1-2>[color=gray!30] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<3-10> at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+    \node<11->[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+  \end{tikzpicture}
+};
+% psi_2 -> psi(t0)
+\draw<1-2>[<-][color=gray!30] (psibw1) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!30]{$\epsilon_1$} (psibw2); % only eps
+\draw<3>[<-] (psibw1) .. controls +(1,1) and +(-1,1) .. node[fill=gray!30]{$\epsilon_1$} (psibw2);
+\draw<4>[<-][color=gray!30] (psibw1) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!30]{$\epsilon_1$} (psibw2); % only eps
+
+\node (psibw3) at (9,6) {
+  \begin{tikzpicture}
+    % ket
+    \draw<1-8>[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<9-12>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<13->[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    % text
+    \node<1-8>[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<9-10>at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+    \node<11-12>[color=gray!30] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<13->[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<3> at (0.5,-0.25) {\dots};
+    \node<11-12> at (0.5,-0.25) {\dots};
+  \end{tikzpicture}
+};
+% ... -> psi_2
+\draw<1-2>[<-][color=gray!20] (psibw2) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_2$} (psibw3); % only eps
+\draw<3>[<-] (psibw2) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_2$} (psibw3);
+\draw<4-6>[<-][color=gray!20] (psibw2) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_2$} (psibw3); % only eps
+\draw<9>[->] (psibw2) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{($\epsilon_2$)} (psibw3);
+
+\node (psibw4) at (12,6) {
+  \begin{tikzpicture}
+    % ket
+    \draw<1-8>[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<9-10>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<11> (0,0)--(0.5,0.25)--(1,0);
+    \draw<12>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<13->[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    % text
+    \node<1>[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<2-3> at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+    \node<4-8>[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<9>[color=gray!30] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+    \node<10-12> at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$};
+    \node<13->[color=gray!20] at (0.5,-0.25) {$\Psi_{\text{bw}}(t)$}; % invisible
+  \end{tikzpicture}
+};
+% psi_4 -> ...
+\draw<1-2>[<-][color=gray!20] (psibw3) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_{nt-2}$} (psibw4); % only eps
+\draw<3>[<-] (psibw3) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_{nt-2}$} (psibw4);
+\draw<4-8>[<-][color=gray!20] (psibw3) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_{nt-2}$} (psibw4); % only eps
+\draw<9>[<-][color=gray!30] (psibw3) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!30]{$\epsilon_{nt-2}$} (psibw4); % only eps
+\draw<10>[->] (psibw3) .. controls +(1,1) and +(-1,1) .. node[fill=gray!30]{$\epsilon_{nt-2}$} (psibw4);
+
+% normal psi_t
+\node (psibw5) at (15,6) {
+  \begin{tikzpicture}
+    % ket
+    \draw<1-8>[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<9-12>[color=gray!30] (0,0)--(0.5,0.25)--(1,0); % invisible
+    \draw<13->[color=gray!20] (0,0)--(0.5,0.25)--(1,0); % invisible
+    % text
+    \node<1-12>at (0.5,-0.25) {$\Psi_t$};
+    \node<13->[color=gray!20] at (0.5,-0.25) {$\Psi_t$}; % invisible
+  \end{tikzpicture}
+};
+% lowered psi_t
+\node at (15,5.8) {
+  \begin{tikzpicture}
+    % ket
+    \draw<13-> (0,0)--(0.5,0.25)--(1,0);
+    % text
+    \node<13-> at (0.5,-0.4) {$\Psi_t$};
+  \end{tikzpicture}
+};
+% psi_t -> psi4
+\draw<1>[<-][color=gray!20] (psibw4) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_{nt-1}$} (psibw5); % only eps
+\draw<2>[<-] (psibw4) .. controls +(1,1) and +(-1,1) .. node[fill=gray!20]{$\epsilon_{nt-1}$} (psibw5);
+\draw<3-8>[<-][color=gray!20] (psibw4) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!20]{$\epsilon_{nt-1}$} (psibw5); % only eps
+\draw<9>[<-][color=gray!30] (psibw4) .. controls +(1,1) and +(-1,1) .. node[color=black,fill=gray!30]{$\epsilon_{nt-1}$} (psibw5); % only eps
+\draw<10>[->] (psibw4) .. controls +(1,1) and +(-1,1) .. node[fill=gray!30]{$\epsilon_{nt-1}$} (psibw5);
+
+%%% mu
+\node (mu1) at (3,5) {
+  \begin{tikzpicture}
+    \draw<1-4>[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \draw<5>(-0.5,0.4)--(0.5,0.4);
+    \draw<6->[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \node<1-4>[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \node<5> at (0,0) {$\hat\mu$};
+    \node<6->[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \draw<1-4>[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+    \draw<5> (-0.5,-0.4)--(0.5,-0.4);
+    \draw<6->[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+  \end{tikzpicture}
+};
+\draw<5>[->] (mu1) -| (epsn1);
+
+\node (mu2) at (6,5) {
+  \begin{tikzpicture}
+    \draw<1-6>[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \draw<7> (-0.5,0.4)--(0.5,0.4);
+    \draw<8->[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \node<1-6>[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \node<7> at (0,0) {$\hat\mu$};
+    \node<8->[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \draw<1-6>[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+    \draw<7> (-0.5,-0.4)--(0.5,-0.4);
+    \draw<8->[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+  \end{tikzpicture}
+};
+\draw<7>[->] (mu2) -| (epsn2);
+
+\node (mu3) at (9,5) {
+  \begin{tikzpicture}
+    \draw[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \node[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \node<1-10>[color=white] at (0,0) {\dots}; % invisible
+    \node<11> at (0,0) {\dots};
+    \draw[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+  \end{tikzpicture}
+};
+\draw<11>[->] (mu3) -| (epsn3);
+
+\node (mu4) at (12,5) {
+  \begin{tikzpicture}
+    \draw<1-10>[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \draw<11> (-0.5,0.4)--(0.5,0.4);
+    \draw<12->[color=white] (-0.5,0.4)--(0.5,0.4); % invisible
+    \node<1-10>[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \node<11> at (0,0) {$\hat\mu$};
+    \node<12->[color=white] at (0,0) {$\hat\mu$}; % invisible
+    \draw<1-10>[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+    \draw<11> (-0.5,-0.4)--(0.5,-0.4);
+    \draw<12->[color=white] (-0.5,-0.4)--(0.5,-0.4); % invisible
+  \end{tikzpicture}
+};
+\draw<11>[->] (mu4) -| (epsn4);
+
+% braket-line between Psi_t and Psi_fw(T)
+\node at (15,5) {
+  \begin{tikzpicture}
+    \draw<1-12>[color=white] (-0.5,0)--(0.5,0); % invisible
+    \draw<13-> (-0.5,0)--(0.5,0);
+  \end{tikzpicture}
+};
+% = tau
+\node at (16.1,5) {
+  \begin{tikzpicture}
+    \node<1-12>[color=white] at (0,0) {$ = \; \tau$}; % invisible
+    \node<13-> at (0,0) {$ = \; \tau$};
+  \end{tikzpicture}
+};
+
+
+%%% time grid
+\path (epsn1) ++(0,-1.6) node{\small $t_0 + \frac{dt}{2}$};
+\path(epsn1) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (epsn2) ++(0,-1.6) node{\small $t_0 + \frac{3}{2}dt$};
+\path(epsn2) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (psibw3) ++(0,-4.45) node{\small \dots};
+\path (epsn3) ++(0,-1.6) node{\small $T - \frac{3}{2}dt$};
+\path(epsn3) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+\path (epsn4) ++(0,-1.6) node{\small $T - \frac{dt}{2}$};
+\path(epsn4) ++(0,-1.1) node{\tikz \draw (1.5pt,1.5pt)--(-1.5pt,-1.5pt)(1.5pt,-1.5pt)--(-1.5pt,1.5pt);};
+
+\path (psibw1) ++(0,2.5) node{\small $t_0$};
+\draw[fill=black] (psibw1) ++(0,2) circle (1pt);
+\path (psibw2) ++(0,2.5) node{\small $t = t_0+dt$};
+\draw[fill=black] (psibw2) ++(0,2) circle (1pt);
+\path (psibw3) ++(0,2.5) node{\small \dots};
+\path (psibw4) ++(0,2.5) node{\small $t = T-dt$};
+\draw[fill=black] (psibw4) ++(0,2) circle (1pt);
+\path (psibw5) ++(0,2.5) node{\small $T = t_0 + nt \cdot dt$};
+\draw[fill=black] (psibw5) ++(0,2) circle (1pt);
+
+%%% masking tape
+\draw<1-2>[color=gray!30, fill=gray!30,rounded corners=10] (6,6) rectangle (7,7.2); % upper right corner, segment 1
+\draw<4-6>[color=gray!30, fill=gray!30,rounded corners=10] (6,6) rectangle (7,7.2); % upper right corner, segment 1
