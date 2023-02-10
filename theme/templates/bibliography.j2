@@ -15,7 +15,17 @@
       {% if record.icon %}<img alt="" src="{{ record.icon }}" style="height:2.6em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
       {{ record.author | format_bib_authors }}<br />
       <i>{{ record. title }}</i>.<br />
-      {{ record.journal }} {% if record.volume %}<b>{{ record.volume }}</b>, {% endif %}{% if record.pages %}{{ record.pages }} {% endif %}({{ record.year }}).<br />
+      {{ record.journal }} {% if record.volume %}<b>{{ record.volume }}</b>, {% endif %}{% if record.pages %}{{ record.pages }} {% endif %}({{ record.year }}).
+      {% if record.comment %} {{ record.comment }}.{% endif %}
+      <br />
+      {{ record | format_bib_links }}
+      </p>
+{% elif record.ENTRYTYPE == "inproceedings" %}
+      <p id="{{ record.ID }}">
+      {% if record.icon %}<img alt="" src="{{ record.icon }}" style="height:2.6em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
+      {{ record.author | format_bib_authors }}<br />
+      <i>{{ record. title }}</i>.<br />
+      {{ record.booktitle }} ({{ record.year }}).<br />
       {{ record | format_bib_links }}
       </p>
 {% elif record.ENTRYTYPE == "conference" %}

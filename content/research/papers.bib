@@ -13,6 +13,38 @@
 @string{PRAPL = {Phys. Rev. Applied}}
 @string{QST = {Quantum Sci. Technol.}}
 @string{QUANT = {Quantum}}
+@string{ATOMS = {Atoms}}
+
+
+@article{GoerzA2023,
+   Author = {Goerz, Michael H. and Kasevich, Mark A. and Malinovsky, Vladimir S.},
+   Title = {Robust Optimized Pulse Schemes for Atomic Fountain Interferometry},
+   Year = {2023},
+   Doi = {10.3390/atoms11020036},
+   Pages = {36},
+   Volume = {11},
+   Journal = atoms,
+   eprint = {2212.12602},
+   pdf = {research/GoerzA2023.pdf},
+   icon = {images/atoms.png},
+   comment = {Special issue on Advances in and Prospects for Matter Wave Interferometry},
+   abstract = {The robustness of an atomic fountain interferometer with respect to
+        variations in the initial velocity of the atoms and deviations from the
+        optimal pulse amplitude is examined. We numerically simulate the
+        dynamics of an interferometer in momentum space with a maximum
+        separation of 20ℏk and map out the expected signal contrast depending
+        on the variance of the initial velocity distribution and the value of
+        the laser field amplitude. We show that an excitation scheme based on
+        rapid adiabatic passage significantly enhances the expected signal
+        contrast compared to the commonly used scheme consisting of a series of
+        Rabi pulses. We demonstrate further substantial increase of the
+        robustness by using optimal control theory to identify splitting and
+        swapping pulses that perform well on an ensemble average of pulse
+        amplitudes and velocities. Our results demonstrate the ability of
+        optimal control to significantly enhance future implementations of
+        atomic fountain interferometry.
+   }
+}
 
 
 @article{GoerzQ2022,
@@ -111,6 +143,37 @@
        pulses implementing the one-axis twisting and when taking into
        account realistic losses due to photon scattering.}
 }
+
+
+@inproceedings{GoerzSPIEO2021,
+    author = {Goerz, Michael H. and Kasevich, Mark A. and Malinovsky, Vladimir S.},
+    booktitle = {Proc. SPIE 11700, Optical and Quantum Sensing and Precision Metrology},
+    doi = {10.1117/12.2587002},
+    title = {Quantum optimal control for atomic fountain interferometry},
+    year = {2021},
+    pdf = {research/GoerzSPIEO2021.pdf},
+    icon = {images/spie.png},
+    abstract = {We present an analysis of the robustness of existing analytic
+        schemes for the implementation of an atomic fountain interferometer,
+        and develop concepts for improving this robustness through the use of
+        optimal control theory.  For an interferometer operating in the
+        Raman regime, we consider an implementation that manipulates the
+        atomic momentum states with a series of Rabi pulses, and analyze
+        how robust the population dynamics are with respect to variations
+        in the effective pulse amplitude seen by the atoms in the atomic
+        clouds, and variations in the initial velocity of the atoms
+        relative to the rest frame.  We then show that using rapid
+        adiabatic passage to implement momentum transfer can significantly
+        improve this robustness.  Finally, we formulate the most general
+        control conditions for an atomic fountain interferometer and design
+        a functional that can be used for an ensemble optimization over the
+        robustness landscape.  We show preliminary results of optimizing
+        the system using Krotov's method, suggesting that optimal control
+        may be able to significantly enhance the robustness of atom
+        interferometers.
+    }
+}
+
 
 
 @Article{GoerzSPP2019,
