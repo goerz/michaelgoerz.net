@@ -39,7 +39,7 @@ DEFAULT_TEMPLATES = (
 
 # Social widget
 SOCIAL = (
-    ('fa-globe', '@goerz@qubit-social.xyz', 'https://qubit-social.xyz/web/@goerz'),
+    ('fa-globe', '@goerz@fosstodon.org', 'https://fosstodon.org/@goerz'),
     ('fa-github-square', 'Github', 'https://github.com/goerz'),
 )
 
