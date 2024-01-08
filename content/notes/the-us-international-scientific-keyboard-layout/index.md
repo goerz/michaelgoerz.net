@@ -228,4 +228,4 @@ Bonus tip: for figuring out what exactly a given unicode character is in the
 keyboard layout, type it out in Vim with the [characterize vim plugin](https://github.com/tpope/vim-characterize)
 installed, put the cursor on top of it, and us the `ga` command.
 
-[Ukelele]: http://ipython.readthedocs.io/en/stable/whatsnew/version3.html#typing-unicode-identifiers
+[Ukelele]: https://software.sil.org/ukelele/
