@@ -9,4 +9,4 @@ linkify-it-py==2.0.0
 markdown-it-py==2.1.0
 mdit-py-plugins==0.3.3
 nbconvert==7.2.7
-pyyaml==6.0.0
+pyyaml==6.0.2

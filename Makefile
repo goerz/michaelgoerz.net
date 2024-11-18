@@ -58,5 +58,5 @@ jupyter: install-kernel  ## Start a Jupyter notebook server
 
 $(PYTHON):
 	python3 -m venv .venv
-	$(PYTHON) -m pip install --upgrade pip
+	$(PYTHON) -m pip install --upgrade pip setuptools wheel
 	$(PYTHON) -m pip install -r requirements.txt
