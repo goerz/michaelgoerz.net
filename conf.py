@@ -40,6 +40,7 @@ DEFAULT_TEMPLATES = (
 # Social widget
 SOCIAL = (
     ('fa-globe', '@goerz@fosstodon.org', 'https://fosstodon.org/@goerz'),
+    ('fa-globe', 'bsky:michaelgoerz.net', 'https://bsky.app/profile/michaelgoerz.net'),
     ('fa-github-square', 'Github', 'https://github.com/goerz'),
 )
 
