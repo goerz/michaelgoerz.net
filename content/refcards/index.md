@@ -12,7 +12,7 @@ The sources for the following reference cards is on [Github](https://github.com/
 <div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="periodictable.png">
-            <img src="periodictable_thumbnail.png" alt="Period Table"></img>
+            <img src="periodictable_thumbnail.png" alt="Period Table">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -31,10 +31,10 @@ The sources for the following reference cards is on [Github](https://github.com/
 
 <h3 id="fortran">Modern Fortran Reference Card</h3>
 
-<div id="fortran", class="row">
+<div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="fortran_refcard.png">
-            <img src="fortran_refcard_thumbnail.png" alt="Fortran Refcard"></img>
+            <img src="fortran_refcard_thumbnail.png" alt="Fortran Refcard">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -56,7 +56,7 @@ The sources for the following reference cards is on [Github](https://github.com/
 <div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="vimqrc.png">
-            <img src="vimqrc_thumbnail.png" alt="Vim Reference Card"></img>
+            <img src="vimqrc_thumbnail.png" alt="Vim Reference Card">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -78,7 +78,7 @@ The sources for the following reference cards is on [Github](https://github.com/
 <div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="python_refcard.png">
-            <img src="python_refcard_thumbnail.png" alt="Python Reference Card"></img>
+            <img src="python_refcard_thumbnail.png" alt="Python Reference Card">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -97,7 +97,7 @@ The sources for the following reference cards is on [Github](https://github.com/
 <div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="perl_refcard.png">
-            <img src="perl_refcard_thumbnail.png" alt="Perl Reference Card"></img>
+            <img src="perl_refcard_thumbnail.png" alt="Perl Reference Card">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">
@@ -116,7 +116,7 @@ The sources for the following reference cards is on [Github](https://github.com/
 <div class="row">
     <div class="col-md-3 col-lg-3">
         <a href="ascii.png">
-            <img src="ascii_thumbnail.png" alt="ASCII Table"></img>
+            <img src="ascii_thumbnail.png" alt="ASCII Table">
         </a>
     </div>
     <div class="col-md-9 col-lg-9">

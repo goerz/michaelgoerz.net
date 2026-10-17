@@ -315,6 +315,18 @@ div.input_prompt {
 
 div.output_latex {
   padding: 1em;
+  overflow-x: auto;
+}
+
+/* Scroll wide equations instead of overflowing the page */
+mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Let long inline paths and URLs wrap on narrow screens */
+.entry-content :not(pre) > code {
+  overflow-wrap: anywhere;
 }
 
 a.anchor-link:link {

@@ -34,4 +34,4 @@ file.
 
 <http://gist.github.com/goerz/5157942>
 
-<script src="http://gist.github.com/180474.js"> </script>
+<script src="https://gist.github.com/180474.js"> </script>
