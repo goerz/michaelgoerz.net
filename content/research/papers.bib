@@ -15,7 +15,59 @@
 @string{AVSQS = {AVS Quantum Science}}
 @string{QUANT = {Quantum}}
 @string{ATOMS = {Atoms}}
+@string{JOSS = {J. Open Source Softw.}}
 
+
+@article{CarrascoPRA2026,
+    Author = {Carrasco, Sebastián C. and Goerz, Michael H. and Li, Zeyang and Colombo, Simone and Vuletić, Vladan and Schleich, Wolfgang P. and Malinovsky, Vladimir S.},
+    Title = {Time-reversal interferometry using {Schrödinger}-cat states with scalable entangling resources},
+    Journal = pra,
+    Year = {2026},
+    Doi = {10.1103/lb5n-k56s},
+    Pages = {032623},
+    Volume = {114},
+    eprint = {2602.06308},
+    icon = {images/pra.png},
+    abstract = {We propose a method for generating Schrödinger-cat
+        states—defined as equal superpositions of arbitrary coherent spin
+        states—using a concise sequence of rapid, alternating one-axis
+        twisting and rotation pulses. We demonstrate that the required
+        shearing strength for the protocol, which scales linearly with time,
+        decreases with increasing number of atoms (N) in proportion to 1/√N.
+        The resulting states achieve optimal quantum Fisher information among
+        superpositions of two coherent spin states with a specified angular
+        separation. This makes them well suited to exceed the classical phase
+        sensitivity limit in quantum metrology applications. Notably, our
+        protocol is compatible with a time-reversal strategy for quantum
+        metrology, ensuring its practical viability. We also demonstrate that
+        the Heisenberg-limit scaling remains intact when reducing the twisting
+        alongside the number of atoms, mitigating losses from photon
+        scattering. Although the states are then prepared only approximately,
+        they retain enough catlike structure to sustain this scaling.
+    },
+}
+
+@article{GoerzJOSS2025,
+    Author = {Goerz, Michael H. and Carrasco, Sebastián C. and Marshall, Alastair and Malinovsky, Vladimir S.},
+    Title = {{GRAPE.jl}: {Gradient Ascent Pulse Engineering} in {Julia}},
+    Journal = joss,
+    Year = {2025},
+    Doi = {10.21105/joss.08813},
+    Pages = {8813},
+    Volume = {10},
+    pdf = {research/GoerzJOSS2025.pdf},
+    github = {https://github.com/JuliaQuantumControl/GRAPE.jl},
+    icon = {images/joss.png},
+    abstract = {The GRAPE.jl package implements Gradient Ascent Pulse
+        Engineering, a widely used method of quantum optimal control. Its
+        purpose is to find controls that steer a quantum system in a
+        particular way. This is a prerequisite for next-generation quantum
+        technology, such as quantum computing or quantum sensing. GRAPE.jl
+        exploits the unique strengths of the Julia programming language to
+        achieve both flexibility and numerical performance. It builds on the
+        QuantumControl.jl framework.
+    },
+}
 
 @article{CarrascoPRL2024,
     Author = {Carrasco, Sebastian C. and Goerz, Michael H. and Malinovskaya, Svetlana A. and Vuletic, Vladan and Schleich, Wolfgang and Malinovsky, Vladimir S.},

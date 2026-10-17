@@ -111,6 +111,8 @@ def format_bib_links(record):
         parts.append('<a href="%s">Web</a>' % record["url"])
     if "youtube" in record:
         parts.append('<a href="%s">Youtube</a>' % record["youtube"])
+    if "video" in record:
+        parts.append('<a href="%s">Video</a>' % record["video"])
     if "github" in record:
         parts.append('<a href="%s">Github</a>' % record["github"])
     if len(parts) > 0:
