@@ -16,6 +16,7 @@ FLAGS can be the following:
 """
 
 import asyncio
+import atexit
 import logging
 import re
 import shutil
@@ -41,6 +42,7 @@ SOURCEDIR = Path("./content")
 OUTDIR = Path("./output")
 THEME = Path("./theme")
 REPO = Repo("./")
+atexit.register(REPO.close)
 
 
 def collect(sourcedir):

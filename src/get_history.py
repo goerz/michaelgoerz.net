@@ -1,11 +1,13 @@
 """Get the history of files from git."""
 
+import atexit
 import datetime
 from pathlib import Path
 
 from dulwich.repo import Repo
 
 REPO = Repo(Path(__file__).parent.parent)
+atexit.register(REPO.close)
 
 
 class Commit:
