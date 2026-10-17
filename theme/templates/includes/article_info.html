@@ -1,33 +1,28 @@
-<footer class="post-info">
-
-    {% if page.modified %}
-    <span class="badge text-bg-secondary">First Published</span>
-    {% else %}
-    <span class="badge text-bg-secondary">Dated</span>
-    {% endif %}
-    <span class="published">
-        <i class="fa-regular fa-calendar"></i><time datetime="{{ page.date.isoformat() }}"> {{ page.date.strftime("%A, %d %B %Y") }}</time>
-        {% if page.revised %}<span class="badge text-bg-secondary">Revised</span>  <i class="fa-regular fa-calendar"></i><time datetime="{{ page.revised.isoformat() }}"> {{ page.revised.strftime("%A, %d %B %Y") }}</time>{% endif %}
-        {% if page.history | length > 1 %}— <i class="fa-solid fa-clock-rotate-left"></i> <a href="{{ HISTORY }}/{{  page.file }}">versions</a>{% endif %}
+<div class="article-meta">
+    <span>
+        <i class="fa-regular fa-calendar"></i>
+        <time datetime="{{ page.date.isoformat() }}">{{ page.date.day }} {{ page.date.strftime("%B %Y") }}</time>
     </span>
-
-    {% if SHOW_ARTICLE_CATEGORY %}
-        <div>
-        <span class="badge text-bg-secondary">Category</span>
-        <a href="{{ SITEURL }}/{{ page.category.url }}">{{ page.category }}</a>
-        </div>
+    {% if page.revised %}
+    <span>
+        Revised <time datetime="{{ page.revised.isoformat() }}">{{ page.revised.day }} {{ page.revised.strftime("%B %Y") }}</time>
+    </span>
     {% endif %}
-
-    {% if page.tags %}
-    <div>
-    <span class="badge text-bg-secondary">Tags</span>
+    {% if page.history | length > 1 %}
+    <span>
+        <a href="{{ HISTORY }}/{{ page.file }}"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+    </span>
+    {% endif %}
+    {% if SHOW_ARTICLE_CATEGORY and page.category %}
+    <span>
+        <a href="{{ SITEURL }}/{{ page.category.url }}"><i class="fa-regular fa-folder"></i> {{ page.category }}</a>
+    </span>
+    {% endif %}
+</div>
+{% if page.tags %}
+<ul class="tag-list" aria-label="Tags">
     {% for tag in page.tags %}
-    	<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-        {% if not loop.last %}
-            &middot;
-        {% endif %}
+    <li><a class="tag-chip" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
     {% endfor %}
-    </div>
-    {% endif %}
-
-</footer><!-- /.post-info -->
+</ul>
+{% endif %}

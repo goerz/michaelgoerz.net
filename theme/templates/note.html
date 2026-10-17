@@ -68,33 +68,23 @@
 {% endblock %}
 
 {% block content %}
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="{{ SITEURL }}/{{ page.url }}"
-                       rel="bookmark"
-                       title="Permalink to {{ page.title|striptags }}">
-                        {{ page.title }}
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="card article-info">
-                    <div class="card-body">
-                        {% include "includes/article_info.html" %}
-                    </div>
-                </div>
-                {% if page.exturl %}
-                <i class="fa-solid fa-arrow-up-right-from-square"></i> <a href="{{ page.exturl }}">{{ page.exturl }}</a>
-                {% else %}
-                {{ page.content }}
-                {% endif %}
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
-
+    <article class="prose">
+        <header class="page-header">
+            <h1>{{ page.title }}</h1>
+            {% include "includes/article_info.html" %}
+        </header>
+        <div class="entry-content">
+            {% if page.exturl %}
+            <p class="external-note">
+                This note is hosted externally:
+                <a href="{{ page.exturl }}">{{ page.exturl }}</a>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </p>
+            {% else %}
+            {{ page.content }}
+            {% endif %}
+        </div>
+    </article>
 {% endblock %}
 
 {% block scripts %}

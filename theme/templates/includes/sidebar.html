@@ -1,34 +1,20 @@
-<aside class="sidebar">
+<aside class="profile-sidebar" aria-label="Contact">
     {% if CONTACT %}
     <section>
-        <h4><i class="fa-solid fa-user fa-lg"></i><span class="icon-label">Contact</span></h4>
-        <ul id="contact">
+        <h2 class="sidebar-heading"><i class="fa-solid fa-user"></i> Contact</h2>
+        <ul class="sidebar-links contact-links">
             {% for symbol, text, link in CONTACT %}
-            {% if link %}
-            <li><a href="{{ link }}"><i class="{{ symbol }} fa-lg"></i> {{ text }}</a></li>
-            {% else %}
-            <li><i class="{{ symbol }} fa-lg"></i> {{ text }}</li>
-            {% endif %}
+            <li><a href="{{ link }}"><i class="{{ symbol }}"></i> {{ text }}</a></li>
             {% endfor %}
         </ul>
     </section>
     {% endif %}
     {% if SOCIAL %}
     <section>
-        <h4><i class="fa-solid fa-users fa-lg"></i><span class="icon-label">Social</span></h4>
-        <ul id="social">
+        <h2 class="sidebar-heading"><i class="fa-solid fa-users"></i> Social</h2>
+        <ul class="sidebar-links contact-links">
             {% for symbol, text, link in SOCIAL %}
-            <li><a rel="me" href="{{ link }}"><i class="{{ symbol }} fa-lg"></i> {{ text }}</a></li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
-    {% if EXTERNALS %}
-    <section>
-        <h4><i class="fa-solid fa-square-arrow-up-right fa-lg"></i><span class="icon-label">External Resources</span></h4>
-        <ul id="externals">
-            {% for symbol, name, link in EXTERNALS %}
-            <li><a href="{{ link }}"><i class="{{ symbol }} fa-lg"></i> {{ name }}</a></li>
+            <li><a rel="me" href="{{ link }}"><i class="{{ symbol }}"></i> {{ text }}</a></li>
             {% endfor %}
         </ul>
     </section>

@@ -1,0 +1,138 @@
+# Reference cards shown on the Refcards page (rendered by
+# theme/templates/refcards.html).
+#
+# Each entry in `refcards` has:
+#
+#   id           Anchor for linking to the card (required)
+#   title        (required)
+#   updated      Year of the last update
+#   description  One or two sentences; may contain inline HTML
+#   contents     Comma-separated list of topics
+#   image        Full-size image of the first page (opened when clicking the
+#                preview)
+#   preview      Image of the first page, rendered from the PDF (letter size if
+#                available) at 800px width
+#   pdfs         List of PDF downloads, each with `label` and `url`
+#   source       Link to the source, with `label` and `url`
+#
+# The `others` list at the end is a plain list of less polished cards.
+
+refcards:
+
+  - id: periodictable
+    title: Periodic Table of Elements
+    updated: 2018
+    description: >-
+      Atomic weight, mass number of the most abundant isotope, atomic number,
+      full electron configuration, valence electrons, and nuclear spin of the
+      most abundant isotope with I≠0.
+    image: periodictable.png
+    preview: periodictable_preview.webp
+    pdfs:
+      - label: A4
+        url: periodictable-a4.pdf
+      - label: Letter
+        url: periodictable-letter.pdf
+    source:
+      label: Python
+      url: https://github.com/goerz/Refcards/blob/master/periodictable/periodictable.py
+
+
+  - id: fortran
+    title: Modern Fortran Reference Card
+    updated: 2015
+    description: >-
+      Fortran 90/95, with select features of Fortran 2003/2008.
+    contents: >-
+      Data types, control constructs, program structure, intrinsic procedures,
+      input/output
+    image: fortran_refcard.png
+    preview: fortran_refcard_preview.webp
+    pdfs:
+      - label: A4
+        url: fortran_refcard_a4.pdf
+      - label: Letter
+        url: fortran_refcard_letter.pdf
+    source:
+      label: LaTeX
+      url: https://github.com/goerz/Refcards/blob/master/fortran/fortran_refcard.tex
+
+
+  - id: vim
+    title: Vim Reference Card
+    updated: 2010
+    contents: >-
+      Movements, insertion and replace, deletion, insert mode, search and
+      substitution, formatting and filtering, visual mode, undoing, repeating
+      and registers, copying, patterns, spell checking, marks, motions and
+      tags, multiple files and buffers, scrolling and multi-windowing, Ex
+      commands and ranges, completion, folding, compiling
+    image: vimqrc.png
+    preview: vimqrc_preview.webp
+    pdfs:
+      - label: A4
+        url: vimqrc.pdf
+    source:
+      label: Plain TeX
+      url: https://github.com/goerz/Refcards/blob/master/vim/vimqrc.tex
+
+
+  - id: python25
+    title: Python 2.5 Reference Card
+    updated: 2009
+    contents: >-
+      Variable types (numbers, sequences, sets, strings, and regular
+      expressions), basic syntax, object orientation and modules, exception
+      handling, system interaction, input/output, standard library
+    image: python_refcard.png
+    preview: python_refcard_preview.webp
+    pdfs:
+      - label: A4
+        url: python_refcard.pdf
+    source:
+      label: OpenOffice
+      url: python_refcard.odt
+
+
+  - id: perl
+    title: Perl Reference Card
+    updated: 2008
+    contents: >-
+      Variable types, basic syntax, references and data structures, system
+      interaction, input/output, regular expressions, object-oriented Perl and
+      modules, one-liners
+    image: perl_refcard.png
+    preview: perl_refcard_preview.webp
+    pdfs:
+      - label: A4
+        url: perl_refcard.pdf
+    source:
+      label: OpenOffice
+      url: perl_refcard.odt
+
+  - id: ascii
+    title: ASCII Table
+    updated: 2009
+    description: Regular and Latin-1 ASCII table.
+    image: ascii.png
+    preview: ascii_preview.webp
+    pdfs:
+      - label: A4
+        url: ascii_a4.pdf
+      - label: Letter
+        url: ascii_letter.pdf
+    source:
+      label: LaTeX
+      url: https://github.com/goerz/Refcards/blob/master/asciitable/ascii.tex
+
+
+others:
+  - title: Vim LaTeX-Suite (incomplete)
+    url: vimlatexqrc.pdf
+    source: https://github.com/goerz/Refcards/blob/master/vimlatex/vimlatexqrc.tex
+  - title: My personal Vim mappings
+    url: my_vim_mappings.pdf
+    source: https://github.com/goerz/Refcards/blob/master/my_vim_mappings/my_vim_mappings.tex
+  - title: Powers of ten
+    url: powers_of_ten.pdf
+    source: https://github.com/goerz/Refcards/blob/master/powers_of_ten/powers_of_ten.tex

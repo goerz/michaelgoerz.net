@@ -1,0 +1,87 @@
+{% extends "page.html" %}
+
+{# Render the projects listed in the YAML file given by `page.projects`.
+   See content/programming/projects.yml for the format. #}
+
+{% macro project_links(project) %}
+<div class="project-links">
+  {% if "github.com" in project.url %}
+  <a href="{{ project.url }}"><i class="fa-brands fa-github"></i> GitHub</a>
+  {% else %}
+  <a href="{{ project.url }}"><i class="fa-solid fa-globe"></i> Website</a>
+  {% endif %}
+  {% if project.docs and project.docs != project.url %}
+  <a href="{{ project.docs }}"><i class="fa-solid fa-book"></i> Documentation</a>
+  {% endif %}
+  {% for link in project.links or [] %}
+  <a href="{{ link.url }}"><i class="fa-solid fa-link"></i> {{ link.title }}</a>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro project_card(project) %}
+<article class="project-card{% if project.packages %} project-card-wide{% endif %}">
+  <header class="project-header">
+    {% if project.logo %}
+    <img class="project-logo" src="{{ project.logo }}" alt="">
+    {% endif %}
+    <div>
+      <h3 class="project-name">
+        <a href="{{ project.url }}">{% if project.org %}<span class="project-org">{{ project.org }}/</span><wbr>{% endif %}{{ project.name }}</a>
+      </h3>
+      <div class="project-meta">
+        {% if project.language %}<span class="project-language" data-language="{{ project.language | lower }}">{{ project.language }}</span>{% endif %}
+        {% if project.role %}<span class="project-role">{{ project.role }}</span>{% endif %}
+      </div>
+    </div>
+  </header>
+  <p class="project-description">{{ project.description }}</p>
+  {% if project.packages %}
+  <ul class="project-packages">
+    {% for package in project.packages %}
+    <li><a href="{{ package.url }}">{{ package.name }}</a> <span>{{ package.description }}</span></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {{ project_links(project) }}
+</article>
+{% endmacro %}
+
+{% block content %}
+{% set data = read_yaml(page.projects) %}
+<article>
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    <div class="page-intro">
+      {{ page.content }}
+    </div>
+    <nav class="section-nav" aria-label="Sections">
+      {% for section in data.sections %}
+      <a href="#{{ section.id }}">{{ section.title }}</a>
+      {% endfor %}
+      {% if data.more %}<a href="#more">More</a>{% endif %}
+    </nav>
+  </header>
+
+  {% for section in data.sections %}
+  <section class="project-section" id="{{ section.id }}">
+    <h2>{{ section.title }}</h2>
+    {% if section.intro %}<p>{{ section.intro }}</p>{% endif %}
+    <div class="project-grid project-grid-{{ section.columns or 3 }}">
+      {% for project in section.projects %}{{ project_card(project) }}{% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+  {% if data.more %}
+  <section class="project-section" id="more">
+    <h2>More</h2>
+    <ul class="more-list">
+      {% for item in data.more %}
+      <li><a href="{{ item.url }}">{{ item.name }}</a> <span>{{ item.description }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

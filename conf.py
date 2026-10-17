@@ -24,8 +24,6 @@ TYPOGRIFY = True
 
 CC_LICENSE = "CC-BY-NC-SA"
 
-EXTERNALS = ()
-
 MENUITEMS = (  # relative to SITEURL
     ("Research", ""),
     ("Programming", "programming/"),
@@ -43,7 +41,7 @@ DEFAULT_TEMPLATES = (
 SOCIAL = (
     ('fa-brands fa-mastodon', '@goerz@fosstodon.org', 'https://fosstodon.org/@goerz'),
     ('fa-brands fa-bluesky', 'bsky:michaelgoerz.net', 'https://bsky.app/profile/michaelgoerz.net'),
-    ('fa-brands fa-square-github', 'Github', 'https://github.com/goerz'),
+    ('fa-brands fa-square-github', 'GitHub', 'https://github.com/goerz'),
 )
 
 CONTACT = (
@@ -51,11 +49,14 @@ CONTACT = (
     ('fa-solid fa-key', 'Public Keys', 'https://gist.github.com/goerz/81d58b19220026f8f5c1#public-sshgpg-keys'),
 )
 
+# The footer of every page except the Research page (which has a sidebar with
+# all of CONTACT and SOCIAL) shows SOCIAL and only these contact links
+FOOTER_CONTACT = CONTACT[:1]
+
 
 REPO = "https://github.com/goerz/michaelgoerz.net"
 HISTORY = f"{REPO}/commits/master"
 
-DISPLAY_TAGS_ON_SIDEBAR = False
 SHOW_ARTICLE_CATEGORY = True
 SHOW_DATE_MODIFIED = True
 

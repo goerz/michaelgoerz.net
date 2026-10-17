@@ -70,49 +70,39 @@
 
 <body>
 
-<nav class="navbar navbar-expand-md fixed-top site-navbar" aria-label="Main">
-<div class="container">
-  <a href="{{ SITEURL }}/" class="navbar-brand">{{ SITENAME }}</a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbar-main">
-    <ul class="navbar-nav me-auto">
-      {% for title, link in MENUITEMS %}
-      <li class="nav-item"><a class="nav-link{% if page.section == title %} active" aria-current="page{% endif %}" href="{{ SITEURL }}/{{ link }}">{{ title }}</a></li>
-      {% endfor %}
-    </ul>
-    <form class="site-search" role="search" action="https://cse.google.com/cse" method="get">
-      <input type="hidden" name="cx" value="006096481325659992406:nhtfz1944re">
-      <label for="site-search-input" class="visually-hidden">Search this site</label>
-      <div class="input-group input-group-sm">
-        <input id="site-search-input" class="form-control" type="search" name="q" placeholder="Search">
-        <button class="btn btn-outline-secondary" type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </div>
-    </form>
-  </div>
-</div>
-</nav>
+<a class="skip-link visually-hidden-focusable" href="#main">Skip to content</a>
 
-<div class="container">
-  <div class="row">
-    {% if not HIDE_SIDEBAR %}
-    <main class="col-sm-9">
-    {% else %}
-    <main class="col-12">
-    {% endif %}
-    {% block breadcrumbs %}
-    {% endblock %}
-    {% block content %}
-    {% endblock %}
-    </main>
-    {% if not HIDE_SIDEBAR %}
-    <div class="col-sm-3" id="sidebar">
-      {% include 'includes/sidebar.html' %}
+<header class="site-header">
+  <nav class="navbar navbar-expand-md" aria-label="Main">
+    <div class="container site-container">
+      <a href="{{ SITEURL }}/" class="navbar-brand">{{ SITENAME }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-main">
+        <ul class="navbar-nav ms-auto">
+          {% for title, link in MENUITEMS %}
+          <li class="nav-item"><a class="nav-link{% if page.section == title %} active" aria-current="page{% endif %}" href="{{ SITEURL }}/{{ link }}">{{ title }}</a></li>
+          {% endfor %}
+        </ul>
+        <form class="site-search" role="search" action="https://cse.google.com/cse" method="get">
+          <input type="hidden" name="cx" value="006096481325659992406:nhtfz1944re">
+          <label for="site-search-input" class="visually-hidden">Search this site</label>
+          <button type="submit" class="site-search-button" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input id="site-search-input" class="form-control" type="search" name="q" placeholder="Search">
+        </form>
+      </div>
     </div>
-    {% endif %}
-  </div>
-</div>
+  </nav>
+</header>
+
+<main id="main" class="container site-container site-main">
+  {% block breadcrumbs %}
+  {% endblock %}
+  {% block content %}
+  {% endblock %}
+</main>
+
 {% include 'includes/footer.html' %}
 
 {% block scripts %}

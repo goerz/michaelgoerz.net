@@ -1,0 +1,52 @@
+{% extends "page.html" %}
+
+{# Render the reference cards listed in the YAML file given by
+   `page.refcards`. See content/refcards/refcards.yml for the format. #}
+
+{% block content %}
+{% set data = read_yaml(page.refcards) %}
+<article>
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    <div class="page-intro">
+      {{ page.content }}
+    </div>
+  </header>
+
+  <div class="refcard-grid">
+    {% for card in data.refcards %}
+    <article class="refcard" id="{{ card.id }}">
+      <a class="refcard-preview" href="{{ card.image }}">
+        <img src="{{ card.preview }}" alt="First page of the {{ card.title }}" loading="lazy" width="800" height="618">
+      </a>
+      <div class="refcard-body">
+        <h2 class="refcard-title">{{ card.title }}</h2>
+        {% if card.updated %}<p class="refcard-updated">Updated {{ card.updated }}</p>{% endif %}
+        {% if card.description %}<p class="refcard-description">{{ card.description }}</p>{% endif %}
+        {% if card.contents %}<p class="refcard-contents">{{ card.contents }}</p>{% endif %}
+        <div class="refcard-links">
+          {% for pdf in card.pdfs %}
+          <a class="refcard-download" href="{{ pdf.url }}"><i class="fa-regular fa-file-pdf"></i> {{ pdf.label }}</a>
+          {% endfor %}
+          {% if card.source %}
+          <a class="refcard-source" href="{{ card.source.url }}"><i class="fa-solid fa-code"></i> {{ card.source.label }}</a>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% if data.others %}
+  <section class="refcard-others">
+    <h2>Others</h2>
+    <p>The following reference cards are less polished than the above:</p>
+    <ul class="more-list">
+      {% for card in data.others %}
+      <li><a href="{{ card.url }}">{{ card.title }}</a>{% if card.source %} <span><a href="{{ card.source }}">Source</a></span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

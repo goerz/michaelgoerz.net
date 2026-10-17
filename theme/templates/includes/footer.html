@@ -1,24 +1,25 @@
-<footer>
-   <div class="container">
-      <hr>
-      <div class="row">
-         {% if articles %}
-            {% set copy_date = articles[0].date.strftime('%Y') %}
-         {% else %}
-            {% set copy_date = '' %}
-         {% endif %}
-         <div class="col-md-10"><small>
-             &copy; {{ copy_date }} {{ AUTHOR }}
-             &middot; Site built on {{ CURRENT_TIME }} from <a href="{{ REPO }}">source on Github</a>.
-         </small>
-            {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
-              {% from 'includes/cc-license.html' import cc_license_mark %}
-              <p><small>{{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL}) }}</small></p>
-            {% elif CUSTOM_LICENSE %}
-              <p><small>{{ CUSTOM_LICENSE }}</small></p>
-            {% endif %}
-         </div>
-         <div class="col-md-2"><p class="text-md-end"><i class="fa-solid fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
-      </div>
-   </div>
+<footer class="site-footer">
+  <div class="container site-container">
+    {# The Research page shows the contact links in a sidebar instead #}
+    {% if page.template != "profile.html" %}
+    <ul class="contact-links">
+      {% for symbol, text, link in FOOTER_CONTACT %}
+      <li><a href="{{ link }}"><i class="{{ symbol }}"></i> {{ text }}</a></li>
+      {% endfor %}
+      {% for symbol, text, link in SOCIAL %}
+      <li><a rel="me" href="{{ link }}"><i class="{{ symbol }}"></i> {{ text }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="site-footer-meta">
+      &copy; {{ AUTHOR }}
+      &middot; Site built on {{ CURRENT_TIME }} from <a href="{{ REPO }}">source on GitHub</a>.
+      {%- if CC_LICENSE or CC_LICENSE_DERIVATIVES or CC_LICENSE_COMMERCIAL %}
+      {% from 'includes/cc-license.html' import cc_license_mark %}
+      <br>{{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,attr_markup=CC_ATTR_MARKUP,attr_props={'title':SITENAME,'name':article.author if article else AUTHOR,'url':SITEURL}) }}
+      {% elif CUSTOM_LICENSE %}
+      <br>{{ CUSTOM_LICENSE }}
+      {% endif %}
+    </p>
+  </div>
 </footer>

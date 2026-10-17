@@ -34,6 +34,7 @@ from src.render_markdown import render_md
 from src.render_notebook import render_ipynb
 from src.document import Document
 import src.bibliography
+import src.projects
 import conf as CONF
 import conf_publish as CONF_PUBLISH
 
@@ -122,6 +123,7 @@ async def main(preview=False):
     templates = Templates(THEME, defaults=CONF.DEFAULT_TEMPLATES)
     src.bibliography.NAMES_TO_HIGHLIGHT = CONF.BIB_NAMES_TO_HIGHLIGHT
     src.bibliography.register_in_templates(templates)
+    src.projects.register_in_templates(templates)
 
     copy_theme()
 

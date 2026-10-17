@@ -3,22 +3,23 @@
 {% from 'bibliography.j2' import bibliography %}
 
 {% block content %}
-    <section id="content" class="body">
-        <h1 class="entry-title">{{ page.title }}</h1>
-        <hr />
-        <div class="entry-content">
-          <div class="row" id="bio">
-            <div class="col-md-3">
-              <img src="{{ page.profilepicture }}" alt="Photo of Michael Goerz">
-            </div>
-            <div class="col-md-7">
-              {{ page.content }}
-            </div>
-          </div>
-          <hr />
-          {% for bibtitle, bibfile in page.bibliography %}
-            {{ bibliography(bibtitle, read_bibtex(bibfile)) }}
-          {% endfor %}
+    <article class="profile-layout">
+        <div class="profile-intro">
+            <header class="page-header">
+                <h1>{{ page.title }}</h1>
+            </header>
+            <section class="bio entry-content" id="bio">
+                <img class="bio-photo" src="{{ page.profilepicture }}" alt="Photo of Michael Goerz" width="148" height="200">
+                <div class="bio-text">
+                    {{ page.content }}
+                </div>
+            </section>
         </div>
-    </section>
+        {% include 'includes/sidebar.html' %}
+        <div class="profile-bibliography entry-content">
+            {% for bibtitle, bibfile in page.bibliography %}
+            {{ bibliography(bibtitle, read_bibtex(bibfile)) }}
+            {% endfor %}
+        </div>
+    </article>
 {% endblock %}

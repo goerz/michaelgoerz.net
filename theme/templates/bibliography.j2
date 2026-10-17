@@ -4,16 +4,16 @@
 {% set panel_id = "collapse-" ~ name | lower | replace('_', '-') | replace(' ', '-') %}
 <div class="card collapse-card">
   <div class="card-header">
-      <h4 class="card-title">
-        <a data-bs-toggle="collapse" href="#{{ panel_id }}" role="button" aria-expanded="true" aria-controls="{{ panel_id }}"><span class="collapse-card-label">{{ name }}</span>{% if records|length > 1 %}<span class="badge rounded-pill text-bg-secondary">{{ records | length }}</span>{% endif %}</a>
-      </h4>
+      <h2 class="card-title">
+        <a data-bs-toggle="collapse" href="#{{ panel_id }}" role="button" aria-expanded="true" aria-controls="{{ panel_id }}"><span class="collapse-card-label">{{ name }}</span>{% if records|length > 1 %}<span class="count-badge">{{ records | length }}</span>{% endif %}<i class="fa-solid fa-chevron-down collapse-chevron" aria-hidden="true"></i></a>
+      </h2>
   </div>
   <div id="{{ panel_id }}" class="collapse show">
     <div class="card-body">
 {% for record in records %}
 {% if record.ENTRYTYPE == "article" %}
       <p id="{{ record.ID }}">
-      {% if record.icon %}<img alt="" src="{{ record.icon }}" style="height:2.6em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
+      {% if record.icon %}<img alt="" src="{{ record.icon }}" class="bib-icon"/>{% endif %}
       {{ record.author | format_bib_authors }}<br />
       <i>{{ record. title }}</i>.<br />
       {{ record.journal }} {% if record.volume %}<b>{{ record.volume }}</b>, {% endif %}{% if record.pages %}{{ record.pages }} {% endif %}({{ record.year }}).
@@ -23,7 +23,7 @@
       </p>
 {% elif record.ENTRYTYPE == "inproceedings" %}
       <p id="{{ record.ID }}">
-      {% if record.icon %}<img alt="" src="{{ record.icon }}" style="height:2.6em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
+      {% if record.icon %}<img alt="" src="{{ record.icon }}" class="bib-icon"/>{% endif %}
       {{ record.author | format_bib_authors }}<br />
       <i>{{ record. title }}</i>.<br />
       {{ record.booktitle }} ({{ record.year }}).<br />
@@ -31,7 +31,7 @@
       </p>
 {% elif record.ENTRYTYPE == "conference" %}
       <p id="{{ record.ID }}">
-      {%- if record.icon %}<img alt="" src="{{ record.icon }}" style="height:2.6em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
+      {%- if record.icon %}<img alt="" src="{{ record.icon }}" class="bib-icon"/>{% endif %}
       {%- if record.month %}{{ record.month }}{% endif %}
       {%- if record.day %} {{ record.day }}, {{ record.year }}{% else %} {{ record.year }}{% endif %}
       {%- if record.booktitle %}, {{ record.booktitle }}{% endif %}
@@ -41,10 +41,12 @@
       {{ record | format_bib_links }}
       </p>
 {% elif record.ENTRYTYPE in ["phdthesis", "mastersthesis"] %}
-      {%- if record.icon %}<img alt="" src="{{ record.icon }}" style="height:4.2em;float:left;margin:0px 1ex 0px 0px;"/>{% endif %}
+      <p id="{{ record.ID }}">
+      {%- if record.icon %}<img alt="" src="{{ record.icon }}" class="bib-icon bib-icon-large"/>{% endif %}
       <i>{{ record. title }}</i>.<br/>
       Submitted{% if record.month %} {{ record.month }}{% endif %} {{ record.year }} to the {{ record.school }}.<br/>
       {{ record | format_bib_links }}
+      </p>
 {% endif %}
 {% endfor %}
     </div>
