@@ -3,7 +3,6 @@
 import logging
 from colorama import Fore, Style
 
-
 FMT = "%(levelname)s - %(message)s"
 
 

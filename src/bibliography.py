@@ -12,7 +12,6 @@ from bibtexparser.customization import (
 )
 from bibtexparser.bparser import BibTexParser
 
-
 NAMES_TO_HIGHLIGHT = []
 
 
@@ -24,11 +23,11 @@ def process_record(record):
     """
     record = convert_to_unicode(record)
     record = author(record)
-    for (i, name) in enumerate(record["author"]):
+    for i, name in enumerate(record["author"]):
         record["author"][i] = splitname(name)
     if "editor" in record:
         record = editor(record)
-        for (i, name) in enumerate(record["editor"]):
+        for i, name in enumerate(record["editor"]):
             record["editor"][i] = splitname(name)
     return record
 
@@ -81,7 +80,7 @@ def format_bib_authors(authors):
         .strip()
         for author in authors
     ]
-    for (i, name) in enumerate(names):
+    for i, name in enumerate(names):
         if name in NAMES_TO_HIGHLIGHT:
             name = f"<b>{name}</b>"
         name = name.replace(" ", "&nbsp;")

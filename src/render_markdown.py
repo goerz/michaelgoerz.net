@@ -2,6 +2,7 @@
 
 Markdown parsing is done with [markdown-it](https://github.com/executablebooks/markdown-it-py)
 """
+
 import datetime
 import pprint
 import re

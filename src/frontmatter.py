@@ -1,4 +1,5 @@
 """Process document frontmatter / metadata."""
+
 import re
 import datetime
 import dateutil.parser
@@ -56,7 +57,7 @@ def sanitize_frontmatter(file, frontmatter):
         if isinstance(tags, str):
             tags = [Tag(tag) for tag in re.split(r",\s*", tags)]
         elif isinstance(tags, (list, tuple)):
-            for (i, tag) in enumerate(tags):
+            for i, tag in enumerate(tags):
                 if not isinstance(tag, Tag):
                     tags[i] = Tag(tag)
         else:

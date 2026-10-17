@@ -98,7 +98,7 @@ class Templates:
     def default_for(self, file, fallback=None):
         """Choose a template name for rendering the given file (Path)."""
         file = str(file)
-        for (rx, template_name) in self.defaults:
+        for rx, template_name in self.defaults:
             if rx.match(file):
                 LOG.debug(
                     "Trying rx %r to find template for %r: Match -> %r",

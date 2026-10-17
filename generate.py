@@ -37,7 +37,6 @@ import src.bibliography
 import conf as CONF
 import conf_publish as CONF_PUBLISH
 
-
 SOURCEDIR = Path("./content")
 OUTDIR = Path("./output")
 THEME = Path("./theme")
@@ -176,14 +175,14 @@ async def main(preview=False):
         redirects = []
         redirects.extend(CONF.REDIRECTS)
         redirects.extend(CONF_PUBLISH.REDIRECTS)
-        for (file, redirect_url) in redirects:
+        for file, redirect_url in redirects:
             LOG.info("Write redirect %r -> %r", file, redirect_url)
             with open(OUTDIR / file, "w", encoding="utf8") as out_fh:
                 out_fh.write(
                     templates["redirect.html"].render(
                         page=Document(file=None, outfile=file),
                         url=redirect_url,
-                        **data
+                        **data,
                     )
                 )
 

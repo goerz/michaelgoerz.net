@@ -1,5 +1,5 @@
-"""Render Jupyter notebook files into HTML.
-"""
+"""Render Jupyter notebook files into HTML."""
+
 import datetime
 import pprint
 import re
@@ -109,7 +109,7 @@ def render_ipynb(file, outdir, folder, data, templates):
     template = templates[document.template]
     html_text = template.render(page=document, **data)
     outfile.write_text(html_text)
-    for (filename, imgdata) in resources["outputs"].items():
+    for filename, imgdata in resources["outputs"].items():
         LOG.info("Writing output file %r from %r", str(filename), str(file))
         with (outfolder / filename).open("wb") as out_fh:
             out_fh.write(imgdata)
