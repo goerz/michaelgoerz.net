@@ -6,21 +6,21 @@ Template: page.html
 ----
 
 
-<div class="panel-group" id="accordion">
+<div class="collapse-list">
     {%- for category in categories|sort %}
     {% set notes  = categories[category] %}
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{category.slug}}">{{ category }} <span class="badge pull-right">{{ notes|count }}</span></a>
+    <div class="card collapse-card">
+        <div class="card-header">
+            <h4 class="card-title">
+                <a data-bs-toggle="collapse" href="#collapse-{{category.slug}}" role="button" aria-expanded="false" aria-controls="collapse-{{category.slug}}"><span class="collapse-card-label">{{ category }}</span><span class="badge rounded-pill text-bg-secondary">{{ notes|count }}</span></a>
             </h4>
         </div>
-        <div id="collapse-{{category.slug}}" class="panel-collapse collapse">
-            <div class="panel-body">
+        <div id="collapse-{{category.slug}}" class="collapse">
+            <div class="card-body">
                 {% for note in notes|sort(attribute='date',reverse=True) %}
                 <p><span class="categories-timestamp"><time datetime="{{ note.date.isoformat() }}"> {{ note.date.date() }}</time></span>
                 {% if note.exturl %}
-                <i class="fa fa-external-link"></i> <a href="{{ note.exturl }}">{{ note.title }}</a>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> <a href="{{ note.exturl }}">{{ note.title }}</a>
                 {% else %}
                 <a href="{{ SITEURL }}/{{ note.url }}">{{ note.title }}</a>
                 {% endif %}

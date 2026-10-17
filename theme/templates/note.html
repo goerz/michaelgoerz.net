@@ -53,16 +53,16 @@
 {% block breadcrumbs %}
     {% if DISPLAY_BREADCRUMBS %}
         {% if DISPLAY_CATEGORY_IN_BREADCRUMBS %}
-            <ol class="breadcrumb">
-                <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-                <li><a href="{{ SITEURL }}/{{ page.category.url }}" title="{{ page.category }}">{{ page.category }}</a></li>
-                <li class="active">{{ page.title }}</li>
-            </ol>
+            <nav aria-label="breadcrumb"><ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa-solid fa-house fa-lg"></i></a></li>
+                <li class="breadcrumb-item"><a href="{{ SITEURL }}/{{ page.category.url }}" title="{{ page.category }}">{{ page.category }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+            </ol></nav>
         {% else %}
-            <ol class="breadcrumb">
-                <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
-                <li class="active">{{ page.title }}</li>
-            </ol>
+            <nav aria-label="breadcrumb"><ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa-solid fa-house fa-lg"></i></a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+            </ol></nav>
         {% endif %}
     {% endif %}
 {% endblock %}
@@ -80,13 +80,13 @@
                 </h1>
             </header>
             <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
+                <div class="card article-info">
+                    <div class="card-body">
                         {% include "includes/article_info.html" %}
                     </div>
                 </div>
                 {% if page.exturl %}
-                <i class="fa fa-external-link"></i> <a href="{{ page.exturl }}">{{ page.exturl }}</a>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> <a href="{{ page.exturl }}">{{ page.exturl }}</a>
                 {% else %}
                 {{ page.content }}
                 {% endif %}
@@ -101,5 +101,5 @@
 {% endblock %}
 
 {% block mathjax %}
-{{ MATHJAX_SCRIPT }}
+{% if not page.exturl %}{{ MATHJAX_SCRIPT }}{% endif %}
 {% endblock %}

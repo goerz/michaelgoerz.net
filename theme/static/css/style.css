@@ -1,81 +1,278 @@
+/* Base typography, matching the site's original Bootstrap 3 look */
+
+:root {
+    --bs-body-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --bs-body-font-size: 14px;
+    --bs-body-line-height: 1.42857143;
+    --bs-body-color: #333;
+    --bs-border-radius: 4px;
+}
+
+html {
+    /* Keep anchor targets clear of the fixed navbar */
+    scroll-padding-top: 70px;
+}
+
 body {
     padding-top: 70px;
 }
 
-#sidebar .list-group, #sidebar .list-group-item {
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h4, h5, h6 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h1 { font-size: 36px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+h5 { font-size: 14px; }
+h6 { font-size: 12px; }
+
+p, ul, ol, dl {
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 20px 0;
+    border-top: 1px solid #eee;
+    opacity: 1;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+pre {
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
     background-color: transparent;
+    border-radius: 0;
 }
 
-/* for list-groups nested within a list-group-item, reset the bottom margin */
-.list-group-item > .list-group {
-    margin-bottom: 0px;
+a, a:hover {
+    color: inherit;
+    text-decoration: none;
 }
 
-/* for list-group-items nested within a list-group-item, reset the bottom
-   padding of the last item, b/c the containing item has paddimg already
- */
-.list-group-item .list-group-item:last-child {
-    padding-bottom: 0px;
+a:hover {
+    text-decoration: underline;
 }
 
-.list-group-item {
-    border: none;
+.page-header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
 }
 
-.tag-0 {
-    font-size: 16pt;
+.page-header a:hover {
+    text-decoration: none;
 }
 
-.tag-1 {
-    font-size: 13pt;
+/* Navbar */
+
+.site-navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e7e7e7;
 }
 
-.tag-2 {
-    font-size: 10pt;
+.site-navbar .navbar-brand {
+    padding: 15px 0;
+    font-size: 18px;
+    line-height: 20px;
+    color: #666;
 }
 
-.tag-3 {
-    font-size: 8pt;
+.site-navbar .navbar-brand:hover {
+    color: #333;
+    text-decoration: none;
 }
 
-.tag-4 {
-    font-size: 6pt;
+.site-navbar .nav-link {
+    padding: 10px 15px;
+    line-height: 20px;
+    color: #666;
 }
 
-#aboutme {
-    padding-top: 0px;
-    padding-bottom: 5px;
-    -ms-word-break: normal;
-    word-break: normal;
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link:focus {
+    color: #333;
+    text-decoration: none;
 }
+
+.site-navbar .nav-link.active {
+    color: #555;
+    background-color: #e7e7e7;
+}
+
+.site-search {
+    margin: 4px 0 12px;
+}
+
+.site-search .form-control {
+    /* 16px avoids the automatic zoom on focus in iOS Safari */
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    .site-navbar .nav-link {
+        padding: 15px;
+    }
+    .site-search {
+        margin: 0;
+    }
+    .site-search .form-control {
+        width: 180px;
+        font-size: 14px;
+    }
+}
+
+/* Sidebar */
 
 #sidebar {
-    padding-top: 0px;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
+    overflow-wrap: break-word;
     hyphens: auto;
 }
 
-#sidebar a {
-    color: inherit;
+.sidebar {
+    margin-bottom: 20px;
+}
+
+.sidebar section {
+    padding: 10px 15px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 10px 15px;
+}
+
+.sidebar li:last-child {
+    padding-bottom: 0;
 }
 
 .icon-label {
     margin-left: 10px;
 }
 
-/* Example for how to control spacing between icon and label in specific
-   lists in the sidebar. To change, override in your CUSTOM_CSS           */
-#sidebar #social i {
-    margin-right: 3px;
+/* Font Awesome draws brand logos at different scales: the Bluesky butterfly
+   is 1.125em wide, while Mastodon and the GitHub square are under 0.9em.
+   Scale each to a 1em bounding box, like the other sidebar icons. */
+.sidebar .fa-bluesky {
+    transform: scale(0.89);
 }
 
-a, a:hover {
-    color: inherit;
+.sidebar .fa-mastodon,
+.sidebar .fa-square-github {
+    transform: scale(1.14);
+}
+
+/* Collapsible cards for the bibliography, tags, and categories */
+
+.collapse-card {
+    --bs-card-border-color: #ddd;
+    --bs-card-cap-bg: #f5f5f5;
+    --bs-card-cap-padding-y: 10px;
+    --bs-card-cap-padding-x: 15px;
+    --bs-card-spacer-y: 15px;
+    --bs-card-spacer-x: 15px;
+    margin-bottom: 20px;
+}
+
+.collapse-list .collapse-card {
+    margin-bottom: 5px;
+}
+
+.collapse-card .card-title {
+    margin: 0;
+    font-size: 16px;
+}
+
+.collapse-card .card-title a,
+.collapse-card .card-title a:hover {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    border-bottom: 0;
+}
+
+.collapse-card .badge {
+    padding: 3px 7px;
+}
+
+.entry-content .collapse-card-label {
+    border-bottom: 1px dotted;
+}
+
+.entry-content .card-title a:hover .collapse-card-label {
+    border-bottom: 1px solid;
+}
+
+/* Date/category/tags box at the top of a note */
+
+.article-info {
+    --bs-card-border-color: transparent;
+    --bs-card-spacer-y: 15px;
+    --bs-card-spacer-x: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+/* Page content */
+
+.entry-content {
+    overflow-wrap: break-word;
 }
 
 .entry-content a {
@@ -83,16 +280,16 @@ a, a:hover {
     border-bottom: 1px dotted;
 }
 
-div#categories_tags_link a {
-    border-bottom: 0px dotted;
-}
-
-div#categories_tags_link a:hover span.icon-label {
+.entry-content a:hover {
+    text-decoration: none;
     border-bottom: 1px solid;
 }
 
-.entry-content a:hover {
-    text-decoration: none;
+div#categories_tags_link a {
+    border-bottom: 0;
+}
+
+div#categories_tags_link a:hover span.icon-label {
     border-bottom: 1px solid;
 }
 
@@ -106,94 +303,10 @@ div#categories_tags_link a:hover span.icon-label {
     margin-bottom: 2px;
 }
 
-.summary img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-.floatright, .align-right {
-    float: right;
-}
-
-.floatleft, .align-left {
-    float: left;
-}
-
-.floatcenter, .align-center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-figure.floatright, .align-right {
-    margin-left: 4px;
-}
-
-figure.floatleft, .align-left {
-    margin-right: 4px;
-}
-
-figure.floatcenter, .align-center {
-    margin-bottom: 11px;
-}
-
-.highlighttable pre {
-    /* Removes bootstrap default margin-bottom */
-    margin-bottom: 0px;
-}
-
-.highlighttable {
-    /* Adds them margin-bottom to highlightable instead of <pre> */
-    margin-bottom: 11px;
-}
-
-.highlighttable {
-    width: 100%;
-}
-
-#categories ul, #tags ul {
-    list-style: none;
-    padding: 0;
-    margin-left: 0;
-}
-
-.docutils.footnote td.label {
-    display: table-cell;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-    color: inherit;
-    text-align: inherit;
-    white-space: inherit;
-    border-radius: inherit;
-}
-
 .categories-timestamp {
-    color: #AAAAAA;
+    color: #767676;
     font-size: 0.9em;
     margin-right: 10px;
-}
-
-div.tagcloud {
-  text-align: center;
-  padding-left:5em;
-  padding-right:5em;
-  padding-top:2em;
-  padding-bottom:3em;
-}
-
-ul.tagcloud {
-  list-style: none;
-    padding: 0;
-}
-
-ul.tagcloud li {
-    display: inline-block;
-}
-
-#prev_next ul {
-    list-style: none;
 }
 
 #categories_tags_link {
@@ -202,82 +315,6 @@ ul.tagcloud li {
     padding-top: 0em;
     padding-bottom: 3em;
     padding-right: 2em;
-}
-
-i.search {
-    padding-top: 10px;
-    padding-top: 15px;
-}
-
-form.search {
-    padding-left: 10px;
-    padding-top: 15px;
-    height: 100% !important;
-    font-size: normal !important;
-}
-
-i.search{
-    padding-left: 15px;
-}
-
-input.search {
-    height: 100% !important;
-    padding-left: 0 ! important;
-    padding-right: 15px ! important;
-    padding-top: 0 ! important;
-    padding-bottom: 0 ! important;
-    font-size: normal !important;
-}
-
-#banner {
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-attachment: scroll;
-    background-size: cover;
-    background-color: #C4C4C4;
-    margin: 0 0 20px;
-    padding: 70px 0; /*controls padding around inner text*/
-    position: relative;
-}
-
-#banner .copy {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
-    display: inline;
-    float: left;
-    max-width: 600px;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-#banner h1 {
-    color: #fff;
-    font-family: "HelveticaNeue-CondensedBold","Helvetica Neue CE 600 Condensed","Helvetica Neue LT Condensed","Helvetica Neue 600 Condensed","HelveticaNeue-BoldCondensed","Helvetica Neue BoldCondensed","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 60px;
-    font-stretch: condensed;
-    font-weight: 700;
-    line-height: 0.9;
-    margin: 0;
-    text-transform: uppercase;
-}
-#banner .intro {
-    color: #fff;
-    font-size: 21px;
-    line-height: 1.33;
-    opacity: 0.75;
-}
-#banner .btn, #banner .intro {
-    margin-left: 4px;
-}
-
-/* Solutions for mobile and small screens  */
-@media (max-width: 650px) {
-    #banner h1{
-       font-size: 30px; /* !important;*/
-    }
-    #banner .intro{
-        font-size: 16px;
-    }
 }
 
 /* Jupyter */

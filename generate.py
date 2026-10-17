@@ -94,10 +94,10 @@ def copy_theme():
     src = THEME / "static"
     dst = OUTDIR / "theme"
     if dst.is_dir():
-        LOG.info("Skip copying %s: %s already exists", src, dst)
-    else:
-        LOG.info("Copy %s to %s", src, dst)
-        shutil.copytree(src, dst)
+        LOG.info("Remove stale %s", dst)
+        shutil.rmtree(dst)
+    LOG.info("Copy %s to %s", src, dst)
+    shutil.copytree(src, dst)
 
 
 async def main(preview=False):

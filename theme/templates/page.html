@@ -35,12 +35,12 @@
 
 {% block breadcrumbs %}
     {% if DISPLAY_BREADCRUMBS %}
-    <ol class="breadcrumb">
-        <li><a href="{{ SITEURL }}" title="{{ SITENAME }}"><i class="fa fa-home fa-lg"></i></a></li>
+    <nav aria-label="breadcrumb"><ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa-solid fa-house fa-lg"></i></a></li>
     {% if page.url %}
-        <li class="active">{{ page.title }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
     {% endif %}
-    </ol>
+    </ol></nav>
     {% endif %}
 {% endblock %}
 

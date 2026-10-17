@@ -1,5 +1,5 @@
 <footer>
-   <div class="container{% if BOOTSTRAP_FLUID %}-fluid{% endif %}">
+   <div class="container">
       <hr>
       <div class="row">
          {% if articles %}
@@ -7,7 +7,7 @@
          {% else %}
             {% set copy_date = '' %}
          {% endif %}
-         <div class="col-xs-10"><small>
+         <div class="col-md-10"><small>
              &copy; {{ copy_date }} {{ AUTHOR }}
              &middot; Site built on {{ CURRENT_TIME }} from <a href="{{ REPO }}">source on Github</a>.
          </small>
@@ -18,7 +18,7 @@
               <p><small>{{ CUSTOM_LICENSE }}</small></p>
             {% endif %}
          </div>
-         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+         <div class="col-md-2"><p class="text-md-end"><i class="fa-solid fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
       </div>
    </div>
 </footer>

@@ -39,14 +39,14 @@ DEFAULT_TEMPLATES = (
 
 # Social widget
 SOCIAL = (
-    ('fa-globe', '@goerz@fosstodon.org', 'https://fosstodon.org/@goerz'),
-    ('fa-globe', 'bsky:michaelgoerz.net', 'https://bsky.app/profile/michaelgoerz.net'),
-    ('fa-github-square', 'Github', 'https://github.com/goerz'),
+    ('fa-brands fa-mastodon', '@goerz@fosstodon.org', 'https://fosstodon.org/@goerz'),
+    ('fa-brands fa-bluesky', 'bsky:michaelgoerz.net', 'https://bsky.app/profile/michaelgoerz.net'),
+    ('fa-brands fa-square-github', 'Github', 'https://github.com/goerz'),
 )
 
 CONTACT = (
-    ('fa-envelope-o', 'mail@michaelgoerz.net', 'mailto:mail@michaelgoerz.net'),
-    ('fa-key', 'Public Keys', 'https://gist.github.com/goerz/81d58b19220026f8f5c1#public-sshgpg-keys'),
+    ('fa-regular fa-envelope', 'mail@michaelgoerz.net', 'mailto:mail@michaelgoerz.net'),
+    ('fa-solid fa-key', 'Public Keys', 'https://gist.github.com/goerz/81d58b19220026f8f5c1#public-sshgpg-keys'),
 )
 
 
@@ -79,12 +79,9 @@ MathJax = {
   }
 };
 </script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js">
+<script id="MathJax-script" defer
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js">
 </script>
 """
-# Combined components:
-# - tex-chtml-full: OK in Chrome, baseline issue in Safari
-# - tex-svg-full: OK in Chrome, pixellated in Safari
 
 REDIRECTS = []  # see conf_publish.py
