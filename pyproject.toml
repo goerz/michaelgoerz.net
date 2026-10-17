@@ -1,0 +1,39 @@
+[project]
+name = "michaelgoerz-net"
+version = "0.0.0"
+description = "Source files and code to generate the website https://michaelgoerz.net"
+requires-python = ">=3.11"
+dependencies = [
+    "bibtexparser>=1.4.0,<2",
+    "colorama>=0.4.6",
+    "dulwich>=0.20.50",
+    "ipython>=8.7.0",
+    "Jinja2>=3.1.2",
+    "linkify-it-py>=2.0.0",
+    "markdown-it-py>=2.1.0",
+    "mdit-py-plugins>=0.3.3",
+    "nbconvert>=7.2.7",
+    "nbformat>=5.7",
+    "pygments>=2.13",
+    "python-dateutil>=2.8",
+    "pyyaml>=6.0.2",
+    "traitlets>=5.8",
+]
+
+[dependency-groups]
+dev = [
+    "black>=22.12.0",
+]
+notebooks = [
+    "ipykernel>=6.19.4",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "statsmodels",
+    "sympy",
+]
+
+[tool.uv]
+package = false
+default-groups = "all"

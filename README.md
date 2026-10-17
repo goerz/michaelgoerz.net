@@ -7,6 +7,8 @@ This repository contains the source files and code to generate the website <http
 
 ## Getting Started
 
+The build environment is managed with [uv](https://docs.astral.sh/uv/), which must be installed. Python and all dependencies are pinned in `.python-version` and `uv.lock`; `make` targets run through `uv run`, which sets up the environment in `.venv` automatically.
+
 Run `make preview` to generate the website locally and run a local web server on port 8000 to view it at <http://localhost:8000>.
 
 This will watch all files for changes and re-generate them if necessary. This does not extend to *new* files that were generated since the server started running.

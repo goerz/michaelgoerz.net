@@ -15,12 +15,12 @@ jobs:
       SSH_OWNER: goerz:www-data
       SSH_TARGET_DIR: /
       # Note that rrsync is set up on server, hence the SSH_TARGET_DIR /
+      UV_LOCKED: 1  # fail if uv.lock is out of date
+      UV_NO_DEFAULT_GROUPS: 1  # skip the dev and notebooks groups
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-        name: Install Python 3.11
-        with:
-          python-version: 3.11
+      - uses: astral-sh/setup-uv@v10
+        name: Install uv
       - name: Build website
         run: make generate
       - name: Set up deploy key

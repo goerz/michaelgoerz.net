@@ -11,17 +11,16 @@ for line in sys.stdin:
 endef
 export PRINT_HELP_PYSCRIPT
 
-PYTHON = .venv/bin/python
-
 help:  ## Show this help
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 
-venv: $(PYTHON)  ## Set up the virtual environment for building
+venv:  ## Set up the virtual environment for building
+	uv sync
 
 
-black: $(PYTHON)  ## format Python source code with black
-	$(PYTHON) -m black -l 80 generate.py src/*.py
+black:  ## format Python source code with black
+	uv run black -l 80 generate.py src/*.py
 
 
 clean:  ## Remove generated files
@@ -35,28 +34,22 @@ distclean: clean uninstall-kernel  ## Restore to a pristine checkout
 	rm -rf .venv
 
 
-generate:  $(PYTHON)  ## Generate the website
-	$< generate.py
+generate:  ## Generate the website
+	uv run python generate.py
 
 
-preview:  $(PYTHON)  ## Generate and preview the website
-	$< generate.py --preview
+preview:  ## Generate and preview the website
+	uv run python generate.py --preview
 
 
-ipython: $(PYTHON)  ## Start an ipython interpreter
-	$< -m IPython
+ipython:  ## Start an ipython interpreter
+	uv run ipython
 
-install-kernel: $(PYTHON) ## Install Jupyter kernel into user environment
-	$< -m pip install -r requirements-notebooks.txt
-	$< -m ipykernel install --user --name michaelgoerz-net --display-name "michaelgoerz.net"
+install-kernel:  ## Install Jupyter kernel into user environment
+	uv run python -m ipykernel install --user --name michaelgoerz-net --display-name "michaelgoerz.net"
 
 uninstall-kernel: ## Remove Jupyter kernel from user environment
 	jupyter kernelspec remove -f michaelgoerz-net || true
 
 jupyter: install-kernel  ## Start a Jupyter notebook server
 	jupyter notebook
-
-$(PYTHON):
-	python3 -m venv .venv
-	$(PYTHON) -m pip install --upgrade pip setuptools wheel
-	$(PYTHON) -m pip install -r requirements.txt
