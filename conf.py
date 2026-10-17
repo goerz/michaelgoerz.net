@@ -71,7 +71,6 @@ Category.URL = "categories.html#collapse-{slug}"
 
 
 MATHJAX_SCRIPT = r"""
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script>
 MathJax = {
   tex: {
