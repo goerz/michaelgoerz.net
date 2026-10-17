@@ -38,16 +38,16 @@
   {% block mathjax %}
   {% endblock %}
 
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/fontawesome.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/solid.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/regular.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/brands.min.css">
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bootstrap.min.css?v={{ THEME_VERSION }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/fontawesome.min.css?v={{ THEME_VERSION }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/solid.min.css?v={{ THEME_VERSION }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/regular.min.css?v={{ THEME_VERSION }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/brands.min.css?v={{ THEME_VERSION }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css?v={{ THEME_VERSION }}">
   {% if TYPOGRIFY %}
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/typogrify.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/typogrify.css?v={{ THEME_VERSION }}">
   {% endif %}
-  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css?v={{ THEME_VERSION }}">
   {% if CUSTOM_CSS %}
   <link rel="stylesheet" href="{{ SITEURL }}/{{ CUSTOM_CSS }}">
   {% endif %}
@@ -64,8 +64,8 @@
   <link href="{{ SITEURL }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} {{ category }} ATOM Feed">
   {% endif %}
 
-  <script src="{{ SITEURL }}/theme/js/bootstrap.bundle.min.js" defer></script>
-  <script src="{{ SITEURL }}/theme/js/site.js" defer></script>
+  <script src="{{ SITEURL }}/theme/js/bootstrap.bundle.min.js?v={{ THEME_VERSION }}" defer></script>
+  <script src="{{ SITEURL }}/theme/js/site.js?v={{ THEME_VERSION }}" defer></script>
 </head>
 
 <body>

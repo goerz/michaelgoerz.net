@@ -1,5 +1,7 @@
+import hashlib
 import re
 import time
+from pathlib import Path
 
 from src.document import Tag, Category
 
@@ -65,6 +67,16 @@ BIB_NAMES_TO_HIGHLIGHT = [
 ]
 
 CURRENT_TIME = time.ctime()
+
+# Appended as `?v=` to theme asset URLs, so that browsers and the CDN fetch
+# changed assets instead of serving stale cached copies
+THEME_VERSION = hashlib.sha256(
+    b"".join(
+        f.read_bytes()
+        for f in sorted(Path("theme/static").rglob("*"))
+        if f.is_file() and f.name != ".DS_Store"
+    )
+).hexdigest()[:10]
 
 Tag.URL = "tags.html#collapse-{slug}"
 Category.URL = "categories.html#collapse-{slug}"
