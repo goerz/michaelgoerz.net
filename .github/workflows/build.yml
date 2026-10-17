@@ -1,6 +1,16 @@
 name: Build
 
-on: [push, ]
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never run two deploys at the same time
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
 
@@ -18,19 +28,23 @@ jobs:
       UV_LOCKED: 1  # fail if uv.lock is out of date
       UV_NO_DEFAULT_GROUPS: 1  # skip the dev and notebooks groups
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10
         name: Install uv
       - name: Build website
         run: make generate
+      # Only the master branch deploys; other branches just build
       - name: Set up deploy key
+        if: github.ref == 'refs/heads/master'
         run: |
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H $SSH_HOST | tee ~/.ssh/known_hosts
+          install -m 644 .github/known_hosts ~/.ssh/known_hosts
       - name: Set permissions
+        if: github.ref == 'refs/heads/master'
         run: chmod -R a+rX output
       - name: Upload
+        if: github.ref == 'refs/heads/master'
         run: |
           rsync -e "ssh -p $SSH_PORT" \
           --partial --progress --recursive --verbose --compress --checksum \
