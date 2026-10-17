@@ -14,6 +14,8 @@ PATH = 'content'
 TIMEZONE = 'US/Eastern'
 
 PYGMENTS_STYLE = 'friendly'
+# Scoped to dark mode, see the header of the CSS file
+PYGMENTS_STYLE_DARK = 'github-dark'
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None

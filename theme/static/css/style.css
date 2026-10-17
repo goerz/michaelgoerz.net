@@ -1,15 +1,26 @@
-/* Design tokens */
+/* Design tokens
+
+The color theme is set by the `data-bs-theme` attribute on the <html> element
+(see the inline script in base.html and the theme toggle in site.js). The
+`:root[data-bs-theme="dark"]` block below overrides the light colors.
+*/
 
 :root {
     --site-max-width: 1080px;
     --prose-max-width: 50rem;
+    --color-bg: #fff;
+    --color-surface: #fff;
     --color-text: #1d2125;
     --color-muted: #5b636d;
     --color-border: #e3e6ea;
+    --color-border-strong: #cfd4da;
     --color-subtle: #f5f6f8;
     --color-accent: #1f5fbf;
     --color-accent-hover: #164793;
+    --color-on-accent: #fff;
     --color-code-bg: #f6f8fa;
+    --shadow-hover: 0 4px 16px rgba(17, 24, 39, .06);
+    --shadow-paper: 0 1px 6px rgba(17, 24, 39, .12);
     --radius: 10px;
     --radius-small: 6px;
 
@@ -17,8 +28,45 @@
     --bs-body-font-size: 1rem;
     --bs-body-line-height: 1.6;
     --bs-body-color: var(--color-text);
+    --bs-body-bg: var(--color-bg);
     --bs-font-monospace: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
     --bs-border-color: var(--color-border);
+    --bs-emphasis-color: var(--color-text);
+    --bs-secondary-color: var(--color-muted);
+}
+
+:root[data-bs-theme="dark"] {
+    --color-bg: #14171b;
+    --color-surface: #1b1f24;
+    --color-text: #e4e7eb;
+    --color-muted: #9ba5b0;
+    --color-border: #2e343b;
+    --color-border-strong: #454d56;
+    --color-subtle: #20252b;
+    --color-accent: #7eaaf0;
+    --color-accent-hover: #a9c6f6;
+    --color-on-accent: #0d1117;
+    --color-code-bg: #1b1f24;
+    --shadow-hover: 0 4px 16px rgba(0, 0, 0, .35);
+    --shadow-paper: 0 1px 6px rgba(0, 0, 0, .5);
+}
+
+/* Transparent images (logos, diagrams, plots) are drawn for a white page, so
+they get a light backdrop in dark mode */
+:root[data-bs-theme="dark"] .entry-content img:not(.bio-photo),
+:root[data-bs-theme="dark"] .project-logo {
+    background-color: #f5f6f8;
+    border-radius: 4px;
+}
+
+:root[data-bs-theme="dark"] .entry-content .bib-icon {
+    box-sizing: border-box;
+    padding: .1em;
+}
+
+:root[data-bs-theme="dark"] .bio-photo,
+:root[data-bs-theme="dark"] .refcard-preview img {
+    filter: brightness(.92);
 }
 
 html {
@@ -42,7 +90,7 @@ body {
     left: .5rem;
     z-index: 2000;
     padding: .5rem 1rem;
-    background: #fff;
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-small);
 }
@@ -140,7 +188,7 @@ pre code {
 .site-footer-meta a {
     color: var(--color-accent);
     text-decoration: underline;
-    text-decoration-color: rgba(31, 95, 191, .3);
+    text-decoration-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
     text-decoration-thickness: 1px;
     text-underline-offset: .2em;
 }
@@ -167,7 +215,7 @@ pre code {
     position: sticky;
     top: 0;
     z-index: 1030;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: color-mix(in srgb, var(--color-bg) 90%, transparent);
     backdrop-filter: saturate(180%) blur(10px);
     -webkit-backdrop-filter: saturate(180%) blur(10px);
     border-bottom: 1px solid var(--color-border);
@@ -191,7 +239,7 @@ pre code {
 }
 
 .site-header .navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(31, 95, 191, .2);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 .site-header .nav-link {
@@ -229,9 +277,9 @@ pre code {
 }
 
 .site-search .form-control:focus {
-    background-color: #fff;
-    border-color: rgba(31, 95, 191, .5);
-    box-shadow: 0 0 0 3px rgba(31, 95, 191, .15);
+    background-color: var(--color-surface);
+    border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 15%, transparent);
 }
 
 .site-search-button {
@@ -255,6 +303,42 @@ pre code {
     .site-search .form-control {
         width: 11rem;
         font-size: .9rem;
+    }
+}
+
+/* On narrow screens, the theme toggle sits next to the navbar toggler; on wide
+screens, it comes after the search field */
+.theme-toggle {
+    width: 2.25rem;
+    height: 2.25rem;
+    margin-left: auto;
+    margin-right: .5rem;
+    padding: 0;
+    font-size: .95rem;
+    color: var(--color-muted);
+    background: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-small);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+    color: var(--color-text);
+    background-color: var(--color-subtle);
+}
+
+/* The toggle needs the script that sets the theme attribute */
+:root:not([data-bs-theme]) .theme-toggle,
+[data-bs-theme="dark"] .theme-toggle .fa-moon,
+[data-bs-theme="light"] .theme-toggle .fa-sun {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .theme-toggle {
+        order: 1;
+        margin-left: .5rem;
+        margin-right: 0;
     }
 }
 
@@ -335,7 +419,7 @@ pre code {
     padding: .15rem .65rem;
     font-size: .8rem;
     color: var(--color-muted);
-    background-color: #fff;
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 999px;
 }
@@ -725,15 +809,15 @@ pre code {
     min-width: 0;
     overflow-wrap: break-word;
     padding: 1.25rem;
-    background-color: #fff;
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 
 .project-card:hover {
-    border-color: #cfd4da;
-    box-shadow: 0 4px 16px rgba(17, 24, 39, .06);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-hover);
 }
 
 .project-header {
@@ -815,6 +899,7 @@ pre code {
 .project-language[data-language="python"] { --language-color: #3572a5; }
 .project-language[data-language="fortran"] { --language-color: #4d41b1; }
 .project-language[data-language="lua"] { --language-color: #000080; }
+[data-bs-theme="dark"] .project-language[data-language="lua"] { --language-color: #5c6bc0; }
 
 .project-description {
     margin-bottom: .75rem;
@@ -913,15 +998,15 @@ pre code {
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    background-color: #fff;
+    background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     transition: border-color .15s ease, box-shadow .15s ease;
 }
 
 .refcard:hover {
-    border-color: #cfd4da;
-    box-shadow: 0 4px 16px rgba(17, 24, 39, .06);
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-hover);
 }
 
 .refcard-preview {
@@ -940,7 +1025,7 @@ pre code {
     object-fit: contain;
     background-color: #fff;
     border-radius: 2px;
-    box-shadow: 0 1px 6px rgba(17, 24, 39, .12);
+    box-shadow: var(--shadow-paper);
     transition: transform .2s ease;
 }
 
@@ -995,11 +1080,11 @@ pre code {
 
 .refcard-download {
     color: var(--color-accent);
-    background-color: rgba(31, 95, 191, .08);
+    background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 .refcard-download:hover {
-    color: #fff;
+    color: var(--color-on-accent);
     background-color: var(--color-accent);
 }
 
@@ -1048,6 +1133,15 @@ pre code {
 
 div.output_prompt {
   color: #D84315;
+}
+
+[data-bs-theme="dark"] div.output_prompt {
+  color: #ff8a65;
+}
+
+/* typogrify.css sets a fixed gray */
+.amp {
+  color: var(--color-muted);
 }
 
 
@@ -1099,13 +1193,15 @@ h6:hover .anchor-link {
     border: none;
     border-collapse: collapse;
     border-spacing: 0;
-    color: #000;
+    color: inherit;
     font-size: 12px;
-    table-layout:fixed
+    table-layout:fixed;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 .rendered_html thead {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid currentColor;
     vertical-align:bottom
 }
 
@@ -1124,7 +1220,7 @@ h6:hover .anchor-link {
 }
 
 .rendered_html tbody tr:nth-child(odd) {
-    background:#f5f5f5
+    background: var(--color-subtle)
 }
 
 .rendered_html tbody tr:hover {

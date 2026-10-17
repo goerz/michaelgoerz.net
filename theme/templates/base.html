@@ -6,6 +6,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Apply the stored or the system color theme before the page renders
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem("theme"); } catch (e) {}
+      if (theme !== "light" && theme !== "dark") {
+        theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      }
+      document.documentElement.setAttribute("data-bs-theme", theme);
+    })();
+  </script>
   {% block redirect %}{% endblock %}
   <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
   {% if FAVICON %}
@@ -44,6 +55,9 @@
   <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/regular.min.css?v={{ THEME_VERSION }}">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/fontawesome/css/brands.min.css?v={{ THEME_VERSION }}">
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css?v={{ THEME_VERSION }}">
+  {% if PYGMENTS_STYLE_DARK %}
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE_DARK }}.css?v={{ THEME_VERSION }}">
+  {% endif %}
   {% if TYPOGRIFY %}
   <link rel="stylesheet" href="{{ SITEURL }}/theme/css/typogrify.css?v={{ THEME_VERSION }}">
   {% endif %}
@@ -76,6 +90,10 @@
   <nav class="navbar navbar-expand-md" aria-label="Main">
     <div class="container site-container">
       <a href="{{ SITEURL }}/" class="navbar-brand">{{ SITENAME }}</a>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+      </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
