@@ -6,6 +6,10 @@ Tags: mac, ukelele, keyboard
 
 # The "U.S. International - Scientific" Keyboard Layout
 
+<div class="alert alert-info" role="note">
+This layout has been replaced by <a href="https://github.com/goerz/us-scientific-keyboard"><strong>U.S. Scientific</strong></a>, now available for macOS, Windows, and Linux. Downloads are on the <a href="https://github.com/goerz/us-scientific-keyboard/releases">releases page</a>, and installation instructions are in the <a href="https://github.com/goerz/us-scientific-keyboard#readme">README</a>. The note below is kept unchanged as a historical record of the original macOS layout.
+</div>
+
 I routinely find myself having to type a lot unicode symbols on US keyboards on macOS, both for accented characters in European languages (umlauts) and for various "math". There is a ["U.S. International - PC" keyboard layout](https://apple.stackexchange.com/questions/120938/wheres-the-us-international-keyboard-on-os-x-10-9-mavericks) that purports to provide accented characters, but I find it to be a bit cumbersome for the accents I type most frequently (German umlauts). Moreover, it does not address the need for "scientific" unicode symbols.
 
 In my default text editor, [vim](https://neovim.io), I have both the option to use [digraphs](http://vimdoc.sourceforge.net/htmldoc/digraph.html) and the  [`julia-vim` plugin](https://github.com/JuliaEditorSupport/julia-vim) to conveniently type out the [extensive unicode symbols](https://docs.julialang.org/en/v1/manual/unicode-input/) used in the [Julia](https://docs.julialang.org) language. The latter is in fact my *preferred* way to type unicode, even beyond Julia. I've gone so far as to have a [KeyboardMaestro](https://www.keyboardmaestro.com/main/) macro that copies the text of a web form, pastes it into a temporary file that it opens in vim, waits for vim to quit, and pastes the content of the file back into the web form.
